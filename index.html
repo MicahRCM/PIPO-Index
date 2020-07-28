@@ -1,0 +1,2221 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>PIPO Index</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+    <div style="position: fixed; width: 100%; height: 100%; background: white; overflow: scroll;">
+        <div style="margin: 0 auto; width: 60%; min-width: 800px; max-width: 1200px;">
+            <table id="table" data-toggle="table" data-search="true" data-pagination="true" data-page-list="[10, 25, 50, 100, 200, All]">
+                <thead>
+                    <tr>
+                        <th data-sortable="true" data-field="Rank">Rank</th>
+                        <th data-sortable="true" data-field="Name">Name</th>
+                        <th data-sortable="true" data-field="Graduation Rate">Graduation Rate</th>
+                        <th data-sortable="true" data-field="Value Added">Value Added</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <script>
+    var $table = $('#table')
+    $(function() {
+        var data = [{
+                "Rank": 1,
+                "Name": "Gallaudet University",
+                "Graduation Rate": 47,
+                "Value Added": 20.3
+            },
+            {
+                "Rank": 2,
+                "Name": "Illinois State University",
+                "Graduation Rate": 69,
+                "Value Added": 20.2
+            },
+            {
+                "Rank": 3,
+                "Name": "Montclair State University",
+                "Graduation Rate": 71,
+                "Value Added": 17.1
+            },
+            {
+                "Rank": 4,
+                "Name": "Clarke University",
+                "Graduation Rate": 63,
+                "Value Added": 16.8
+            },
+            {
+                "Rank": 5,
+                "Name": "William Woods University",
+                "Graduation Rate": 60,
+                "Value Added": 16.5
+            },
+            {
+                "Rank": 6,
+                "Name": "Rowan University",
+                "Graduation Rate": 72,
+                "Value Added": 16.3
+            },
+            {
+                "Rank": 7,
+                "Name": "Bethel University",
+                "Graduation Rate": 75,
+                "Value Added": 15.9
+            },
+            {
+                "Rank": 8,
+                "Name": "Louisiana Tech University",
+                "Graduation Rate": 53,
+                "Value Added": 15
+            },
+            {
+                "Rank": 9,
+                "Name": "The Sage Colleges",
+                "Graduation Rate": 62,
+                "Value Added": 14.5
+            },
+            {
+                "Rank": 10,
+                "Name": "Maryville University of St. Louis",
+                "Graduation Rate": 72,
+                "Value Added": 14.5
+            },
+            {
+                "Rank": 11,
+                "Name": "University of California--Davis",
+                "Graduation Rate": 86,
+                "Value Added": 14
+            },
+            {
+                "Rank": 12,
+                "Name": "University of Louisiana--Monroe",
+                "Graduation Rate": 43,
+                "Value Added": 13.6
+            },
+            {
+                "Rank": 13,
+                "Name": "Marquette University",
+                "Graduation Rate": 85,
+                "Value Added": 13
+            },
+            {
+                "Rank": 14,
+                "Name": "Baker University",
+                "Graduation Rate": 59,
+                "Value Added": 12.8
+            },
+            {
+                "Rank": 15,
+                "Name": "Cardinal Stritch University",
+                "Graduation Rate": 51,
+                "Value Added": 12.7
+            },
+            {
+                "Rank": 16,
+                "Name": "Indiana University of Pennsylvania",
+                "Graduation Rate": 56,
+                "Value Added": 12.5
+            },
+            {
+                "Rank": 17,
+                "Name": "Samford University",
+                "Graduation Rate": 76,
+                "Value Added": 12.4
+            },
+            {
+                "Rank": 18,
+                "Name": "Michigan State University",
+                "Graduation Rate": 80,
+                "Value Added": 12.2
+            },
+            {
+                "Rank": 19,
+                "Name": "Yeshiva University",
+                "Graduation Rate": 83,
+                "Value Added": 12.1
+            },
+            {
+                "Rank": 20,
+                "Name": "Pennsylvania State University--University Park",
+                "Graduation Rate": 85,
+                "Value Added": 12
+            },
+            {
+                "Rank": 21,
+                "Name": "Edgewood College",
+                "Graduation Rate": 63,
+                "Value Added": 11.7
+            },
+            {
+                "Rank": 22,
+                "Name": "University of La Verne",
+                "Graduation Rate": 69,
+                "Value Added": 11.5
+            },
+            {
+                "Rank": 23,
+                "Name": "University of New Hampshire",
+                "Graduation Rate": 77,
+                "Value Added": 11.4
+            },
+            {
+                "Rank": 24,
+                "Name": "Quinnipiac University",
+                "Graduation Rate": 77,
+                "Value Added": 11.4
+            },
+            {
+                "Rank": 25,
+                "Name": "University of Dayton",
+                "Graduation Rate": 79,
+                "Value Added": 11.2
+            },
+            {
+                "Rank": 26,
+                "Name": "Texas Christian University",
+                "Graduation Rate": 83,
+                "Value Added": 11
+            },
+            {
+                "Rank": 27,
+                "Name": "Elon University",
+                "Graduation Rate": 83,
+                "Value Added": 11
+            },
+            {
+                "Rank": 28,
+                "Name": "University of California--Merced",
+                "Graduation Rate": 66,
+                "Value Added": 10.9
+            },
+            {
+                "Rank": 29,
+                "Name": "Towson University",
+                "Graduation Rate": 73,
+                "Value Added": 10.8
+            },
+            {
+                "Rank": 30,
+                "Name": "Biola University",
+                "Graduation Rate": 73,
+                "Value Added": 10.8
+            },
+            {
+                "Rank": 31,
+                "Name": "Immaculata University",
+                "Graduation Rate": 68,
+                "Value Added": 10.7
+            },
+            {
+                "Rank": 32,
+                "Name": "Gonzaga University",
+                "Graduation Rate": 86,
+                "Value Added": 10.7
+            },
+            {
+                "Rank": 33,
+                "Name": "California State University--Fresno",
+                "Graduation Rate": 54,
+                "Value Added": 10.5
+            },
+            {
+                "Rank": 34,
+                "Name": "Simmons University",
+                "Graduation Rate": 80,
+                "Value Added": 10.1
+            },
+            {
+                "Rank": 35,
+                "Name": "University of Alabama",
+                "Graduation Rate": 72,
+                "Value Added": 9.8
+            },
+            {
+                "Rank": 36,
+                "Name": "George Fox University",
+                "Graduation Rate": 67,
+                "Value Added": 9.5
+            },
+            {
+                "Rank": 37,
+                "Name": "Gannon University",
+                "Graduation Rate": 67,
+                "Value Added": 9.5
+            },
+            {
+                "Rank": 38,
+                "Name": "Seattle Pacific University",
+                "Graduation Rate": 68,
+                "Value Added": 9.3
+            },
+            {
+                "Rank": 39,
+                "Name": "Concordia University Wisconsin",
+                "Graduation Rate": 58,
+                "Value Added": 9.2
+            },
+            {
+                "Rank": 40,
+                "Name": "Regent University",
+                "Graduation Rate": 58,
+                "Value Added": 9.2
+            },
+            {
+                "Rank": 41,
+                "Name": "Iowa State University",
+                "Graduation Rate": 75,
+                "Value Added": 9.2
+            },
+            {
+                "Rank": 42,
+                "Name": "Misericordia University",
+                "Graduation Rate": 69,
+                "Value Added": 9.1
+            },
+            {
+                "Rank": 43,
+                "Name": "Virginia Tech",
+                "Graduation Rate": 84,
+                "Value Added": 9
+            },
+            {
+                "Rank": 44,
+                "Name": "Husson University",
+                "Graduation Rate": 55,
+                "Value Added": 8.8
+            },
+            {
+                "Rank": 45,
+                "Name": "St. John Fisher College",
+                "Graduation Rate": 73,
+                "Value Added": 8.5
+            },
+            {
+                "Rank": 46,
+                "Name": "University of Oregon",
+                "Graduation Rate": 73,
+                "Value Added": 8.5
+            },
+            {
+                "Rank": 47,
+                "Name": "SUNY College of Environmental Science and Forestry",
+                "Graduation Rate": 77,
+                "Value Added": 8.2
+            },
+            {
+                "Rank": 48,
+                "Name": "University of California--Irvine",
+                "Graduation Rate": 83,
+                "Value Added": 8
+            },
+            {
+                "Rank": 49,
+                "Name": "Syracuse University",
+                "Graduation Rate": 83,
+                "Value Added": 8
+            },
+            {
+                "Rank": 50,
+                "Name": "Texas A&M University--College Station",
+                "Graduation Rate": 82,
+                "Value Added": 8
+            },
+            {
+                "Rank": 51,
+                "Name": "University of Delaware",
+                "Graduation Rate": 82,
+                "Value Added": 8
+            },
+            {
+                "Rank": 52,
+                "Name": "College of St. Scholastica",
+                "Graduation Rate": 69,
+                "Value Added": 7.9
+            },
+            {
+                "Rank": 53,
+                "Name": "Santa Clara University",
+                "Graduation Rate": 91,
+                "Value Added": 7.7
+            },
+            {
+                "Rank": 54,
+                "Name": "Valparaiso University",
+                "Graduation Rate": 71,
+                "Value Added": 7.7
+            },
+            {
+                "Rank": 55,
+                "Name": "Colorado State University",
+                "Graduation Rate": 71,
+                "Value Added": 7.7
+            },
+            {
+                "Rank": 56,
+                "Name": "DePaul University",
+                "Graduation Rate": 72,
+                "Value Added": 7.5
+            },
+            {
+                "Rank": 57,
+                "Name": "University of California--Santa Barbara",
+                "Graduation Rate": 87,
+                "Value Added": 7.2
+            },
+            {
+                "Rank": 58,
+                "Name": "San Diego State University",
+                "Graduation Rate": 75,
+                "Value Added": 7.2
+            },
+            {
+                "Rank": 59,
+                "Name": "University of California--Riverside",
+                "Graduation Rate": 75,
+                "Value Added": 7.2
+            },
+            {
+                "Rank": 60,
+                "Name": "University of Connecticut",
+                "Graduation Rate": 85,
+                "Value Added": 7.1
+            },
+            {
+                "Rank": 61,
+                "Name": "University of St. Thomas",
+                "Graduation Rate": 77,
+                "Value Added": 7.1
+            },
+            {
+                "Rank": 62,
+                "Name": "Drake University",
+                "Graduation Rate": 78,
+                "Value Added": 7.1
+            },
+            {
+                "Rank": 63,
+                "Name": "Duquesne University",
+                "Graduation Rate": 78,
+                "Value Added": 7.1
+            },
+            {
+                "Rank": 64,
+                "Name": "Brigham Young University--Provo",
+                "Graduation Rate": 83,
+                "Value Added": 7
+            },
+            {
+                "Rank": 65,
+                "Name": "Creighton University",
+                "Graduation Rate": 79,
+                "Value Added": 7
+            },
+            {
+                "Rank": 66,
+                "Name": "Regis University",
+                "Graduation Rate": 68,
+                "Value Added": 6.9
+            },
+            {
+                "Rank": 67,
+                "Name": "University of Louisville",
+                "Graduation Rate": 57,
+                "Value Added": 6.9
+            },
+            {
+                "Rank": 68,
+                "Name": "Central Michigan University",
+                "Graduation Rate": 62,
+                "Value Added": 6.9
+            },
+            {
+                "Rank": 69,
+                "Name": "University of North Carolina--Chapel Hill",
+                "Graduation Rate": 90,
+                "Value Added": 6.7
+            },
+            {
+                "Rank": 70,
+                "Name": "University of California--Los Angeles",
+                "Graduation Rate": 90,
+                "Value Added": 6.7
+            },
+            {
+                "Rank": 71,
+                "Name": "Rutgers University--Newark",
+                "Graduation Rate": 64,
+                "Value Added": 6.5
+            },
+            {
+                "Rank": 72,
+                "Name": "Delaware State University",
+                "Graduation Rate": 40,
+                "Value Added": 6.2
+            },
+            {
+                "Rank": 73,
+                "Name": "University of Indianapolis",
+                "Graduation Rate": 60,
+                "Value Added": 6.1
+            },
+            {
+                "Rank": 74,
+                "Name": "Loyola Marymount University",
+                "Graduation Rate": 84,
+                "Value Added": 6.1
+            },
+            {
+                "Rank": 75,
+                "Name": "Florida State University",
+                "Graduation Rate": 83,
+                "Value Added": 6.1
+            },
+            {
+                "Rank": 76,
+                "Name": "Auburn University",
+                "Graduation Rate": 78,
+                "Value Added": 6
+            },
+            {
+                "Rank": 77,
+                "Name": "Indiana University--Bloomington",
+                "Graduation Rate": 78,
+                "Value Added": 6
+            },
+            {
+                "Rank": 78,
+                "Name": "Purdue University--West Lafayette",
+                "Graduation Rate": 81,
+                "Value Added": 6
+            },
+            {
+                "Rank": 79,
+                "Name": "University of Florida",
+                "Graduation Rate": 90,
+                "Value Added": 5.8
+            },
+            {
+                "Rank": 80,
+                "Name": "University of Virginia",
+                "Graduation Rate": 94,
+                "Value Added": 5.7
+            },
+            {
+                "Rank": 81,
+                "Name": "Adelphi University",
+                "Graduation Rate": 70,
+                "Value Added": 5.5
+            },
+            {
+                "Rank": 82,
+                "Name": "University of Southern Mississippi",
+                "Graduation Rate": 49,
+                "Value Added": 5.5
+            },
+            {
+                "Rank": 83,
+                "Name": "University of Nebraska--Omaha",
+                "Graduation Rate": 49,
+                "Value Added": 5.5
+            },
+            {
+                "Rank": 84,
+                "Name": "Azusa Pacific University",
+                "Graduation Rate": 63,
+                "Value Added": 5.5
+            },
+            {
+                "Rank": 85,
+                "Name": "Widener University",
+                "Graduation Rate": 63,
+                "Value Added": 5.5
+            },
+            {
+                "Rank": 86,
+                "Name": "University of Alabama--Birmingham",
+                "Graduation Rate": 58,
+                "Value Added": 5.4
+            },
+            {
+                "Rank": 87,
+                "Name": "Shenandoah University",
+                "Graduation Rate": 58,
+                "Value Added": 5.4
+            },
+            {
+                "Rank": 88,
+                "Name": "University of Georgia",
+                "Graduation Rate": 86,
+                "Value Added": 5.3
+            },
+            {
+                "Rank": 89,
+                "Name": "Robert Morris University",
+                "Graduation Rate": 64,
+                "Value Added": 5.3
+            },
+            {
+                "Rank": 90,
+                "Name": "Kansas State University",
+                "Graduation Rate": 64,
+                "Value Added": 5.3
+            },
+            {
+                "Rank": 91,
+                "Name": "University of Washington",
+                "Graduation Rate": 84,
+                "Value Added": 5.2
+            },
+            {
+                "Rank": 92,
+                "Name": "University of Illinois--Urbana-Champaign",
+                "Graduation Rate": 84,
+                "Value Added": 5.2
+            },
+            {
+                "Rank": 93,
+                "Name": "Loyola University Chicago",
+                "Graduation Rate": 74,
+                "Value Added": 5.2
+            },
+            {
+                "Rank": 94,
+                "Name": "University of California--Berkeley",
+                "Graduation Rate": 91,
+                "Value Added": 5.1
+            },
+            {
+                "Rank": 95,
+                "Name": "Villanova University",
+                "Graduation Rate": 91,
+                "Value Added": 5.1
+            },
+            {
+                "Rank": 96,
+                "Name": "University of San Francisco",
+                "Graduation Rate": 75,
+                "Value Added": 5.1
+            },
+            {
+                "Rank": 97,
+                "Name": "William Carey University",
+                "Graduation Rate": 51,
+                "Value Added": 4.8
+            },
+            {
+                "Rank": 98,
+                "Name": "Harding University",
+                "Graduation Rate": 67,
+                "Value Added": 4.8
+            },
+            {
+                "Rank": 99,
+                "Name": "Bellarmine University",
+                "Graduation Rate": 67,
+                "Value Added": 4.8
+            },
+            {
+                "Rank": 100,
+                "Name": "Lincoln Memorial University",
+                "Graduation Rate": 60,
+                "Value Added": 4.5
+            },
+            {
+                "Rank": 101,
+                "Name": "Boston College",
+                "Graduation Rate": 92,
+                "Value Added": 4.5
+            },
+            {
+                "Rank": 102,
+                "Name": "University of California--San Diego",
+                "Graduation Rate": 86,
+                "Value Added": 4.4
+            },
+            {
+                "Rank": 103,
+                "Name": "College of William and Mary",
+                "Graduation Rate": 91,
+                "Value Added": 4.3
+            },
+            {
+                "Rank": 104,
+                "Name": "University of St. Joseph",
+                "Graduation Rate": 63,
+                "Value Added": 4.3
+            },
+            {
+                "Rank": 105,
+                "Name": "East Carolina University",
+                "Graduation Rate": 63,
+                "Value Added": 4.3
+            },
+            {
+                "Rank": 106,
+                "Name": "North Carolina A&T State University",
+                "Graduation Rate": 53,
+                "Value Added": 4.2
+            },
+            {
+                "Rank": 107,
+                "Name": "Pepperdine University",
+                "Graduation Rate": 83,
+                "Value Added": 4.2
+            },
+            {
+                "Rank": 108,
+                "Name": "Clemson University",
+                "Graduation Rate": 83,
+                "Value Added": 4.2
+            },
+            {
+                "Rank": 109,
+                "Name": "University of Iowa",
+                "Graduation Rate": 73,
+                "Value Added": 4.2
+            },
+            {
+                "Rank": 110,
+                "Name": "Belmont University",
+                "Graduation Rate": 73,
+                "Value Added": 4.2
+            },
+            {
+                "Rank": 111,
+                "Name": "The Catholic University of America",
+                "Graduation Rate": 75,
+                "Value Added": 4.1
+            },
+            {
+                "Rank": 112,
+                "Name": "University of San Diego",
+                "Graduation Rate": 80,
+                "Value Added": 4
+            },
+            {
+                "Rank": 113,
+                "Name": "Rutgers University--New Brunswick",
+                "Graduation Rate": 80,
+                "Value Added": 4
+            },
+            {
+                "Rank": 114,
+                "Name": "Grand Valley State University",
+                "Graduation Rate": 65,
+                "Value Added": 3.9
+            },
+            {
+                "Rank": 115,
+                "Name": "University of Detroit Mercy",
+                "Graduation Rate": 65,
+                "Value Added": 3.9
+            },
+            {
+                "Rank": 116,
+                "Name": "Brandeis University",
+                "Graduation Rate": 88,
+                "Value Added": 3.8
+            },
+            {
+                "Rank": 117,
+                "Name": "University of Michigan--Ann Arbor",
+                "Graduation Rate": 92,
+                "Value Added": 3.7
+            },
+            {
+                "Rank": 118,
+                "Name": "Lehigh University",
+                "Graduation Rate": 87,
+                "Value Added": 3.7
+            },
+            {
+                "Rank": 119,
+                "Name": "Louisiana State University--Baton Rouge",
+                "Graduation Rate": 67,
+                "Value Added": 3.7
+            },
+            {
+                "Rank": 120,
+                "Name": "Virginia Commonwealth University",
+                "Graduation Rate": 67,
+                "Value Added": 3.7
+            },
+            {
+                "Rank": 121,
+                "Name": "University of Notre Dame",
+                "Graduation Rate": 97,
+                "Value Added": 3.5
+            },
+            {
+                "Rank": 122,
+                "Name": "University of Missouri",
+                "Graduation Rate": 69,
+                "Value Added": 3.4
+            },
+            {
+                "Rank": 123,
+                "Name": "Ohio State University--Columbus",
+                "Graduation Rate": 84,
+                "Value Added": 3.3
+            },
+            {
+                "Rank": 124,
+                "Name": "Sacred Heart University",
+                "Graduation Rate": 70,
+                "Value Added": 3.3
+            },
+            {
+                "Rank": 125,
+                "Name": "University of St. Francis",
+                "Graduation Rate": 62,
+                "Value Added": 3.3
+            },
+            {
+                "Rank": 126,
+                "Name": "University of Texas--Austin",
+                "Graduation Rate": 83,
+                "Value Added": 3.2
+            },
+            {
+                "Rank": 127,
+                "Name": "Chatham University",
+                "Graduation Rate": 63,
+                "Value Added": 3.1
+            },
+            {
+                "Rank": 128,
+                "Name": "Seattle University",
+                "Graduation Rate": 73,
+                "Value Added": 3.1
+            },
+            {
+                "Rank": 129,
+                "Name": "Temple University",
+                "Graduation Rate": 73,
+                "Value Added": 3.1
+            },
+            {
+                "Rank": 130,
+                "Name": "University of Massachusetts--Amherst",
+                "Graduation Rate": 80,
+                "Value Added": 3.1
+            },
+            {
+                "Rank": 131,
+                "Name": "Miami University--Oxford",
+                "Graduation Rate": 80,
+                "Value Added": 3.1
+            },
+            {
+                "Rank": 132,
+                "Name": "University of Charleston",
+                "Graduation Rate": 46,
+                "Value Added": 3
+            },
+            {
+                "Rank": 133,
+                "Name": "Baylor University",
+                "Graduation Rate": 79,
+                "Value Added": 3
+            },
+            {
+                "Rank": 134,
+                "Name": "Chapman University",
+                "Graduation Rate": 79,
+                "Value Added": 3
+            },
+            {
+                "Rank": 135,
+                "Name": "Saint Louis University",
+                "Graduation Rate": 78,
+                "Value Added": 3
+            },
+            {
+                "Rank": 136,
+                "Name": "Clarkson University",
+                "Graduation Rate": 76,
+                "Value Added": 3
+            },
+            {
+                "Rank": 137,
+                "Name": "University at Buffalo--SUNY",
+                "Graduation Rate": 76,
+                "Value Added": 3
+            },
+            {
+                "Rank": 138,
+                "Name": "University of Denver",
+                "Graduation Rate": 77,
+                "Value Added": 3
+            },
+            {
+                "Rank": 139,
+                "Name": "University of New England",
+                "Graduation Rate": 64,
+                "Value Added": 2.9
+            },
+            {
+                "Rank": 140,
+                "Name": "University of Mississippi",
+                "Graduation Rate": 64,
+                "Value Added": 2.9
+            },
+            {
+                "Rank": 141,
+                "Name": "Rutgers University--Camden",
+                "Graduation Rate": 58,
+                "Value Added": 2.9
+            },
+            {
+                "Rank": 142,
+                "Name": "Pacific University",
+                "Graduation Rate": 65,
+                "Value Added": 2.8
+            },
+            {
+                "Rank": 143,
+                "Name": "Lipscomb University",
+                "Graduation Rate": 65,
+                "Value Added": 2.8
+            },
+            {
+                "Rank": 144,
+                "Name": "University of Idaho",
+                "Graduation Rate": 59,
+                "Value Added": 2.7
+            },
+            {
+                "Rank": 145,
+                "Name": "Georgetown University",
+                "Graduation Rate": 94,
+                "Value Added": 2.7
+            },
+            {
+                "Rank": 146,
+                "Name": "Oregon State University",
+                "Graduation Rate": 67,
+                "Value Added": 2.5
+            },
+            {
+                "Rank": 147,
+                "Name": "Ferris State University",
+                "Graduation Rate": 50,
+                "Value Added": 2.5
+            },
+            {
+                "Rank": 148,
+                "Name": "Marshall University",
+                "Graduation Rate": 46,
+                "Value Added": 2.5
+            },
+            {
+                "Rank": 149,
+                "Name": "University of North Dakota",
+                "Graduation Rate": 55,
+                "Value Added": 2.4
+            },
+            {
+                "Rank": 150,
+                "Name": "Liberty University",
+                "Graduation Rate": 55,
+                "Value Added": 2.4
+            },
+            {
+                "Rank": 151,
+                "Name": "Wake Forest University",
+                "Graduation Rate": 89,
+                "Value Added": 2.3
+            },
+            {
+                "Rank": 152,
+                "Name": "Cornell University",
+                "Graduation Rate": 95,
+                "Value Added": 2.2
+            },
+            {
+                "Rank": 153,
+                "Name": "Union University",
+                "Graduation Rate": 70,
+                "Value Added": 2.2
+            },
+            {
+                "Rank": 154,
+                "Name": "University of Southern California",
+                "Graduation Rate": 92,
+                "Value Added": 2.2
+            },
+            {
+                "Rank": 155,
+                "Name": "University of Massachusetts--Dartmouth",
+                "Graduation Rate": 56,
+                "Value Added": 2.1
+            },
+            {
+                "Rank": 156,
+                "Name": "University of California--Santa Cruz",
+                "Graduation Rate": 76,
+                "Value Added": 2
+            },
+            {
+                "Rank": 157,
+                "Name": "Thomas Jefferson University",
+                "Graduation Rate": 64,
+                "Value Added": 1.8
+            },
+            {
+                "Rank": 158,
+                "Name": "University of Kansas",
+                "Graduation Rate": 65,
+                "Value Added": 1.7
+            },
+            {
+                "Rank": 159,
+                "Name": "Gardner-Webb University",
+                "Graduation Rate": 53,
+                "Value Added": 1.7
+            },
+            {
+                "Rank": 160,
+                "Name": "University of Kentucky",
+                "Graduation Rate": 66,
+                "Value Added": 1.5
+            },
+            {
+                "Rank": 161,
+                "Name": "University of Illinois--Chicago",
+                "Graduation Rate": 59,
+                "Value Added": 1.5
+            },
+            {
+                "Rank": 162,
+                "Name": "Washington State University",
+                "Graduation Rate": 59,
+                "Value Added": 1.5
+            },
+            {
+                "Rank": 163,
+                "Name": "Fordham University",
+                "Graduation Rate": 83,
+                "Value Added": 1.4
+            },
+            {
+                "Rank": 164,
+                "Name": "University of Rhode Island",
+                "Graduation Rate": 67,
+                "Value Added": 1.4
+            },
+            {
+                "Rank": 165,
+                "Name": "D'Youville College",
+                "Graduation Rate": 60,
+                "Value Added": 1.3
+            },
+            {
+                "Rank": 166,
+                "Name": "American University",
+                "Graduation Rate": 80,
+                "Value Added": 1.2
+            },
+            {
+                "Rank": 167,
+                "Name": "George Mason University",
+                "Graduation Rate": 70,
+                "Value Added": 1.2
+            },
+            {
+                "Rank": 168,
+                "Name": "University of Wisconsin--Madison",
+                "Graduation Rate": 87,
+                "Value Added": 1.1
+            },
+            {
+                "Rank": 169,
+                "Name": "Worcester Polytechnic Institute",
+                "Graduation Rate": 87,
+                "Value Added": 1.1
+            },
+            {
+                "Rank": 170,
+                "Name": "University of South Carolina",
+                "Graduation Rate": 77,
+                "Value Added": 1
+            },
+            {
+                "Rank": 171,
+                "Name": "University of Tennessee",
+                "Graduation Rate": 73,
+                "Value Added": 1
+            },
+            {
+                "Rank": 172,
+                "Name": "University of Vermont",
+                "Graduation Rate": 76,
+                "Value Added": 1
+            },
+            {
+                "Rank": 173,
+                "Name": "University of Maryland--Eastern Shore",
+                "Graduation Rate": 39,
+                "Value Added": 1
+            },
+            {
+                "Rank": 174,
+                "Name": "University of Maryland--College Park",
+                "Graduation Rate": 86,
+                "Value Added": 1
+            },
+            {
+                "Rank": 175,
+                "Name": "Tufts University",
+                "Graduation Rate": 93,
+                "Value Added": 0.9
+            },
+            {
+                "Rank": 176,
+                "Name": "Wingate University",
+                "Graduation Rate": 51,
+                "Value Added": 0.9
+            },
+            {
+                "Rank": 177,
+                "Name": "Carson-Newman University",
+                "Graduation Rate": 51,
+                "Value Added": 0.9
+            },
+            {
+                "Rank": 178,
+                "Name": "University of Findlay",
+                "Graduation Rate": 62,
+                "Value Added": 0.7
+            },
+            {
+                "Rank": 179,
+                "Name": "South Dakota State University",
+                "Graduation Rate": 57,
+                "Value Added": 0.7
+            },
+            {
+                "Rank": 180,
+                "Name": "Ohio University",
+                "Graduation Rate": 64,
+                "Value Added": 0.7
+            },
+            {
+                "Rank": 181,
+                "Name": "University of Arizona",
+                "Graduation Rate": 64,
+                "Value Added": 0.7
+            },
+            {
+                "Rank": 182,
+                "Name": "Harvard University",
+                "Graduation Rate": 98,
+                "Value Added": 0.6
+            },
+            {
+                "Rank": 183,
+                "Name": "University of Miami",
+                "Graduation Rate": 82,
+                "Value Added": 0.4
+            },
+            {
+                "Rank": 184,
+                "Name": "Western Kentucky University",
+                "Graduation Rate": 53,
+                "Value Added": 0.4
+            },
+            {
+                "Rank": 185,
+                "Name": "Yale University",
+                "Graduation Rate": 97,
+                "Value Added": 0.2
+            },
+            {
+                "Rank": 186,
+                "Name": "University of the Incarnate Word",
+                "Graduation Rate": 49,
+                "Value Added": 0.2
+            },
+            {
+                "Rank": 187,
+                "Name": "Brown University",
+                "Graduation Rate": 95,
+                "Value Added": 0.2
+            },
+            {
+                "Rank": 188,
+                "Name": "Dartmouth College",
+                "Graduation Rate": 95,
+                "Value Added": 0.2
+            },
+            {
+                "Rank": 189,
+                "Name": "Emory University",
+                "Graduation Rate": 90,
+                "Value Added": 0.2
+            },
+            {
+                "Rank": 190,
+                "Name": "Georgia State University",
+                "Graduation Rate": 54,
+                "Value Added": 0.1
+            },
+            {
+                "Rank": 191,
+                "Name": "University of Utah",
+                "Graduation Rate": 70,
+                "Value Added": 0.1
+            },
+            {
+                "Rank": 192,
+                "Name": "Clark University",
+                "Graduation Rate": 77,
+                "Value Added": 0.1
+            },
+            {
+                "Rank": 193,
+                "Name": "The New School",
+                "Graduation Rate": 72,
+                "Value Added": 0
+            },
+            {
+                "Rank": 194,
+                "Name": "University of Central Florida",
+                "Graduation Rate": 73,
+                "Value Added": 0
+            },
+            {
+                "Rank": 195,
+                "Name": "Drexel University",
+                "Graduation Rate": 74,
+                "Value Added": 0
+            },
+            {
+                "Rank": 196,
+                "Name": "Bowling Green State University",
+                "Graduation Rate": 55,
+                "Value Added": -0.1
+            },
+            {
+                "Rank": 197,
+                "Name": "Princeton University",
+                "Graduation Rate": 96,
+                "Value Added": -0.1
+            },
+            {
+                "Rank": 198,
+                "Name": "University of Bridgeport",
+                "Graduation Rate": 42,
+                "Value Added": -0.2
+            },
+            {
+                "Rank": 199,
+                "Name": "Trinity International University",
+                "Graduation Rate": 46,
+                "Value Added": -0.2
+            },
+            {
+                "Rank": 200,
+                "Name": "Boston University",
+                "Graduation Rate": 88,
+                "Value Added": -0.3
+            },
+            {
+                "Rank": 201,
+                "Name": "University of Pittsburgh",
+                "Graduation Rate": 83,
+                "Value Added": -0.3
+            },
+            {
+                "Rank": 202,
+                "Name": "Northwestern University",
+                "Graduation Rate": 95,
+                "Value Added": -0.5
+            },
+            {
+                "Rank": 203,
+                "Name": "New Mexico State University",
+                "Graduation Rate": 47,
+                "Value Added": -0.5
+            },
+            {
+                "Rank": 204,
+                "Name": "North Carolina State University--Raleigh",
+                "Graduation Rate": 81,
+                "Value Added": -0.6
+            },
+            {
+                "Rank": 205,
+                "Name": "University of Arkansas",
+                "Graduation Rate": 66,
+                "Value Added": -0.7
+            },
+            {
+                "Rank": 206,
+                "Name": "University of South Dakota",
+                "Graduation Rate": 58,
+                "Value Added": -0.7
+            },
+            {
+                "Rank": 207,
+                "Name": "Duke University",
+                "Graduation Rate": 96,
+                "Value Added": -0.8
+            },
+            {
+                "Rank": 208,
+                "Name": "Columbia University",
+                "Graduation Rate": 96,
+                "Value Added": -0.8
+            },
+            {
+                "Rank": 209,
+                "Name": "Stanford University",
+                "Graduation Rate": 94,
+                "Value Added": -0.8
+            },
+            {
+                "Rank": 210,
+                "Name": "University of the Pacific",
+                "Graduation Rate": 68,
+                "Value Added": -0.8
+            },
+            {
+                "Rank": 211,
+                "Name": "Arizona State University--Tempe",
+                "Graduation Rate": 69,
+                "Value Added": -0.9
+            },
+            {
+                "Rank": 212,
+                "Name": "University of Nebraska--Lincoln",
+                "Graduation Rate": 69,
+                "Value Added": -0.9
+            },
+            {
+                "Rank": 213,
+                "Name": "University of Colorado--Boulder",
+                "Graduation Rate": 71,
+                "Value Added": -1
+            },
+            {
+                "Rank": 214,
+                "Name": "University of Tulsa",
+                "Graduation Rate": 74,
+                "Value Added": -1
+            },
+            {
+                "Rank": 215,
+                "Name": "University of South Florida",
+                "Graduation Rate": 73,
+                "Value Added": -1
+            },
+            {
+                "Rank": 216,
+                "Name": "University of Hartford",
+                "Graduation Rate": 60,
+                "Value Added": -1.1
+            },
+            {
+                "Rank": 217,
+                "Name": "University of Maine",
+                "Graduation Rate": 60,
+                "Value Added": -1.1
+            },
+            {
+                "Rank": 218,
+                "Name": "Wilkes University",
+                "Graduation Rate": 60,
+                "Value Added": -1.1
+            },
+            {
+                "Rank": 219,
+                "Name": "Missouri State University",
+                "Graduation Rate": 54,
+                "Value Added": -1.1
+            },
+            {
+                "Rank": 220,
+                "Name": "Palm Beach Atlantic University",
+                "Graduation Rate": 54,
+                "Value Added": -1.1
+            },
+            {
+                "Rank": 221,
+                "Name": "University of Pennsylvania",
+                "Graduation Rate": 95,
+                "Value Added": -1.1
+            },
+            {
+                "Rank": 222,
+                "Name": "Loyola University New Orleans",
+                "Graduation Rate": 61,
+                "Value Added": -1.2
+            },
+            {
+                "Rank": 223,
+                "Name": "Oklahoma State University",
+                "Graduation Rate": 61,
+                "Value Added": -1.2
+            },
+            {
+                "Rank": 224,
+                "Name": "Stevens Institute of Technology",
+                "Graduation Rate": 87,
+                "Value Added": -1.3
+            },
+            {
+                "Rank": 225,
+                "Name": "Texas State University",
+                "Graduation Rate": 55,
+                "Value Added": -1.3
+            },
+            {
+                "Rank": 226,
+                "Name": "Oakland University",
+                "Graduation Rate": 55,
+                "Value Added": -1.3
+            },
+            {
+                "Rank": 227,
+                "Name": "Trevecca Nazarene University",
+                "Graduation Rate": 55,
+                "Value Added": -1.3
+            },
+            {
+                "Rank": 228,
+                "Name": "Northern Illinois University",
+                "Graduation Rate": 46,
+                "Value Added": -1.5
+            },
+            {
+                "Rank": 229,
+                "Name": "University of Rochester",
+                "Graduation Rate": 86,
+                "Value Added": -1.5
+            },
+            {
+                "Rank": 230,
+                "Name": "New York University",
+                "Graduation Rate": 85,
+                "Value Added": -1.7
+            },
+            {
+                "Rank": 231,
+                "Name": "Kent State University",
+                "Graduation Rate": 57,
+                "Value Added": -1.7
+            },
+            {
+                "Rank": 232,
+                "Name": "Rice University",
+                "Graduation Rate": 95,
+                "Value Added": -1.8
+            },
+            {
+                "Rank": 233,
+                "Name": "Mary Baldwin University",
+                "Graduation Rate": 47,
+                "Value Added": -1.8
+            },
+            {
+                "Rank": 234,
+                "Name": "Old Dominion University",
+                "Graduation Rate": 52,
+                "Value Added": -1.9
+            },
+            {
+                "Rank": 235,
+                "Name": "Hampton University",
+                "Graduation Rate": 58,
+                "Value Added": -1.9
+            },
+            {
+                "Rank": 236,
+                "Name": "Seton Hall University",
+                "Graduation Rate": 70,
+                "Value Added": -2
+            },
+            {
+                "Rank": 237,
+                "Name": "Sam Houston State University",
+                "Graduation Rate": 53,
+                "Value Added": -2.1
+            },
+            {
+                "Rank": 238,
+                "Name": "George Washington University",
+                "Graduation Rate": 82,
+                "Value Added": -2.2
+            },
+            {
+                "Rank": 239,
+                "Name": "Western New England University",
+                "Graduation Rate": 60,
+                "Value Added": -2.2
+            },
+            {
+                "Rank": 240,
+                "Name": "Rensselaer Polytechnic Institute",
+                "Graduation Rate": 86,
+                "Value Added": -2.3
+            },
+            {
+                "Rank": 241,
+                "Name": "St. John's University",
+                "Graduation Rate": 61,
+                "Value Added": -2.3
+            },
+            {
+                "Rank": 242,
+                "Name": "Indiana State University",
+                "Graduation Rate": 41,
+                "Value Added": -2.5
+            },
+            {
+                "Rank": 243,
+                "Name": "Oklahoma City University",
+                "Graduation Rate": 63,
+                "Value Added": -2.6
+            },
+            {
+                "Rank": 244,
+                "Name": "Northeastern University",
+                "Graduation Rate": 88,
+                "Value Added": -2.6
+            },
+            {
+                "Rank": 245,
+                "Name": "University of Hawaii--Manoa",
+                "Graduation Rate": 59,
+                "Value Added": -2.6
+            },
+            {
+                "Rank": 246,
+                "Name": "University at Albany--SUNY",
+                "Graduation Rate": 64,
+                "Value Added": -2.7
+            },
+            {
+                "Rank": 247,
+                "Name": "Vanderbilt University",
+                "Graduation Rate": 94,
+                "Value Added": -2.8
+            },
+            {
+                "Rank": 248,
+                "Name": "University of West Georgia",
+                "Graduation Rate": 42,
+                "Value Added": -2.9
+            },
+            {
+                "Rank": 249,
+                "Name": "Western Michigan University",
+                "Graduation Rate": 51,
+                "Value Added": -2.9
+            },
+            {
+                "Rank": 250,
+                "Name": "University of North Carolina--Greensboro",
+                "Graduation Rate": 51,
+                "Value Added": -2.9
+            },
+            {
+                "Rank": 251,
+                "Name": "Daemen College",
+                "Graduation Rate": 57,
+                "Value Added": -2.9
+            },
+            {
+                "Rank": 252,
+                "Name": "Andrews University",
+                "Graduation Rate": 57,
+                "Value Added": -2.9
+            },
+            {
+                "Rank": 253,
+                "Name": "University of Oklahoma",
+                "Graduation Rate": 68,
+                "Value Added": -2.9
+            },
+            {
+                "Rank": 254,
+                "Name": "University of North Carolina--Wilmington",
+                "Graduation Rate": 73,
+                "Value Added": -3
+            },
+            {
+                "Rank": 255,
+                "Name": "Washington University in St. Louis",
+                "Graduation Rate": 95,
+                "Value Added": -3
+            },
+            {
+                "Rank": 256,
+                "Name": "West Virginia University",
+                "Graduation Rate": 58,
+                "Value Added": -3.1
+            },
+            {
+                "Rank": 257,
+                "Name": "University of Minnesota--Twin Cities",
+                "Graduation Rate": 80,
+                "Value Added": -3.3
+            },
+            {
+                "Rank": 258,
+                "Name": "Texas Tech University",
+                "Graduation Rate": 60,
+                "Value Added": -3.3
+            },
+            {
+                "Rank": 259,
+                "Name": "University of Memphis",
+                "Graduation Rate": 48,
+                "Value Added": -3.3
+            },
+            {
+                "Rank": 260,
+                "Name": "Clark Atlanta University",
+                "Graduation Rate": 45,
+                "Value Added": -3.8
+            },
+            {
+                "Rank": 261,
+                "Name": "University of Texas--Dallas",
+                "Graduation Rate": 75,
+                "Value Added": -3.8
+            },
+            {
+                "Rank": 262,
+                "Name": "Johns Hopkins University",
+                "Graduation Rate": 94,
+                "Value Added": -4
+            },
+            {
+                "Rank": 263,
+                "Name": "Colorado School of Mines",
+                "Graduation Rate": 81,
+                "Value Added": -4
+            },
+            {
+                "Rank": 264,
+                "Name": "University of Wyoming",
+                "Graduation Rate": 57,
+                "Value Added": -4.1
+            },
+            {
+                "Rank": 265,
+                "Name": "University of Alabama--Huntsville",
+                "Graduation Rate": 52,
+                "Value Added": -4.3
+            },
+            {
+                "Rank": 266,
+                "Name": "Binghamton University--SUNY",
+                "Graduation Rate": 82,
+                "Value Added": -4.7
+            },
+            {
+                "Rank": 267,
+                "Name": "University of Wisconsin--Milwaukee",
+                "Graduation Rate": 44,
+                "Value Added": -4.8
+            },
+            {
+                "Rank": 268,
+                "Name": "Tulane University",
+                "Graduation Rate": 85,
+                "Value Added": -4.8
+            },
+            {
+                "Rank": 269,
+                "Name": "Case Western Reserve University",
+                "Graduation Rate": 85,
+                "Value Added": -4.8
+            },
+            {
+                "Rank": 270,
+                "Name": "University of Cincinnati",
+                "Graduation Rate": 68,
+                "Value Added": -5
+            },
+            {
+                "Rank": 271,
+                "Name": "Lindenwood University",
+                "Graduation Rate": 50,
+                "Value Added": -5.1
+            },
+            {
+                "Rank": 272,
+                "Name": "University of Chicago",
+                "Graduation Rate": 94,
+                "Value Added": -5.2
+            },
+            {
+                "Rank": 273,
+                "Name": "Mississippi State University",
+                "Graduation Rate": 58,
+                "Value Added": -5.3
+            },
+            {
+                "Rank": 274,
+                "Name": "University of Nevada--Reno",
+                "Graduation Rate": 58,
+                "Value Added": -5.3
+            },
+            {
+                "Rank": 275,
+                "Name": "University of Missouri--St. Louis",
+                "Graduation Rate": 52,
+                "Value Added": -5.5
+            },
+            {
+                "Rank": 276,
+                "Name": "Benedictine University",
+                "Graduation Rate": 47,
+                "Value Added": -5.6
+            },
+            {
+                "Rank": 277,
+                "Name": "Mississippi College",
+                "Graduation Rate": 53,
+                "Value Added": -5.7
+            },
+            {
+                "Rank": 278,
+                "Name": "Massachusetts Institute of Technology",
+                "Graduation Rate": 94,
+                "Value Added": -5.7
+            },
+            {
+                "Rank": 279,
+                "Name": "Stony Brook University--SUNY",
+                "Graduation Rate": 74,
+                "Value Added": -5.8
+            },
+            {
+                "Rank": 280,
+                "Name": "Georgia Institute of Technology",
+                "Graduation Rate": 87,
+                "Value Added": -5.8
+            },
+            {
+                "Rank": 281,
+                "Name": "CUNY--City College",
+                "Graduation Rate": 43,
+                "Value Added": -5.8
+            },
+            {
+                "Rank": 282,
+                "Name": "Morgan State University",
+                "Graduation Rate": 39,
+                "Value Added": -5.9
+            },
+            {
+                "Rank": 283,
+                "Name": "University of Tennessee--Chattanooga",
+                "Graduation Rate": 48,
+                "Value Added": -5.9
+            },
+            {
+                "Rank": 284,
+                "Name": "Michigan Technological University",
+                "Graduation Rate": 68,
+                "Value Added": -6
+            },
+            {
+                "Rank": 285,
+                "Name": "Tennessee Technological University",
+                "Graduation Rate": 55,
+                "Value Added": -6.1
+            },
+            {
+                "Rank": 286,
+                "Name": "Southern Methodist University",
+                "Graduation Rate": 78,
+                "Value Added": -6.2
+            },
+            {
+                "Rank": 287,
+                "Name": "Pace University",
+                "Graduation Rate": 56,
+                "Value Added": -6.2
+            },
+            {
+                "Rank": 288,
+                "Name": "Eastern Michigan University",
+                "Graduation Rate": 45,
+                "Value Added": -6.3
+            },
+            {
+                "Rank": 289,
+                "Name": "Our Lady of the Lake University",
+                "Graduation Rate": 37,
+                "Value Added": -6.5
+            },
+            {
+                "Rank": 290,
+                "Name": "University of Michigan--Flint",
+                "Graduation Rate": 46,
+                "Value Added": -6.6
+            },
+            {
+                "Rank": 291,
+                "Name": "St. Catherine University",
+                "Graduation Rate": 60,
+                "Value Added": -6.7
+            },
+            {
+                "Rank": 292,
+                "Name": "Northern Arizona University",
+                "Graduation Rate": 52,
+                "Value Added": -6.7
+            },
+            {
+                "Rank": 293,
+                "Name": "North Dakota State University",
+                "Graduation Rate": 58,
+                "Value Added": -6.8
+            },
+            {
+                "Rank": 294,
+                "Name": "Illinois Institute of Technology",
+                "Graduation Rate": 72,
+                "Value Added": -6.8
+            },
+            {
+                "Rank": 295,
+                "Name": "University of Northern Colorado",
+                "Graduation Rate": 47,
+                "Value Added": -6.9
+            },
+            {
+                "Rank": 296,
+                "Name": "Rochester Institute of Technology",
+                "Graduation Rate": 70,
+                "Value Added": -6.9
+            },
+            {
+                "Rank": 297,
+                "Name": "Texas A&M University--Commerce",
+                "Graduation Rate": 43,
+                "Value Added": -7.1
+            },
+            {
+                "Rank": 298,
+                "Name": "Indiana University-Purdue University--Indianapolis",
+                "Graduation Rate": 48,
+                "Value Added": -7.1
+            },
+            {
+                "Rank": 299,
+                "Name": "University of North Texas",
+                "Graduation Rate": 55,
+                "Value Added": -7.2
+            },
+            {
+                "Rank": 300,
+                "Name": "Florida International University",
+                "Graduation Rate": 58,
+                "Value Added": -7.6
+            },
+            {
+                "Rank": 301,
+                "Name": "University of Mary",
+                "Graduation Rate": 53,
+                "Value Added": -7.7
+            },
+            {
+                "Rank": 302,
+                "Name": "Campbell University",
+                "Graduation Rate": 51,
+                "Value Added": -7.7
+            },
+            {
+                "Rank": 303,
+                "Name": "Carnegie Mellon University",
+                "Graduation Rate": 89,
+                "Value Added": -7.8
+            },
+            {
+                "Rank": 304,
+                "Name": "University of Maryland--Baltimore County",
+                "Graduation Rate": 68,
+                "Value Added": -8
+            },
+            {
+                "Rank": 305,
+                "Name": "Texas Woman's University",
+                "Graduation Rate": 43,
+                "Value Added": -8.3
+            },
+            {
+                "Rank": 306,
+                "Name": "University of Texas--El Paso",
+                "Graduation Rate": 39,
+                "Value Added": -8.5
+            },
+            {
+                "Rank": 307,
+                "Name": "University of Akron",
+                "Graduation Rate": 45,
+                "Value Added": -8.9
+            },
+            {
+                "Rank": 308,
+                "Name": "Florida A&M University",
+                "Graduation Rate": 51,
+                "Value Added": -8.9
+            },
+            {
+                "Rank": 309,
+                "Name": "Howard University",
+                "Graduation Rate": 62,
+                "Value Added": -8.9
+            },
+            {
+                "Rank": 310,
+                "Name": "University of Massachusetts--Lowell",
+                "Graduation Rate": 63,
+                "Value Added": -9
+            },
+            {
+                "Rank": 311,
+                "Name": "Hofstra University",
+                "Graduation Rate": 63,
+                "Value Added": -9
+            },
+            {
+                "Rank": 312,
+                "Name": "Mercer University",
+                "Graduation Rate": 66,
+                "Value Added": -9
+            },
+            {
+                "Rank": 313,
+                "Name": "University of Hawaii--Hilo",
+                "Graduation Rate": 41,
+                "Value Added": -9.1
+            },
+            {
+                "Rank": 314,
+                "Name": "Portland State University",
+                "Graduation Rate": 47,
+                "Value Added": -9.3
+            },
+            {
+                "Rank": 315,
+                "Name": "Southern Illinois University--Edwardsville",
+                "Graduation Rate": 47,
+                "Value Added": -9.3
+            },
+            {
+                "Rank": 316,
+                "Name": "Wayne State University",
+                "Graduation Rate": 47,
+                "Value Added": -9.3
+            },
+            {
+                "Rank": 317,
+                "Name": "California Institute of Technology",
+                "Graduation Rate": 92,
+                "Value Added": -9.3
+            },
+            {
+                "Rank": 318,
+                "Name": "Tennessee State University",
+                "Graduation Rate": 30,
+                "Value Added": -9.4
+            },
+            {
+                "Rank": 319,
+                "Name": "University of Colorado--Denver",
+                "Graduation Rate": 48,
+                "Value Added": -9.5
+            },
+            {
+                "Rank": 320,
+                "Name": "University of Massachusetts--Boston",
+                "Graduation Rate": 48,
+                "Value Added": -9.5
+            },
+            {
+                "Rank": 321,
+                "Name": "University of New Mexico",
+                "Graduation Rate": 49,
+                "Value Added": -9.7
+            },
+            {
+                "Rank": 322,
+                "Name": "University of North Carolina--Charlotte",
+                "Graduation Rate": 59,
+                "Value Added": -9.8
+            },
+            {
+                "Rank": 323,
+                "Name": "University of North Florida",
+                "Graduation Rate": 59,
+                "Value Added": -9.8
+            },
+            {
+                "Rank": 324,
+                "Name": "Northern Kentucky University",
+                "Graduation Rate": 44,
+                "Value Added": -9.9
+            },
+            {
+                "Rank": 325,
+                "Name": "University of Montana",
+                "Graduation Rate": 50,
+                "Value Added": -9.9
+            },
+            {
+                "Rank": 326,
+                "Name": "University of Central Arkansas",
+                "Graduation Rate": 41,
+                "Value Added": -10.3
+            },
+            {
+                "Rank": 327,
+                "Name": "Texas A&M University--Kingsville",
+                "Graduation Rate": 37,
+                "Value Added": -10.5
+            },
+            {
+                "Rank": 328,
+                "Name": "University of Toledo",
+                "Graduation Rate": 47,
+                "Value Added": -10.5
+            },
+            {
+                "Rank": 329,
+                "Name": "Montana State University",
+                "Graduation Rate": 55,
+                "Value Added": -10.6
+            },
+            {
+                "Rank": 330,
+                "Name": "University of Missouri--Kansas City",
+                "Graduation Rate": 48,
+                "Value Added": -10.7
+            },
+            {
+                "Rank": 331,
+                "Name": "University of Houston",
+                "Graduation Rate": 59,
+                "Value Added": -10.9
+            },
+            {
+                "Rank": 332,
+                "Name": "New Jersey Institute of Technology",
+                "Graduation Rate": 65,
+                "Value Added": -11
+            },
+            {
+                "Rank": 333,
+                "Name": "University of Colorado--Colorado Springs",
+                "Graduation Rate": 45,
+                "Value Added": -11.3
+            },
+            {
+                "Rank": 334,
+                "Name": "Texas Southern University",
+                "Graduation Rate": 21,
+                "Value Added": -11.3
+            },
+            {
+                "Rank": 335,
+                "Name": "Barry University",
+                "Graduation Rate": 36,
+                "Value Added": -11.5
+            },
+            {
+                "Rank": 336,
+                "Name": "Dallas Baptist University",
+                "Graduation Rate": 54,
+                "Value Added": -11.6
+            },
+            {
+                "Rank": 337,
+                "Name": "Arkansas State University",
+                "Graduation Rate": 47,
+                "Value Added": -11.7
+            },
+            {
+                "Rank": 338,
+                "Name": "Florida Institute of Technology",
+                "Graduation Rate": 60,
+                "Value Added": -12
+            },
+            {
+                "Rank": 339,
+                "Name": "Missouri University of Science & Technology",
+                "Graduation Rate": 63,
+                "Value Added": -12
+            },
+            {
+                "Rank": 340,
+                "Name": "Utah State University",
+                "Graduation Rate": 49,
+                "Value Added": -12.1
+            },
+            {
+                "Rank": 341,
+                "Name": "Georgia Southern University",
+                "Graduation Rate": 50,
+                "Value Added": -12.2
+            },
+            {
+                "Rank": 342,
+                "Name": "Wright State University",
+                "Graduation Rate": 39,
+                "Value Added": -12.3
+            },
+            {
+                "Rank": 343,
+                "Name": "Florida Atlantic University",
+                "Graduation Rate": 52,
+                "Value Added": -12.5
+            },
+            {
+                "Rank": 344,
+                "Name": "Boise State University",
+                "Graduation Rate": 46,
+                "Value Added": -12.7
+            },
+            {
+                "Rank": 345,
+                "Name": "Valdosta State University",
+                "Graduation Rate": 42,
+                "Value Added": -13.1
+            },
+            {
+                "Rank": 346,
+                "Name": "University of Texas--Arlington",
+                "Graduation Rate": 49,
+                "Value Added": -13.2
+            },
+            {
+                "Rank": 347,
+                "Name": "Middle Tennessee State University",
+                "Graduation Rate": 44,
+                "Value Added": -13.5
+            },
+            {
+                "Rank": 348,
+                "Name": "Texas Wesleyan University",
+                "Graduation Rate": 38,
+                "Value Added": -14
+            },
+            {
+                "Rank": 349,
+                "Name": "Nova Southeastern University",
+                "Graduation Rate": 50,
+                "Value Added": -14.5
+            },
+            {
+                "Rank": 350,
+                "Name": "Wichita State University",
+                "Graduation Rate": 47,
+                "Value Added": -15.3
+            },
+            {
+                "Rank": 351,
+                "Name": "Texas A&M University--Corpus Christi",
+                "Graduation Rate": 37,
+                "Value Added": -15.6
+            },
+            {
+                "Rank": 352,
+                "Name": "University of Nevada--Las Vegas",
+                "Graduation Rate": 43,
+                "Value Added": -15.7
+            },
+            {
+                "Rank": 353,
+                "Name": "Southern Illinois University--Carbondale",
+                "Graduation Rate": 41,
+                "Value Added": -16.5
+            },
+            {
+                "Rank": 354,
+                "Name": "University of South Alabama",
+                "Graduation Rate": 43,
+                "Value Added": -16.9
+            },
+            {
+                "Rank": 355,
+                "Name": "Roosevelt University",
+                "Graduation Rate": 39,
+                "Value Added": -17.3
+            },
+            {
+                "Rank": 356,
+                "Name": "Cleveland State University",
+                "Graduation Rate": 45,
+                "Value Added": -18.9
+            },
+            {
+                "Rank": 357,
+                "Name": "University of Texas--Tyler",
+                "Graduation Rate": 45,
+                "Value Added": -19.5
+            },
+            {
+                "Rank": 358,
+                "Name": "University of Texas--San Antonio",
+                "Graduation Rate": 40,
+                "Value Added": -19.9
+            },
+            {
+                "Rank": 359,
+                "Name": "Touro College",
+                "Graduation Rate": 45,
+                "Value Added": -20
+            },
+            {
+                "Rank": 360,
+                "Name": "University of Arkansas--Little Rock",
+                "Graduation Rate": 35,
+                "Value Added": -20.1
+            },
+            {
+                "Rank": 361,
+                "Name": "Kennesaw State University",
+                "Graduation Rate": 43,
+                "Value Added": -21.5
+            },
+            {
+                "Rank": 362,
+                "Name": "Lamar University",
+                "Graduation Rate": 27,
+                "Value Added": -21.8
+            },
+            {
+                "Rank": 363,
+                "Name": "University of New Orleans",
+                "Graduation Rate": 37,
+                "Value Added": -24.1
+            }
+        ]
+        $table.bootstrapTable({ data: data })
+    })
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script>
+</body>
+
+</html>
