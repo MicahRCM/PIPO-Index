@@ -59,7 +59,7 @@ var scatterChart = new Chart(ctx, {
                     x: -40,
                     y: -40
                 }, {
-                    x: 50,
+                    x: 20,
                     y: -40
                 }],
                 borderColor: 'rgba(0,0,0,0)',
@@ -78,7 +78,7 @@ var scatterChart = new Chart(ctx, {
                     x: -40,
                     y: 0
                 }, {
-                    x: 50,
+                    x: 20,
                     y: 0
                 }],
                 borderColor: 'black',
@@ -116,8 +116,8 @@ var scatterChart = new Chart(ctx, {
                     x: -40,
                     y: -40
                 }, {
-                    x: 50,
-                    y: 50
+                    x: 20,
+                    y: 20
                 }],
                 borderColor: 'lime',
                 borderWidth: 4,
