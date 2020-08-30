@@ -19,12 +19,12 @@
         <div class="chartContainer">
             <canvas id="myChart"></canvas>
         </div>
-        <div class="chartSearchContainer" style="height: 80%;">
-            <table id="table" data-toggle="table" data-search="true" data-pagination="false" data-height="600" data-toolbar="#toolbar" data-checkbox-header="false" data-click-to-select="true">
-                <thead>
+        <div class="chartSearchContainer">
+            <table id="table" data-toggle="table" data-search="true" data-pagination="false" data-height="600" data-toolbar="#toolbar" data-checkbox-header="true" data-click-to-select="true">
+                <thead> 
                     <tr>
-                        <th data-field="state" data-checkbox="true"></th>
-                        <th data-sortable="true" data-field="Name">University</th>
+                        <th data-field="selected" data-checkbox="true"> </th>
+                        <th data-sortable="true" data-field="url" data-click-to-select="false">University</th>
                     </tr>
                 </thead>
             </table>
