@@ -15,9 +15,19 @@
 </head>
 
 <body>
-    <div style="position: fixed; width: 100%; height: 100%; background: white; overflow: scroll;">
+    <div style="position: fixed; width: 100%; height: 100%; background: white;">
         <div class="chartContainer">
             <canvas id="myChart"></canvas>
+        </div>
+        <div class="chartSearchContainer" style="height: 80%;">
+            <table id="table" data-toggle="table" data-search="true" data-pagination="false" data-height="600" data-toolbar="#toolbar" data-checkbox-header="false" data-click-to-select="true">
+                <thead>
+                    <tr>
+                        <th data-field="state" data-checkbox="true"></th>
+                        <th data-sortable="true" data-field="Name">University</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
     </div>
     <script type="text/javascript" src="chart.js"></script>
