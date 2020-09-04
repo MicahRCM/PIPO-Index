@@ -119,7 +119,7 @@ var scatterChart = new Chart(ctx, {
                     y: -50
                 }, {
                     x: 40,
-                    y: 50
+                    y: 40
                 }],
                 borderColor: 'lime',
                 borderWidth: 4,
