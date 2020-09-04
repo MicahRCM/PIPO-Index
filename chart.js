@@ -4,8 +4,8 @@ let Nat_Universities = []
 let Non_Nat_Universities = []
 // Filtering data into two initial values: National and Non-National Data
 for (let i = 0; i < university_data.length; i++) {
-    university_data[i].y = university_data[i]["VA Graduation"]
-    university_data[i].x = university_data[i]["VA Retention"]
+    university_data[i].y = university_data[i]["VA Retention"]
+    university_data[i].x = university_data[i]["VA Graduation"]
     university_data[i].url = "<a href=https://nces.ed.gov/collegenavigator/?id=" + university_data[i].ipedsid + ">" + university_data[i].Name + "</a>"
     university_data[i].selected = true
     // Separation into arrays to be used in scatterChart
@@ -77,10 +77,10 @@ var scatterChart = new Chart(ctx, {
             },
             {
                 data: [{
-                    x: -40,
+                    x: -50,
                     y: 0
                 }, {
-                    x: 20,
+                    x: 40,
                     y: 0
                 }],
                 borderColor: 'black',
@@ -115,11 +115,11 @@ var scatterChart = new Chart(ctx, {
             },
             {
                 data: [{
-                    x: -40,
-                    y: -40
+                    x: -50,
+                    y: -50
                 }, {
-                    x: 20,
-                    y: 20
+                    x: 40,
+                    y: 50
                 }],
                 borderColor: 'lime',
                 borderWidth: 4,
