@@ -116,10 +116,10 @@ var scatterChart = new Chart(ctx, {
             {
                 data: [{
                     x: -50,
-                    y: -50
+                    y: -22.7
                 }, {
                     x: 40,
-                    y: 40
+                    y: 18.16
                 }],
                 borderColor: 'lime',
                 borderWidth: 4,
