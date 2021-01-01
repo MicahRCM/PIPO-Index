@@ -27,15 +27,15 @@ var scatterChart = new Chart(ctx, {
                 data: Nat_Universities,
                 backgroundColor: 'rgb(255, 99, 132)',
                 backgroundOutline: 'green',
-                pointRadius: 5,
-                pointHoverRadius: 5
+                pointRadius: 3,
+                pointHoverRadius: 8
             },
             {
                 label: 'Non-National Universities',
                 data: Non_Nat_Universities,
                 backgroundColor: 'rgb(132, 99, 255)',
-                pointRadius: 5,
-                pointHoverRadius: 5
+                pointRadius: 3,
+                pointHoverRadius: 8
             },
             {
                 data: [{
@@ -78,26 +78,7 @@ var scatterChart = new Chart(ctx, {
             {
                 data: [{
                     x: -50,
-                    y: 0
-                }, {
-                    x: 40,
-                    y: 0
-                }],
-                borderColor: 'black',
-                borderWidth: 2,
-                pointBackgroundColor: ['#000', '#00bcd6', '#d300d6'],
-                pointBorderColor: ['#000', '#00bcd6', '#d300d6'],
-                pointRadius: 0,
-                pointHoverRadius: 0,
-                fill: false,
-                tension: 0,
-                showLine: true,
-                label: "hide"
-            },
-            {
-                data: [{
-                    x: 0,
-                    y: -40
+                    y: -25
                 }, {
                     x: 0,
                     y: 20
@@ -115,11 +96,11 @@ var scatterChart = new Chart(ctx, {
             },
             {
                 data: [{
-                    x: -50,
-                    y: -22.7
+                    x: -40,
+                    y: -18.16
                 }, {
-                    x: 40,
-                    y: 18.16
+                    x: 30,
+                    y: 13.62
                 }],
                 borderColor: 'lime',
                 borderWidth: 4,
