@@ -1,0 +1,9 @@
+.chartContainer {
+	width: 75%;
+	float: left;
+}
+.chartSearchContainer {
+	width: 23%;
+	float: right;
+	margin-right: 1%;
+}

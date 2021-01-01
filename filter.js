@@ -16,211 +16,210 @@ for (let i = 0; i < university_data.length; i++) {
     }
 }
 
-// Locating canvas in DOM
-var ctx = document.getElementById('myChart').getContext('2d');
-// Scatter chart settings. See Charts.js documentation for more information on key:value pairs
-var scatterChart = new Chart(ctx, {
-    type: 'scatter',
-    data: {
-        datasets: [{
-                label: 'National Universities',
-                data: Nat_Universities,
-                backgroundColor: 'rgb(255, 99, 132)',
-                backgroundOutline: 'green',
-                pointRadius: 5,
-                pointHoverRadius: 5
-            },
-            {
-                label: 'Non-National Universities',
-                data: Non_Nat_Universities,
-                backgroundColor: 'rgb(132, 99, 255)',
-                pointRadius: 5,
-                pointHoverRadius: 5
-            },
-            {
-                data: [{
-                    x: -40,
-                    y: 20
-                }, {
-                    x: -40,
-                    y: -40
-                }],
-                borderColor: 'rgba(0,0,0,0)',
-                borderWidth: 2,
-                pointBackgroundColor: ['#000', '#00bcd6', '#d300d6'],
-                pointBorderColor: ['#000', '#00bcd6', '#d300d6'],
-                pointRadius: 0,
-                pointHoverRadius: 0,
-                fill: false,
-                tension: 0,
-                showLine: true,
-                label: "hide"
-            },
-            {
-                data: [{
-                    x: -40,
-                    y: -40
-                }, {
-                    x: 20,
-                    y: -40
-                }],
-                borderColor: 'rgba(0,0,0,0)',
-                borderWidth: 2,
-                pointBackgroundColor: ['#000', '#00bcd6', '#d300d6'],
-                pointBorderColor: ['#000', '#00bcd6', '#d300d6'],
-                pointRadius: 0,
-                pointHoverRadius: 0,
-                fill: false,
-                tension: 0,
-                showLine: true,
-                label: "hide"
-            },
-            {
-                data: [{
-                    x: -50,
-                    y: 0
-                }, {
-                    x: 40,
-                    y: 0
-                }],
-                borderColor: 'black',
-                borderWidth: 2,
-                pointBackgroundColor: ['#000', '#00bcd6', '#d300d6'],
-                pointBorderColor: ['#000', '#00bcd6', '#d300d6'],
-                pointRadius: 0,
-                pointHoverRadius: 0,
-                fill: false,
-                tension: 0,
-                showLine: true,
-                label: "hide"
-            },
-            {
-                data: [{
-                    x: 0,
-                    y: -40
-                }, {
-                    x: 0,
-                    y: 20
-                }],
-                borderColor: 'black',
-                borderWidth: 2,
-                pointBackgroundColor: ['#000', '#00bcd6', '#d300d6'],
-                pointBorderColor: ['#000', '#00bcd6', '#d300d6'],
-                pointRadius: 0,
-                pointHoverRadius: 0,
-                fill: false,
-                tension: 0,
-                showLine: true,
-                label: "hide"
-            },
-            {
-                data: [{
-                    x: -50,
-                    y: -22.7
-                }, {
-                    x: 40,
-                    y: 18.16
-                }],
-                borderColor: 'lime',
-                borderWidth: 4,
-                pointRadius: 0,
-                pointHoverRadius: 0,
-                fill: false,
-                tension: 0,
-                showLine: true,
-                label: "Value-Add Consistency"
-            }
-        ],
-    },
-    options: {
-        aspectRatio: 1.5,
-        title: {
-            display: true,
-            text: "Retention and Graduation Value Added of All Universities"
-        },
-        legend: {
-            display: true,
-            labels: {
-                filter: function(item, myChart) {
-                    return !item.text.includes('hide');
-                }
-            }
-        },
-        showLines: false,
-        scales: {
-            yAxes: [{
-                display: true,
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Retention Value Added Score',
-                    fontSize: 16
-                },
-                ticks: {
-                    beginAtZero: true,
-                    fontSize: 14
-                }
-            }],
-            xAxes: [{
-                type: 'linear',
-                position: 'bottom',
-                display: true,
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Graduation Value Added Score',
-                    fontSize: 16
-                },
-                gridLines: {
-                    display: true
-                },
-                ticks: {
-                    beginAtZero: true,
-                    fontSize: 14,
-                }
-            }]
-        },
-        tooltips: {
-            callbacks: {
-                // Gives tooltip a bolded title
-                title: function(tooltipItems, data) {
-                    var index = tooltipItems[0].index;
-                    var datasetIndex = tooltipItems[0].datasetIndex;
-                    var dataset = data.datasets[datasetIndex];
-                    var school = dataset.data[index];
-                    return school.Name;
+// // Locating canvas in DOM
+// var ctx = document.getElementById('myChart').getContext('2d');
+// // Scatter chart settings. See Charts.js documentation for more information on key:value pairs
+// var scatterChart = new Chart(ctx, {
+//     type: 'scatter',
+//     data: {
+//         datasets: [{
+//                 label: 'National Universities',
+//                 data: Nat_Universities,
+//                 backgroundColor: 'rgb(255, 99, 132)',
+//                 backgroundOutline: 'green',
+//                 pointRadius: 5,
+//                 pointHoverRadius: 5
+//             },
+//             {
+//                 label: 'Non-National Universities',
+//                 data: Non_Nat_Universities,
+//                 backgroundColor: 'rgb(132, 99, 255)',
+//                 pointRadius: 5,
+//                 pointHoverRadius: 5
+//             },
+//             {
+//                 data: [{
+//                     x: -40,
+//                     y: 20
+//                 }, {
+//                     x: -40,
+//                     y: -40
+//                 }],
+//                 borderColor: 'rgba(0,0,0,0)',
+//                 borderWidth: 2,
+//                 pointBackgroundColor: ['#000', '#00bcd6', '#d300d6'],
+//                 pointBorderColor: ['#000', '#00bcd6', '#d300d6'],
+//                 pointRadius: 0,
+//                 pointHoverRadius: 0,
+//                 fill: false,
+//                 tension: 0,
+//                 showLine: true,
+//                 label: "hide"
+//             },
+//             {
+//                 data: [{
+//                     x: -40,
+//                     y: -40
+//                 }, {
+//                     x: 20,
+//                     y: -40
+//                 }],
+//                 borderColor: 'rgba(0,0,0,0)',
+//                 borderWidth: 2,
+//                 pointBackgroundColor: ['#000', '#00bcd6', '#d300d6'],
+//                 pointBorderColor: ['#000', '#00bcd6', '#d300d6'],
+//                 pointRadius: 0,
+//                 pointHoverRadius: 0,
+//                 fill: false,
+//                 tension: 0,
+//                 showLine: true,
+//                 label: "hide"
+//             },
+//             {
+//                 data: [{
+//                     x: -50,
+//                     y: 0
+//                 }, {
+//                     x: 40,
+//                     y: 0
+//                 }],
+//                 borderColor: 'black',
+//                 borderWidth: 2,
+//                 pointBackgroundColor: ['#000', '#00bcd6', '#d300d6'],
+//                 pointBorderColor: ['#000', '#00bcd6', '#d300d6'],
+//                 pointRadius: 0,
+//                 pointHoverRadius: 0,
+//                 fill: false,
+//                 tension: 0,
+//                 showLine: true,
+//                 label: "hide"
+//             },
+//             {
+//                 data: [{
+//                     x: 0,
+//                     y: -40
+//                 }, {
+//                     x: 0,
+//                     y: 20
+//                 }],
+//                 borderColor: 'black',
+//                 borderWidth: 2,
+//                 pointBackgroundColor: ['#000', '#00bcd6', '#d300d6'],
+//                 pointBorderColor: ['#000', '#00bcd6', '#d300d6'],
+//                 pointRadius: 0,
+//                 pointHoverRadius: 0,
+//                 fill: false,
+//                 tension: 0,
+//                 showLine: true,
+//                 label: "hide"
+//             },
+//             {
+//                 data: [{
+//                     x: -50,
+//                     y: -22.7
+//                 }, {
+//                     x: 40,
+//                     y: 18.16
+//                 }],
+//                 borderColor: 'lime',
+//                 borderWidth: 4,
+//                 pointRadius: 0,
+//                 pointHoverRadius: 0,
+//                 fill: false,
+//                 tension: 0,
+//                 showLine: true,
+//                 label: "Value-Add Consistency"
+//             }
+//         ],
+//     },
+//     options: {
+//         aspectRatio: 1.5,
+//         title: {
+//             display: true,
+//             text: "Retention and Graduation Value Added of All Universities"
+//         },
+//         legend: {
+//             display: true,
+//             labels: {
+//                 filter: function(item, myChart) {
+//                     return !item.text.includes('hide');
+//                 }
+//             }
+//         },
+//         showLines: false,
+//         scales: {
+//             yAxes: [{
+//                 display: true,
+//                 scaleLabel: {
+//                     display: true,
+//                     labelString: 'Retention Value Added Score',
+//                     fontSize: 16
+//                 },
+//                 ticks: {
+//                     beginAtZero: true,
+//                     fontSize: 14
+//                 }
+//             }],
+//             xAxes: [{
+//                 type: 'linear',
+//                 position: 'bottom',
+//                 display: true,
+//                 scaleLabel: {
+//                     display: true,
+//                     labelString: 'Graduation Value Added Score',
+//                     fontSize: 16
+//                 },
+//                 gridLines: {
+//                     display: true
+//                 },
+//                 ticks: {
+//                     beginAtZero: true,
+//                     fontSize: 14,
+//                 }
+//             }]
+//         },
+//         tooltips: {
+//             callbacks: {
+//                 // Gives tooltip a bolded title
+//                 title: function(tooltipItems, data) {
+//                     var index = tooltipItems[0].index;
+//                     var datasetIndex = tooltipItems[0].datasetIndex;
+//                     var dataset = data.datasets[datasetIndex];
+//                     var school = dataset.data[index];
+//                     return school.Name;
 
-                },
-                // Fills tooltip with metadata
-                label: function(tooltipItems, data) {
-                    var output = "";
-                    var index = tooltipItems.index;
-                    var datasetIndex = tooltipItems.datasetIndex;
-                    var dataset = data.datasets[datasetIndex];
-                    var school = dataset.data[index];
+//                 },
+//                 // Fills tooltip with metadata
+//                 label: function(tooltipItems, data) {
+//                     var output = "";
+//                     var index = tooltipItems.index;
+//                     var datasetIndex = tooltipItems.datasetIndex;
+//                     var dataset = data.datasets[datasetIndex];
+//                     var school = dataset.data[index];
 
-                    // output += "Name: " + school.Name + "\n | \n";
-                    output += "Graduation Value Added: " + school.x + "\n | \n";
-                    output += "Retention Value Added: " + school.y + "\n | \n";
-                    output += "USN Rank: " + school["US News Rank"] + "\n | \n";
-                    output += "State: " + school.state + "\n | \n";
-                    output += "Region: " + school.region + "\n | \n";
-                    if (school.pubpriv == 1) {
-                        output += "Public" + "\n | \n";
-                    } else if (school.pubpriv == 2) {
-                        output += "Private" + "\n | \n";
-                    } else {
-                        output += "For-Profit" + "\n | \n";
-                    }
-                    output += school.national ? `National University` : `Non-National University`;
-                    return output;
-                }
-            }
-        }
-    }
-});
+//                     // output += "Name: " + school.Name + "\n | \n";
+//                     output += "Graduation Value Added: " + school.x + "\n | \n";
+//                     output += "Retention Value Added: " + school.y + "\n | \n";
+//                     output += "USN Rank: " + school["US News Rank"] + "\n | \n";
+//                     output += "State: " + school.state + "\n | \n";
+//                     output += "Region: " + school.region + "\n | \n";
+//                     if (school.pubpriv == 1) {
+//                         output += "Public" + "\n | \n";
+//                     } else if (school.pubpriv == 2) {
+//                         output += "Private" + "\n | \n";
+//                     } else {
+//                         output += "For-Profit" + "\n | \n";
+//                     }
+//                     output += school.national ? `National University` : `Non-National University`;
+//                     return output;
+//                 }
+//             }
+//         }
+//     }
+// });
 var $table = $('#table')
 $(function() {
     $table.bootstrapTable({ data: university_data })
-    console.log("hello")
 })
 // function loadData(option) {
 //     $table.bootstrapTable("load", data_1)
@@ -228,6 +227,6 @@ $(function() {
 // }
 
 
-console.log(scatterChart.data.datasets[0])
+// console.log(scatterChart.data.datasets[0])
 // scatterChart.data.datasets[0].data = []
 // scatterChart.update()
