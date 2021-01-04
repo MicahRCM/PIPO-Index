@@ -149,8 +149,9 @@ const updateParameters = (key, value, n, dontdraw) => {
     else {
         for (let i = 0; i < n.length; i++) {
             let active = checkTheCheck(n[i])
+            console.log(value[i])
             // Add parameter to list
-            if (active && value[i]) {
+            if (active) {
                 active_parameters[key].push(value[i])
             }
             // Remove parameter from list
