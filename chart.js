@@ -92,7 +92,7 @@ for (let i = 0; i < region_states.length; i++) {
     for (let j = 0; j < region_states[i]["States"].length; j++) {
         let filter_item_container = document.createElement("div")
         filter_item_container.className = "filter_item_container"
-        filter_item_container.onclick = function() { updateParameters(`state`, region_states[i]["States"][j], [(i + "_" + (j + 1005))]) }
+        filter_item_container.onclick = function() { updateParameters(`state`, [region_states[i]["States"][j]], [(i + "_" + (j + 1005))]) }
         filter_item_container.appendChild(createCheckElements(i + "_" + (j + 1005)))
         filter_item_container.appendChild(createFilterItem("filter_item", region_states[i]["States"][j]))
         region_test.appendChild(filter_item_container)
