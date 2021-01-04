@@ -146,6 +146,7 @@ const updateParameters = (key, value, n, dontdraw) => {
             }
         }
     } 
+    // If changing only a single value
     else {
         for (let i = 0; i < n.length; i++) {
             let active = checkTheCheck(n[i])
@@ -156,6 +157,8 @@ const updateParameters = (key, value, n, dontdraw) => {
             }
             // Remove parameter from list
             else {
+            	// Turns off header if a single item is unselected
+            	groupHeadingCheck(n[i], false, true)
                 const j = active_parameters[key].indexOf(value[i])
                 if (j > -1) {
                     active_parameters[key].splice(j, 1)
@@ -191,6 +194,13 @@ const checkTheCheck = (n, on, off) => {
         element.classList.add("showCheck")
         return true
     }
+}
+
+const groupHeadingCheck = (id, on, off) => {
+	console.log(id, parseInt(id) + "_1000")
+	if (off) {
+		checkTheCheck(parseInt(id) + "_1000", false, true)	
+	}
 }
 
 const updateGraph = () => {

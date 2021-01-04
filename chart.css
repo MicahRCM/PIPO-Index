@@ -116,7 +116,7 @@ table, tr, tbody, thead {
 }
 
 .showCheck {
-	display: inline;
+	display: inline-block;
 }
 
 /* Table styling */
