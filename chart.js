@@ -116,18 +116,49 @@ let active_parameters = {
 
 // Pass in the data type (e.g region, state, nationalu) the data value (e.g. Southwest, Arizona, 1) and the check id
 const updateParameters = (key, value, n, dontdraw) => {
-	console.log(value)
-    for (let i = 0; i < n.length; i++) {
-        let active = checkTheCheck(n[i])
-        // Add parameter to list
-        if (active && value[i]) {
-            active_parameters[key].push(value[i])
+    // Dealing with turning groups of items on and off
+    let check
+    // Toggles group heading check on/off when clicked
+    if (n.length > 1) {
+        check = checkTheCheck(n[0])
+    }
+
+    // If changing group of values and value has been checked
+    if (n.length > 1 && check) {
+    	// Loop through all values except group header
+        for (let i = 1; i < n.length; i++) {
+        	// If item is newly checked
+            if (checkTheCheck(n[i], true)) {
+            	// Add it to active parameters
+                active_parameters[key].push(value[i - 1])
+            }
         }
-        // Remove parameter from list
-        else {
-            const j = active_parameters[key].indexOf(value[i])
-            if (j > -1) {
-                active_parameters[key].splice(j, 1)
+    // If changing group of values and header has been unchecked
+    } else if (n.length > 1 && !check) {
+    	// Loop through all values except group header
+        for (let i = 1; i < n.length; i++) {
+        	// If the item is newly unchecked
+            if (!checkTheCheck(n[i], false, true)) {
+                const j = active_parameters[key].indexOf(value[i - 1])
+                if (j > -1) {
+                    active_parameters[key].splice(j, 1)
+                }
+            }
+        }
+    } 
+    else {
+        for (let i = 0; i < n.length; i++) {
+            let active = checkTheCheck(n[i])
+            // Add parameter to list
+            if (active && value[i]) {
+                active_parameters[key].push(value[i])
+            }
+            // Remove parameter from list
+            else {
+                const j = active_parameters[key].indexOf(value[i])
+                if (j > -1) {
+                    active_parameters[key].splice(j, 1)
+                }
             }
         }
     }
@@ -137,8 +168,21 @@ const updateParameters = (key, value, n, dontdraw) => {
 }
 
 // Checks (haha), if the checkmark is displayed for a given id and returns true/false
-const checkTheCheck = (n) => {
+const checkTheCheck = (n, on, off) => {
     let element = document.getElementById(n)
+    if (on && !element.classList.contains("showCheck")) {
+        element.classList.add("showCheck")
+        return true
+    } else if (on && element.classList.contains("showCheck")) {
+        return false
+    }
+    if (off && element.classList.contains("showCheck")) {
+        element.classList.remove("showCheck")
+        return false
+    } else if (off && !element.classList.contains("showCheck")) {
+        return true
+    }
+
     if (element.classList.contains("showCheck")) {
         element.classList.remove("showCheck")
         return false
