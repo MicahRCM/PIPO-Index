@@ -401,7 +401,7 @@ window.onclick = function(event) {
 }
 
 updateParameters(`nationalu`, [1], [1])
-updateParameters(`state`, ["DC"], ["1_1006"])
+// updateParameters(`state`, ["DC"], ["1_1006"])
 
 populateTable(university_data)
 
