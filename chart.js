@@ -11,7 +11,7 @@ let region_states = [{
         "States": ["DE", "DC", "MD", "NJ", "NY", "PA"]
     },
     {
-        "Region": "Mid East",
+        "Region": "Great Lakes",
         "States": ["IL", "IN", "MI", "OH", "WI"]
     },
     {
@@ -19,7 +19,7 @@ let region_states = [{
         "States": ["IA", "KS", "MN", "MO", "NE", "ND", "SD"]
     },
     {
-        "Region": "Plains",
+        "Region": "Southeast",
         "States": ["AL", "AR", "FL", "GA", "KY", "LA", "MS", "NC", "SC", "TN", "VA", "WV"]
     },
     {
