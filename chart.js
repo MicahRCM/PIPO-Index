@@ -433,7 +433,7 @@ const populateMenu = (id) => {
 
 // Closes out dropdown menu if clicked anywhere on the screen
 window.onclick = function(event) {
-    if (!event.target.matches('.filter_list') && !event.target.matches('.chartFilter') && !event.target.matches('.filterCaret')) {
+    if (!event.target.matches('.enabled_check') && !event.target.matches('.filter_item') && !event.target.matches('.filter_list') && !event.target.matches('.chartFilter') && !event.target.matches('.filterCaret') && !event.target.matches('.filter_item_container')) {
         var dropdowns = document.getElementsByClassName("filter_list");
         var i;
         for (i = 0; i < dropdowns.length; i++) {
