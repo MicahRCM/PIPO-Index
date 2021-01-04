@@ -114,6 +114,7 @@ let active_parameters = {
 const updateParameters = (key, value, n, dontdraw) => {
     // Dealing with turning groups of items on and off
     let check
+    console.log(key, value, n)
     // Toggles group heading check on/off when clicked
     if (n.length > 1) {
         check = checkTheCheck(n[0])
@@ -146,7 +147,6 @@ const updateParameters = (key, value, n, dontdraw) => {
     else {
         for (let i = 0; i < n.length; i++) {
             let active = checkTheCheck(n[i])
-            console.log(value[i])
             // Add parameter to list
             if (active) {
                 active_parameters[key].push(value[i])
@@ -193,7 +193,6 @@ const checkTheCheck = (n, on, off) => {
 }
 
 const groupHeadingCheck = (id, on, off) => {
-	console.log(id, parseInt(id) + "_1000")
 	if (off) {
 		checkTheCheck(parseInt(id) + "_1000", false, true)	
 	}
@@ -206,6 +205,10 @@ const updateGraph = () => {
     for (let i = 0; i < active_parameters[Object.keys(active_parameters)[0]].length; i++) {
         let data = filterData(university_data, Object.keys(active_parameters)[0], active_parameters[Object.keys(active_parameters)[0]])
         saved = data
+    }
+    if (active_parameters[Object.keys(active_parameters)[0]].length == 0) {
+    	let data = filterData(university_data, Object.keys(active_parameters)[0], [0,1])
+    	saved = data
     }
     for (let i = 1; i < Object.keys(active_parameters).length; i++) {
         if (active_parameters[Object.keys(active_parameters)[i]].length > 0) {
@@ -451,7 +454,7 @@ window.onclick = function(event) {
     }
 }
 
-updateParameters(`nationalu`, [1], [1])
+updateParameters(`nationalu`, [1], [`75_101`])
 // updateParameters(`state`, ["DC"], ["1_1006"])
 
 populateTable(university_data)
