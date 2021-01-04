@@ -1,13 +1,17 @@
-html, body {
-	height: 100%;
+html,
+body {
+    height: 100%;
 }
 
 table {
-	border-collapse: collapse;
+    border-collapse: collapse;
 }
 
-table, tr, tbody, thead {
-	display: block;
+table,
+tr,
+tbody,
+thead {
+    display: block;
 }
 
 .chartContainer {
@@ -86,12 +90,12 @@ table, tr, tbody, thead {
 }
 
 .filter_item {
-	padding-left: 10px;
+    padding-left: 10px;
 }
 
 .filter_item_container {
-	padding: 10px 20px 10px 40px;
-	    width: 220px;
+    padding: 10px 20px 10px 40px;
+    width: 220px;
 }
 
 .filter_item_container:hover {
@@ -100,81 +104,117 @@ table, tr, tbody, thead {
 }
 
 .showList {
-	display: block;
+    display: block;
 }
 
 .head_filter_item {
-	padding-left: 0px;	
-	font-weight: bold;
+    padding-left: 0px;
+    font-weight: bold;
 }
 
 .enabled_check {
-	float: left;
-	color: #0066ff;
-	margin-left: -15px;
-	display: none;
+    float: left;
+    color: #0066ff;
+    margin-left: -15px;
+    display: none;
 }
 
 .showCheck {
-	display: inline-block;
+    display: inline-block;
 }
 
 /* Table styling */
 #myInput {
-  background-image: url('https://www.w3schools.com/css/searchicon.png'); /* Add a search icon to input */
-  background-position: 10px 12px; /* Position the search icon */
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 100%; /* Full-width */
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
+    background-image: url('https://www.w3schools.com/css/searchicon.png');
+    /* Add a search icon to input */
+    background-position: 10px 12px;
+    /* Position the search icon */
+    background-repeat: no-repeat;
+    /* Do not repeat the icon image */
+    width: 100%;
+    /* Full-width */
+    font-size: 16px;
+    /* Increase font-size */
+    padding: 12px 20px 12px 40px;
+    /* Add some padding */
+    border: 1px solid #ddd;
+    /* Add a grey border */
+    margin-bottom: 12px;
+    /* Add some space below the input */
 }
 
 #uniTable {
-  border-collapse: collapse; /* Collapse borders */
-  width: 100%; /* Full-width */
-  border: 1px solid #ddd; /* Add a grey border */
-  font-size: 18px; /* Increase font-size */
+    border-collapse: collapse;
+    /* Collapse borders */
+    width: 100%;
+    /* Full-width */
+    border: 1px solid #ddd;
+    /* Add a grey border */
+    font-size: 18px;
+    /* Increase font-size */
 }
 
-#uniTable th, #uniTable td {
-  text-align: left; /* Left-align text */
-  padding: 12px; /* Add padding */
+#uniTable th,
+#uniTable td {
+    text-align: left;
+    /* Left-align text */
+    padding: 12px;
+    /* Add padding */
 }
 
 #uniTable tr {
-  /* Add a bottom border to all table rows */
-  border-bottom: 1px solid #ddd;
+    /* Add a bottom border to all table rows */
+    border-bottom: 1px solid #ddd;
 }
 
-#uniTable tr.uniTableHeader, #uniTable tr:hover {
-  /* Add a grey background color to the table header and on hover */
-  background-color: #f1f1f1;
+#uniTable tr.uniTableHeader,
+#uniTable tr:hover {
+    /* Add a grey background color to the table header and on hover */
+    background-color: #f1f1f1;
 }
 
 .uniTable {
-	height: 700px;
-	overflow-y: scroll;
+    height: 700px;
+    overflow-y: scroll;
 }
 
 .trFirst {
-	width: 20%;
-	text-align: left;
-	padding: 12px;
+    width: 20%;
+    text-align: left;
+    padding: 12px;
 }
 
 .trSecond {
-	width: 80%;
-	text-align: left;
-	padding: 12px;
+    width: 80%;
+    text-align: left;
+    padding: 12px;
 }
 
 .tRC {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .uniTableHeader {
-	border: 1px solid #929292;
-	border-radius: 5px 5px 0px 0px;
+    border: 1px solid #929292;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.OkButton {
+    position: sticky;
+    top: 5px;
+    right: 10px;
+    border: 1px solid black;
+    background: #3541d4;
+    width: 45px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 8px;
+    float: right;
+    color: white;
+}
+
+
+.OkButton:hover {
+    background: #525bca;
+    cursor: pointer;
 }
