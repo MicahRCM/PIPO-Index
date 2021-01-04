@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>PIPO Chart</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css"> -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <link rel="stylesheet" type="text/css" href="chart.css">
@@ -17,23 +17,84 @@
 <body>
     <div style="position: fixed; width: 100%; height: 100%; background: white;">
         <div class="chartContainer">
-            <canvas id="myChart"></canvas>
+            <div class="chartFilters" id="chartFilters">
+                <div class="chartFilterContainer">
+                    <div class="chartFilter filter1" id="bagranting" onclick="populateMenu(`bagranting_list`)"> National/Non-National <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
+                    <div class="bagranting_list filter_list" id="bagranting_list">
+                        <div class="filter_item_container">
+                            <span class="filter_item head_filter_item"> All </span>
+                        </div>
+                        <div class="filter_item_container" onclick="updateParameters(`nationalu`, [1], [1])">
+                            <span class="enabled_check" id="1"> ✓ </span>
+                            <span class="filter_item"> National </span>
+                        </div>
+                        <div class="filter_item_container" onclick="updateParameters(`nationalu`, [0], [2])">
+                            <span class="enabled_check" id="2"> ✓ </span>
+                            <span class="filter_item"> Non-National </span>
+                        </div>
+                    </div>
+                </div>
+<!--                 <div class="chartFilterContainer">
+                    <div class="chartFilter filter2" id="region" onclick="populateMenu(`region_list`)"> Region <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
+                    <div class="region_list filter_list" id="region_list">
+                        <div class="filter_item_container">
+                            <span class="filter_item head_filter_item"> All </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chartFilterContainer">
+                    <div class="chartFilter filter2" id="state" onclick="populateMenu(`state_list`)"> State <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
+                    <div class="state_list filter_list" id="state_list">
+                        <div class="filter_item_container">
+                            <span class="filter_item head_filter_item"> All </span>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="chartFilterContainer">
+                    <div class="chartFilter filter4" id="pubpriv" onclick="populateMenu(`pubpriv_list`)"> Public/Private <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
+                    <div class="pubpriv_list filter_list" id="pubpriv_list">
+                        <div class="filter_item_container">
+                            <span class="filter_item head_filter_item"> All </span>
+                        </div>
+                        <div class="filter_item_container" onclick="updateParameters(`pubpriv`, [1], [101])">
+                            <span class="enabled_check" id="101"> ✓ </span>
+                            <span class="filter_item"> Public </span>
+                        </div>
+                        <div class="filter_item_container" onclick="updateParameters(`pubpriv`, [2], [102])">
+                            <span class="enabled_check" id="102"> ✓ </span>
+                            <span class="filter_item"> Private </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chartFilterContainer">
+                    <div class="chartFilter filter4" id="regiontest" onclick="populateMenu(`region_test`)"> Region/State <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
+                    <div class="pubpriv_list filter_list" id="region_test">
+                    </div>
+                </div>
+
+
+            </div>
+            <canvas class="myChart" id="myChart"></canvas>
         </div>
         <div class="chartSearchContainer">
-            <table id="table" data-toggle="table" data-search="true" data-pagination="false" data-height="600" data-toolbar="#toolbar" data-checkbox-header="true" data-click-to-select="true">
-                <thead> 
-                    <tr>
-                        <th data-field="selected" data-checkbox="true"> </th>
-                        <th data-sortable="true" data-field="url" data-click-to-select="false">University</th>
+            <input type="text" style="box-sizing: border-box; border-radius: 5px" id="myInput" onkeyup="filterUni()" placeholder="Search..">
+            <table id="uniTableAll">
+                <thead style="margin-right: -2px;">
+                    <tr class="uniTableHeader" id="uniTableHeader">
+                        <th class="trFirst"> <input type="checkbox"> </th>
+                        <th class="trSecond"> University </th>
                     </tr>
                 </thead>
+                <tbody id="uniTable" class="uniTable">
+                </tbody>
             </table>
         </div>
     </div>
     <script type="text/javascript" src="chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script> -->
 </body>
 
 </html>
