@@ -14,6 +14,18 @@ thead {
     display: block;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 .chartContainer {
     width: 65%;
     float: left;
@@ -217,4 +229,27 @@ thead {
 .OkButton:hover {
     background: #525bca;
     cursor: pointer;
+}
+
+.universityName {
+    font-size: 14px;
+}
+
+.inputlabel {
+    margin-left: 12px;
+    display: inline-block;
+    width: 32px;
+}
+
+.input_m {
+    width: 40px;
+}
+
+.usnewsrank_cont {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.usnewsrank_input_c {
+	margin-bottom: 5px;
 }

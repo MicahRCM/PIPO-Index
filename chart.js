@@ -6,6 +6,9 @@ const STATIC_SLOPES = [{ data: [{ x: -40, y: 20 }, { x: -40, y: -40 }], borderCo
 
 const REGION_STATES = [{ "Region": "New England", "States": ["Connecticut", "Maine", "Massachusetts", "New Hampshire", "Rhode Island", "Vermont"] }, { "Region": "Mid East", "States": ["Delaware", "Washington DC", "Maryland", "New Jersey", "New York", "Pennsylvania"] }, { "Region": "Great Lakes", "States": ["Illinois", "Indiana", "Michigan", "Ohio", "Wisconsin"] }, { "Region": "Plains", "States": ["Iowa", "Kansas", "Minnesota", "Missouri", "Nebraska", "North Dakota", "South Dakota"] }, { "Region": "Southeast", "States": ["Alabama", "Arkansas", "Florida", "Georgia", "Kentucky", "Louisiana", "Mississippi", "North Carolina", "South Carolina", "Tennessee", "Virginia", "West Virginia"] }, { "Region": "Southwest", "States": ["Arizona", "New Mexico", "Oklahoma", "Texas"] }, { "Region": "Rocky Mountains", "States": ["Colorado", "Idaho", "Montana", "Utah", "Wyoming"] }, { "Region": "Far West", "States": ["Alaska", "California", "Hawaii", "Nevada", "Oregon", "Washington"] }]
 
+// CSS classes that don't cancel menu clicks
+const SAFE_CLASSES = ['.enabled_check', '.filter_item', '.filter_list', '.chartFilter', '.filterCaret', '.filter_item_container', '.usnewsrank_cont', '.usnewsrank_input_c', '.inputlabel', '.input_m']
+
 /* Element creation section */
 
 const populateTable = (list) => {
@@ -198,6 +201,7 @@ const updateGraph = () => {
     // Saved objects (datapoints) that will pass filter test and be displayed on graph
     let saved = []
     let sandbox = []
+    // First category (nationalu)
     for (let i = 0; i < active_parameters[Object.keys(active_parameters)[0]].length; i++) {
         let data = filterData(university_data, Object.keys(active_parameters)[0], active_parameters[Object.keys(active_parameters)[0]])
         saved = data
@@ -206,6 +210,7 @@ const updateGraph = () => {
         let data = filterData(university_data, Object.keys(active_parameters)[0], [0, 1])
         saved = data
     }
+    // All other non-quant categories
     for (let i = 1; i < Object.keys(active_parameters).length; i++) {
         if (active_parameters[Object.keys(active_parameters)[i]].length > 0) {
             let data = []
@@ -214,10 +219,46 @@ const updateGraph = () => {
             saved = data
         }
     }
+    saved = filterRank(saved)
     populateTable(saved)
     scatterChart.data.datasets = formatData(saved).concat(STATIC_SLOPES)
     scatterChart.update()
 
+}
+
+// Filters out data based on US News Rank
+const filterRank = (data) => {
+    // Grabs input elements directly from DOM
+    let min = parseInt(document.getElementById("rankmin").value)
+    let max = parseInt(document.getElementById("rankmax").value)
+    let sorted = []
+    if (min && max) {
+        for (let i = 0; i < data.length; i++) {
+            if (data[i]["US News Rank"] >= min && data[i]["US News Rank"] <= max) {
+                sorted.push(data[i])
+            }
+        }
+        return sorted
+    }
+    if (min) {
+        for (let i = 0; i < data.length; i++) {
+            if (data[i]["US News Rank"] >= min) {
+                sorted.push(data[i])
+            }
+        }
+        return sorted
+    }
+    if (max) {
+        for (let i = 0; i < data.length; i++) {
+            if (data[i]["US News Rank"] <= max) {
+                sorted.push(data[i])
+            }
+        }
+        return sorted
+    }
+    if (!max && !min) {
+        return data
+    }
 }
 
 const filterData = (dataset, key, value) => {
@@ -294,9 +335,9 @@ const formatData = (dataset) => {
     let groups = [National_Public, Non_National_Public, National_Private, Non_National_Private]
     let final = []
     for (let i = 0; i < groups.length; i++) {
-    	if (groups[i]["data"].length > 0) {
-    		final.push(groups[i])
-    	}
+        if (groups[i]["data"].length > 0) {
+            final.push(groups[i])
+        }
     }
     return final
 }
@@ -484,24 +525,23 @@ const populateMenu = (id) => {
     document.getElementById(id).classList.toggle("showList")
 }
 
-
-// Closes out dropdown menu if clicked anywhere on the screen
-window.onclick = function(event) {
-    if (!event.target.matches('.enabled_check') && !event.target.matches('.filter_item') && !event.target.matches('.filter_list') && !event.target.matches('.chartFilter') && !event.target.matches('.filterCaret') && !event.target.matches('.filter_item_container')) {
-        var dropdowns = document.getElementsByClassName("filter_list");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('showList')) {
-                openDropdown.classList.remove('showList');
-            }
+window.addEventListener('mousedown', e => {
+    for (let i = 0; i < SAFE_CLASSES.length; i++) {
+        if (event.target.matches(SAFE_CLASSES[i])) {
+            return
         }
     }
-}
+    var dropdowns = document.getElementsByClassName("filter_list");
+    var j;
+    for (j = 0; j < dropdowns.length; j++) {
+        var openDropdown = dropdowns[j];
+        if (openDropdown.classList.contains('showList')) {
+            openDropdown.classList.remove('showList');
+        }
+    }
 
-updateParameters(`nationalu`, [1], [`75_101`])
-updateParameters(`pubpriv`, [1], [`50_101`])
-// updateParameters(`state`, ["DC"], ["1_1006"])
+});
+
 
 function filterUni() {
     var input, filter, table, tr, td, i, txtValue;
@@ -521,3 +561,9 @@ function filterUni() {
         }
     }
 }
+
+// Updates graph when input values are changed
+document.getElementById("rankmin").addEventListener(`keyup`, updateGraph)
+document.getElementById("rankmax").addEventListener(`keyup`, updateGraph)
+updateParameters(`nationalu`, [1], [`75_101`])
+updateParameters(`pubpriv`, [1], [`50_101`])

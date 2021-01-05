@@ -36,22 +36,6 @@
                         </div>
                     </div>
                 </div>
-                <!--                 <div class="chartFilterContainer">
-                    <div class="chartFilter filter2" id="region" onclick="populateMenu(`region_list`)"> Region <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
-                    <div class="region_list filter_list" id="region_list">
-                        <div class="filter_item_container">
-                            <span class="filter_item head_filter_item"> All </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="chartFilterContainer">
-                    <div class="chartFilter filter2" id="state" onclick="populateMenu(`state_list`)"> State <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
-                    <div class="state_list filter_list" id="state_list">
-                        <div class="filter_item_container">
-                            <span class="filter_item head_filter_item"> All </span>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="chartFilterContainer">
                     <div class="chartFilter filter4" id="pubpriv" onclick="populateMenu(`pubpriv_list`)"> Public/Private <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
                     <div class="pubpriv_list filter_list" id="pubpriv_list">
@@ -75,6 +59,24 @@
                     <div class="pubpriv_list filter_list" id="region_test">
                         <div class="OkButton"> OK </div>
                     </div>
+                </div>
+                <div class="chartFilterContainer">
+                    <div class="chartFilter filter5" id="usnewsrank" onclick="populateMenu(`usnewsrank_list`)"> US News Rank <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
+                    <div class="usnewsrank_list filter_list" id="usnewsrank_list" style="width: 200px;">
+                        <div class="OkButton"> OK </div>
+                        <div class="usnewsrank_cont">
+                            <div class="usnewsrank_input_c">
+                                <label class="inputlabel" for="rankmin"> Min </label>
+                                <input class="input_m" type="number" id="rankmin" value=1 name="rankmin" min=1>
+                            </div>
+                            <div class="usnewsrank_input_c">
+                                <label class="inputlabel" for="rankmax"> Max </label>
+                                <input class="input_m" type="number" id="rankmax" value=100 name="rankmax" max=2000>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chartFilterContainer">
                 </div>
             </div>
             <canvas class="myChart" id="myChart"></canvas>
