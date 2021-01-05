@@ -25,6 +25,8 @@ const populateTable = (list) => {
         let tdchild = document.createElement("td")
         let input = document.createElement("input")
         input.type = "checkbox"
+        input.id = list[i]["UNITID"]
+        input.onclick = function() { routeChange(this.id, this.checked) }
         if (i <= nMarked) {
             input.checked = true
         } else {
@@ -60,6 +62,7 @@ const tableData = (data) => {
     return [onList.concat(notOnList), onList.length - 1]
 }
 
+// Creates all check marks that appear in drop downs, hidden by default
 const createCheckElements = (id) => {
     let enabled_check = document.createElement("span")
     enabled_check.className = "enabled_check"
@@ -163,6 +166,59 @@ const updateParameters = (key, value, n, dontdraw) => {
     }
     if (!dontdraw) {
         updateGraph()
+    }
+}
+
+// Routes removing/adding a single data point to proper function
+const routeChange = (id, add) => {
+    if (add) {
+        addItem(id)
+    } else {
+        remItem(id)
+    }
+}
+
+// Add singles item to graph
+const addItem = (id) => {
+    let item = university_data.find(o => o.UNITID == id)
+    item.y = item["VA Retention"]
+    item.x = item["VA Graduation"]
+    item.url = "<a href=https://nces.ed.gov/collegenavigator/?id=" + item.ipedsid + ">" + item.Name + "</a>"
+    let itemObj = {
+        data: [item],
+        backgroundColor: 'rgb(102, 115, 163)',
+        backgroundOutline: 'black',
+        pointRadius: 3,
+        pointHoverRadius: 8
+    }
+    // Kind of messy... static numbers when I should probably use a loop.
+    // Assigns single item to respective category
+    // National Public
+    if (item["nationalu"] == 1 && item["pubpriv"] == 1) {
+        scatterChart.data.datasets[0]["data"].push(item)
+    // Non-Nat Public
+    } else if (item["nationalu"] == 0 && item["pubpriv"] == 1) {
+        scatterChart.data.datasets[1]["data"].push(item)
+    // National Private
+    } else if (item["nationalu"] == 1 && item["pubpriv"] == 2) {
+        scatterChart.data.datasets[2]["data"].push(item)
+    // Non-National Private
+    } else if (item["nationalu"] == 0 && item["pubpriv"] == 2) {
+        scatterChart.data.datasets[3]["data"].push(item)
+    }
+    scatterChart.update()
+}
+
+// Removes a single item from graph
+const remItem = (id) => {
+    for (let i = 0; i < scatterChart.data.datasets.length; i++) {
+        for (let j = 0; j < scatterChart.data.datasets[i]["data"].length; j++) {
+            if (scatterChart.data.datasets[i]["data"][j]["UNITID"] == id) {
+                scatterChart.data.datasets[i]["data"].splice(j, 1)
+                scatterChart.update()
+                return
+            }
+        }
     }
 }
 
@@ -307,14 +363,6 @@ const formatData = (dataset) => {
         pointRadius: 3,
         pointHoverRadius: 8
     }
-    let chartObj = {
-        label: "Filler",
-        data: [],
-        backgroundColor: 'rgb(132, 255, 99)',
-        backgroundOutline: 'black',
-        pointRadius: 3,
-        pointHoverRadius: 8
-    }
     for (let i = 0; i < dataset.length; i++) {
         dataset[i].y = dataset[i]["VA Retention"]
         dataset[i].x = dataset[i]["VA Graduation"]
@@ -322,10 +370,10 @@ const formatData = (dataset) => {
         dataset[i].selected = true
         if (dataset[i]["nationalu"] == 1 && dataset[i]["pubpriv"] == 1) {
             National_Public["data"].push(dataset[i])
-        } else if (dataset[i]["nationalu"] == 1 && dataset[i]["pubpriv"] == 2) {
-            National_Private["data"].push(dataset[i])
         } else if (dataset[i]["nationalu"] == 0 && dataset[i]["pubpriv"] == 1) {
             Non_National_Public["data"].push(dataset[i])
+        } else if (dataset[i]["nationalu"] == 1 && dataset[i]["pubpriv"] == 2) {
+            National_Private["data"].push(dataset[i])
         } else if (dataset[i]["nationalu"] == 0 && dataset[i]["pubpriv"] == 2) {
             Non_National_Private["data"].push(dataset[i])
         }
@@ -339,7 +387,7 @@ const formatData = (dataset) => {
             final.push(groups[i])
         }
     }
-    return final
+    return groups
 }
 
 
@@ -368,75 +416,13 @@ ctx.height = 600
 var scatterChart = new Chart(ctx, {
     type: 'scatter',
     data: {
-        datasets: [{
-                label: 'All Universities',
-                data: university_data,
-                backgroundColor: 'rgb(255, 99, 132)',
-                backgroundOutline: 'green',
-                pointRadius: 3,
-                pointHoverRadius: 8
-            }, {
-                data: [{
-                    x: -40,
-                    y: 20
-                }, {
-                    x: -40,
-                    y: -40
-                }],
-                borderColor: 'rgba(0,0,0,0)',
-                borderWidth: 2,
-                pointBackgroundColor: ['#000', '#00bcd6', '#d300d6'],
-                pointBorderColor: ['#000', '#00bcd6', '#d300d6'],
-                pointRadius: 0,
-                pointHoverRadius: 0,
-                fill: false,
-                tension: 0,
-                showLine: true,
-                label: "hide"
-            },
-            {
-                data: [{
-                    x: -40,
-                    y: -40
-                }, {
-                    x: 20,
-                    y: -40
-                }],
-                borderColor: 'rgba(0,0,0,0)',
-                borderWidth: 2,
-                pointBackgroundColor: ['#000', '#00bcd6', '#d300d6'],
-                pointBorderColor: ['#000', '#00bcd6', '#d300d6'],
-                pointRadius: 0,
-                pointHoverRadius: 0,
-                fill: false,
-                tension: 0,
-                showLine: true,
-                label: "hide"
-            },
-            {
-                data: [{
-                    x: -50,
-                    y: -22.7
-                }, {
-                    x: 40,
-                    y: 18.16
-                }],
-                borderColor: 'lime',
-                borderWidth: 2,
-                pointRadius: 0,
-                pointHoverRadius: 0,
-                fill: false,
-                tension: 0,
-                showLine: true,
-                label: "Value-Add Consistency"
-            }
-        ],
+        datasets: [],
     },
     options: {
         aspectRatio: 1.5,
         title: {
             display: true,
-            text: "Retention and Graduation Value Added of All Universities"
+            text: "Value Added Matrix"
         },
         legend: {
             display: true,
