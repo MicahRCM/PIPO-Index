@@ -7,7 +7,7 @@ const STATIC_SLOPES = [{ data: [{ x: -40, y: 20 }, { x: -40, y: -40 }], borderCo
 const REGION_STATES = [{ "Region": "New England", "States": ["Connecticut", "Maine", "Massachusetts", "New Hampshire", "Rhode Island", "Vermont"] }, { "Region": "Mid East", "States": ["Delaware", "Washington DC", "Maryland", "New Jersey", "New York", "Pennsylvania"] }, { "Region": "Great Lakes", "States": ["Illinois", "Indiana", "Michigan", "Ohio", "Wisconsin"] }, { "Region": "Plains", "States": ["Iowa", "Kansas", "Minnesota", "Missouri", "Nebraska", "North Dakota", "South Dakota"] }, { "Region": "Southeast", "States": ["Alabama", "Arkansas", "Florida", "Georgia", "Kentucky", "Louisiana", "Mississippi", "North Carolina", "South Carolina", "Tennessee", "Virginia", "West Virginia"] }, { "Region": "Southwest", "States": ["Arizona", "New Mexico", "Oklahoma", "Texas"] }, { "Region": "Rocky Mountains", "States": ["Colorado", "Idaho", "Montana", "Utah", "Wyoming"] }, { "Region": "Far West", "States": ["Alaska", "California", "Hawaii", "Nevada", "Oregon", "Washington"] }]
 
 // CSS classes that don't cancel menu clicks
-const SAFE_CLASSES = ['.enabled_check', '.filter_item', '.filter_list', '.chartFilter', '.filterCaret', '.filter_item_container', '.usnewsrank_cont', '.usnewsrank_input_c', '.inputlabel', '.input_m']
+const SAFE_CLASSES = ['.enabled_check', '.filter_item', '.filter_list', '.filter_item_container', '.usnewsrank_cont', '.usnewsrank_input_c', '.inputlabel', '.input_m']
 
 /* Element creation section */
 
@@ -100,6 +100,7 @@ for (let i = 0; i < REGION_STATES.length; i++) {
     }
     filter_item_container_head.onclick = function() { updateParameters(`state`, stateGroupNames, stateGroupIDs) }
 }
+
 
 /* End element creation section */
 
@@ -509,35 +510,22 @@ var scatterChart = new Chart(ctx, {
                 pan: {
                     // Boolean to enable panning
                     enabled: true,
-
-                    // Panning directions. Remove the appropriate direction to disable
-                    // Eg. 'y' would only allow panning in the y direction
-                    // A function that is called as the user is panning and returns the
-                    // available directions can also be used:
-                    //   mode: function({ chart }) {
-                    //     return 'xy';
-                    //   },
                     mode: 'xy',
-
                     rangeMin: {
                         // Format of min zoom range depends on scale type
-                        x: -70,
-                        y: -60
+                        x: -50,
+                        y: -40
                     },
                     rangeMax: {
                         // Format of max zoom range depends on scale type
-                        x: 60,
-                        y: 40
+                        x: 40,
+                        y: 20
                     },
-
-
                     // On category scale, factor of pan velocity
                     speed: 20,
-
                     // Minimal pan distance required before actually applying pan
                     threshold: 10,
                 },
-
                 // Container for zoom options
                 zoom: {
                     // Boolean to enable zooming
