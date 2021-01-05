@@ -291,7 +291,7 @@ const formatData = (dataset) => {
     }
 
     // Filters out empty categories
-    let groups = [National_Public, National_Private, Non_National_Public, Non_National_Private]
+    let groups = [National_Public, Non_National_Public, National_Private, Non_National_Private]
     let final = []
     for (let i = 0; i < groups.length; i++) {
     	if (groups[i]["data"].length > 0) {
