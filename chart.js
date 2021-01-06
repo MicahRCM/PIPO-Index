@@ -554,12 +554,12 @@ var scatterChart = new Chart(ctx, {
                     mode: 'xy',
                     rangeMin: {
                         // Format of min zoom range depends on scale type
-                        x: -50,
-                        y: -40
+                        x: -40,
+                        y: -30
                     },
                     rangeMax: {
                         // Format of max zoom range depends on scale type
-                        x: 40,
+                        x: 30,
                         y: 20
                     },
 
