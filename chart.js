@@ -107,7 +107,6 @@ for (let i = 0; i < REGION_STATES.length; i++) {
 
 let active_parameters = {
     nationalu: [],
-    region: [],
     state: [],
     pubpriv: []
 }
@@ -156,8 +155,6 @@ const updateParameters = (key, value, n, dontdraw) => {
             }
             // Remove parameter from list
             else {
-                // Turns off header if a single item is unselected
-                groupHeadingCheck(n[i], false, true)
                 const j = active_parameters[key].indexOf(value[i])
                 if (j > -1) {
                     active_parameters[key].splice(j, 1)
@@ -197,13 +194,13 @@ const addItem = (id) => {
     // National Public
     if (item["nationalu"] == 1 && item["pubpriv"] == 1) {
         scatterChart.data.datasets[0]["data"].push(item)
-    // Non-Nat Public
+        // Non-Nat Public
     } else if (item["nationalu"] == 0 && item["pubpriv"] == 1) {
         scatterChart.data.datasets[1]["data"].push(item)
-    // National Private
+        // National Private
     } else if (item["nationalu"] == 1 && item["pubpriv"] == 2) {
         scatterChart.data.datasets[2]["data"].push(item)
-    // Non-National Private
+        // Non-National Private
     } else if (item["nationalu"] == 0 && item["pubpriv"] == 2) {
         scatterChart.data.datasets[3]["data"].push(item)
     }
@@ -248,12 +245,6 @@ const checkTheCheck = (n, on, off) => {
     }
 }
 
-const groupHeadingCheck = (id, on, off) => {
-    if (off) {
-        checkTheCheck(parseInt(id) + "_1000", false, true)
-    }
-}
-
 const updateGraph = () => {
     // Saved objects (datapoints) that will pass filter test and be displayed on graph
     let saved = []
@@ -263,17 +254,17 @@ const updateGraph = () => {
         let data = filterData(university_data, Object.keys(active_parameters)[0], active_parameters[Object.keys(active_parameters)[0]])
         saved = data
     }
-    if (active_parameters[Object.keys(active_parameters)[0]].length == 0) {
-        let data = filterData(university_data, Object.keys(active_parameters)[0], [0, 1])
-        saved = data
-    }
     // All other non-quant categories
-    for (let i = 1; i < Object.keys(active_parameters).length; i++) {
+    for (let i = 0; i < Object.keys(active_parameters).length; i++) {
         if (active_parameters[Object.keys(active_parameters)[i]].length > 0) {
             let data = []
             let tempdata = filterData(saved, Object.keys(active_parameters)[i], active_parameters[Object.keys(active_parameters)[i]])
             data = data.concat(tempdata)
             saved = data
+        } 
+        // Dumps data if any group has nothing checked
+        else {
+        	saved = []
         }
     }
     saved = filterRank(saved)
@@ -332,38 +323,10 @@ const filterData = (dataset, key, value) => {
 
 // Formats into chartsjs style data
 const formatData = (dataset) => {
-    let National_Public = {
-        label: "National Public",
-        data: [],
-        backgroundColor: 'rgb(2, 15, 163)',
-        backgroundOutline: 'black',
-        pointRadius: 3,
-        pointHoverRadius: 8
-    }
-    let National_Private = {
-        label: "National Private",
-        data: [],
-        backgroundColor: 'rgb(189, 85, 6)',
-        backgroundOutline: 'black',
-        pointRadius: 3,
-        pointHoverRadius: 8
-    }
-    let Non_National_Public = {
-        label: "Non-National Public",
-        data: [],
-        backgroundColor: 'rgb(73, 183, 230)',
-        backgroundOutline: 'black',
-        pointRadius: 3,
-        pointHoverRadius: 8
-    }
-    let Non_National_Private = {
-        label: "Non-National Private",
-        data: [],
-        backgroundColor: 'rgb(255, 193, 99)',
-        backgroundOutline: 'black',
-        pointRadius: 3,
-        pointHoverRadius: 8
-    }
+    let National_Public = formatChartJsObject(`National Public`, `rgb(2, 15, 163)`)
+    let National_Private = formatChartJsObject(`National Private`, `rgb(189, 85, 6)`)
+    let Non_National_Public = formatChartJsObject(`Non-National Public`, `rgb(73, 183, 230)`)
+    let Non_National_Private = formatChartJsObject(`Non-National Private`, `rgb(255, 193, 99)`)
     for (let i = 0; i < dataset.length; i++) {
         dataset[i].y = dataset[i]["VA Retention"]
         dataset[i].x = dataset[i]["VA Graduation"]
@@ -391,24 +354,22 @@ const formatData = (dataset) => {
     return groups
 }
 
-
-/* End redrawing graph/updating visual filter section */
-
-let Nat_Universities = []
-let Non_Nat_Universities = []
-// Filtering data into two initial values: National and Non-National Data
-for (let i = 0; i < university_data.length; i++) {
-    university_data[i].y = university_data[i]["VA Retention"]
-    university_data[i].x = university_data[i]["VA Graduation"]
-    university_data[i].url = "<a href=https://nces.ed.gov/collegenavigator/?id=" + university_data[i].ipedsid + ">" + university_data[i].Name + "</a>"
-    university_data[i].selected = true
-    // Separation into arrays to be used in scatterChart
-    if (university_data[i].nationalu) {
-        Nat_Universities.push(university_data[i])
-    } else {
-        Non_Nat_Universities.push(university_data[i])
+// Settings for chartJS dataset objects
+const formatChartJsObject = (label, color) => {
+    const backgroundOutline = 'black'
+    const pointRadius = 3
+    const pointHoverRadius = 8
+    return {
+        label: label,
+        data: [],
+        backgroundColor: color,
+        backgroundOutline: backgroundOutline,
+        pointRadius: pointRadius,
+        pointHoverRadius
     }
 }
+
+/* End redrawing graph/updating visual filter section */
 
 // Locating canvas in DOM
 var ctx = document.getElementById('myChart').getContext('2d');
@@ -562,7 +523,9 @@ const populateMenu = (id) => {
     document.getElementById(id).classList.toggle("showList")
 }
 
+// Closes open menus when clicked elsewhere on screen
 window.addEventListener('mousedown', e => {
+	// Certain classes (Safe Classes) are whitelisted, and won't cause menu to close when targeted
     for (let i = 0; i < SAFE_CLASSES.length; i++) {
         if (event.target.matches(SAFE_CLASSES[i])) {
             return
