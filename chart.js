@@ -525,7 +525,7 @@ var scatterChart = new Chart(ctx, {
                     var school = dataset.data[index];
 
                     // output += "Name: " + school.Name + "\n | \n";
-                    output += "Name: " + school["Name"] + "\n | \n"
+                    output += school["Name"] + "\n | \n"
                     output += "USN Rank: " + school["US News Rank"] + "\n | \n";
                     output += "State: " + school.state + "\n | \n";
                     output += "Region: " + school.region;
