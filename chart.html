@@ -38,10 +38,6 @@
                     <div class="chartFilter filter4" id="pubpriv" onclick="populateMenu(`pubpriv_list`)"> Public/Private <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
                     <div class="pubpriv_list filter_list" id="pubpriv_list">
                         <div class="OkButton"> OK </div>
-<!--                         <div class="filter_item_container" onclick="updateParameters(`pubpriv`, [1, 2], [`50_1000`, `50_101`, `50_102`])">
-                            <span class="filter_item head_filter_item"> All </span>
-                            <span class="enabled_check" id="50_1000"> ✓ </span>
-                        </div> -->
                         <div class="filter_item_container" onclick="updateParameters(`pubpriv`, [1], [`50_101`])">
                             <span class="enabled_check" id="50_101"> ✓ </span>
                             <span class="filter_item"> Public </span>
@@ -56,6 +52,10 @@
                     <div class="chartFilter filter4" id="regiontest" onclick="populateMenu(`region_test`)"> Region/State <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
                     <div class="pubpriv_list filter_list" id="region_test">
                         <div class="OkButton"> OK </div>
+                        <div class="filter_item_container" onclick="checkAllStates()">
+                            <span class="filter_item head_filter_item"> All </span>
+                            <span class="enabled_check" id="35_1000"> ✓ </span>
+                        </div>
                     </div>
                 </div>
                 <div class="chartFilterContainer">
