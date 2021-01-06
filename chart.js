@@ -33,6 +33,8 @@ const populateTable = (list) => {
             input.checked = false
         }
         tr.className = "tRC"
+        let c_i = giveDataIndex(list[i])
+        tr.onmouseover = function() { hBig(c_i, list[i]["UNITID"]) }
         tdchild.className = "universityName"
         td.appendChild(input)
         if (list[i].Name) {
@@ -41,6 +43,21 @@ const populateTable = (list) => {
         tr.appendChild(td)
         tr.appendChild(tdchild)
         uniTable.appendChild(tr)
+    }
+}
+
+const giveDataIndex = (item) => {
+    if (item["nationalu"] == 1 && item["pubpriv"] == 1) {
+        return 0
+        // Non-Nat Public
+    } else if (item["nationalu"] == 0 && item["pubpriv"] == 1) {
+        return 1
+        // National Private
+    } else if (item["nationalu"] == 1 && item["pubpriv"] == 2) {
+        return 2
+        // Non-National Private
+    } else if (item["nationalu"] == 0 && item["pubpriv"] == 2) {
+        return 3
     }
 }
 
@@ -104,7 +121,6 @@ for (let i = 0; i < REGION_STATES.length; i++) {
         stateGroupNames.push(REGION_STATES[i]["States"][j])
     }
     filter_item_container_head.onclick = function() { updateParameters(`state`, stateGroupNames, stateGroupIDs) }
-    console.log(stateGroupNames, stateGroupIDs)
 }
 
 // Checks/unchecks region headers
@@ -123,9 +139,9 @@ const checkRegionHeaders = () => {
     }
     // Checks/unchecks "All"
     if (active_parameters["state"].length < 51) {
-    	checkTheCheck("35_1000", false, true)
+        checkTheCheck("35_1000", false, true)
     } else {
-    	checkTheCheck("35_1000", true)
+        checkTheCheck("35_1000", true)
     }
 }
 
@@ -489,16 +505,17 @@ var scatterChart = new Chart(ctx, {
             }]
         },
         tooltips: {
+        	mode: 'point',
             callbacks: {
                 // Gives tooltip a bolded title
-                title: function(tooltipItems, data) {
-                    var index = tooltipItems[0].index;
-                    var datasetIndex = tooltipItems[0].datasetIndex;
-                    var dataset = data.datasets[datasetIndex];
-                    var school = dataset.data[index];
-                    return school.Name;
+                // title: function(tooltipItems, data) {
+                //     var index = tooltipItems[0].index;
+                //     var datasetIndex = tooltipItems[0].datasetIndex;
+                //     var dataset = data.datasets[datasetIndex];
+                //     var school = dataset.data[index];
+                //     return school.Name;
 
-                },
+                // },
                 // Fills tooltip with metadata
                 label: function(tooltipItems, data) {
                     var output = "";
@@ -508,19 +525,10 @@ var scatterChart = new Chart(ctx, {
                     var school = dataset.data[index];
 
                     // output += "Name: " + school.Name + "\n | \n";
-                    output += "Graduation Value Added: " + school.x + "\n | \n";
-                    output += "Retention Value Added: " + school.y + "\n | \n";
+                    output += "Name: " + school["Name"] + "\n | \n"
                     output += "USN Rank: " + school["US News Rank"] + "\n | \n";
                     output += "State: " + school.state + "\n | \n";
-                    output += "Region: " + school.region + "\n | \n";
-                    if (school.pubpriv == 1) {
-                        output += "Public" + "\n | \n";
-                    } else if (school.pubpriv == 2) {
-                        output += "Private" + "\n | \n";
-                    } else {
-                        output += "For-Profit" + "\n | \n";
-                    }
-                    output += school.nationalu ? `National University` : `Non-National University`;
+                    output += "Region: " + school.region;
                     return output;
                 }
             }
@@ -620,6 +628,34 @@ function filterUni() {
             }
         }
     }
+}
+
+// Makes a point big when hovering over table element
+const hBig = (set, idx) => {
+    console.log(set, idx)
+    idx = findIndex(set, idx)
+    if (idx >= 0) {
+        let meta = scatterChart.getDatasetMeta(set)
+        let rect = scatterChart.canvas.getBoundingClientRect()
+        let point = meta.data[idx].getCenterPoint()
+        let evt = new MouseEvent('mousemove', {
+            clientX: rect.left + point.x,
+            clientY: rect.top + point.y
+        })
+        let node = scatterChart.canvas
+        node.dispatchEvent(evt)
+    }
+}
+
+const findIndex = (set, idx) => {
+    let data = scatterChart.data.datasets[set]["data"]
+    for (let i = 0; i < data.length; i++) {
+        if (data[i]["UNITID"] == idx) {
+            return i
+        }
+    }
+    return -1
+
 }
 
 // Updates graph when input values are changed
