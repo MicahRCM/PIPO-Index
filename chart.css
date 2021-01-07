@@ -7,6 +7,11 @@ table {
     border-collapse: collapse;
 }
 
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
 table,
 tr,
 tbody,
@@ -251,5 +256,22 @@ input[type=number] {
 }
 
 .usnewsrank_input_c {
-	margin-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.mainContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: white;
+}
+
+@media only screen and (max-width: 1000px) {
+    .mainContainer {
+        width: 1000px;
+    }
+    body {
+    	overflow-x: scroll;
+    	width: 100%;
+    }
 }
