@@ -234,7 +234,6 @@ const updateParameters = (key, value, n, dontdraw) => {
             }
         }
     }
-    console.log(key)
     if (key == "state") {
         checkRegionHeaders()
     }
@@ -441,10 +440,7 @@ const formatChartJsObject = (label, color) => {
         backgroundColor: color,
         backgroundOutline: backgroundOutline,
         pointRadius: pointRadius,
-        pointHoverRadius: pointHoverRadius,
-        hitRadius: 1,
-        hoverBorderWidth: 5,
-        borderWidth: 0
+        pointHoverRadius: pointHoverRadius
     }
 }
 
@@ -635,7 +631,6 @@ function filterUni() {
 
 // Makes a point big when hovering over table element
 const hBig = (set, idx) => {
-    console.log(set, idx)
     idx = findIndex(set, idx)
     if (idx >= 0) {
         let meta = scatterChart.getDatasetMeta(set)
