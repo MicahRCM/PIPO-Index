@@ -433,7 +433,7 @@ const formatData = (dataset) => {
 const formatChartJsObject = (label, color) => {
     const backgroundOutline = 'black'
     const pointRadius = 3
-    const pointHoverRadius = 15
+    const pointHoverRadius = 10
     return {
         label: label,
         data: [],
@@ -505,6 +505,8 @@ var scatterChart = new Chart(ctx, {
         },
         tooltips: {
         	mode: 'point',
+        	borderColor: 'white',
+        	borderWidth: 2,
             callbacks: {
                 // Gives tooltip a bolded title
                 // title: function(tooltipItems, data) {
@@ -525,9 +527,8 @@ var scatterChart = new Chart(ctx, {
 
                     // output += "Name: " + school.Name + "\n | \n";
                     output += school["Name"] + "\n | \n"
-                    output += "USN Rank: " + school["US News Rank"] + "\n | \n";
-                    output += "State: " + school.state + "\n | \n";
-                    output += "Region: " + school.region;
+                    output += school.state + "\n | \n"
+                    output += "Value Added Rank: " + school["US News Rank"]
                     return output;
                 }
             }
