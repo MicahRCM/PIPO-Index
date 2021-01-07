@@ -510,15 +510,6 @@ var scatterChart = new Chart(ctx, {
         	borderColor: 'white',
         	borderWidth: 2,
             callbacks: {
-                // Gives tooltip a bolded title
-                // title: function(tooltipItems, data) {
-                //     var index = tooltipItems[0].index;
-                //     var datasetIndex = tooltipItems[0].datasetIndex;
-                //     var dataset = data.datasets[datasetIndex];
-                //     var school = dataset.data[index];
-                //     return school.Name;
-
-                // },
                 // Fills tooltip with metadata
                 label: function(tooltipItems, data) { 
                     var output = "";
@@ -545,7 +536,7 @@ var scatterChart = new Chart(ctx, {
                     rangeMin: {
                         // Format of min zoom range depends on scale type
                         x: -50,
-                        y: -40
+                        y: -25
                     },
                     rangeMax: {
                         // Format of max zoom range depends on scale type
@@ -565,7 +556,7 @@ var scatterChart = new Chart(ctx, {
                     rangeMin: {
                         // Format of min zoom range depends on scale type
                         x: -40,
-                        y: -30
+                        y: -25
                     },
                     rangeMax: {
                         // Format of max zoom range depends on scale type
