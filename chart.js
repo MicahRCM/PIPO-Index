@@ -344,7 +344,9 @@ const updateGraph = () => {
     }
     saved = filterRank(saved)
     populateTable(saved)
+    // Adds new dataset to static data (such as value added consistency slope)
     scatterChart.data.datasets = formatData(saved).concat(STATIC_SLOPES)
+    document.getElementById("myInput").value = ""
     scatterChart.update()
 
 }
@@ -518,7 +520,7 @@ var scatterChart = new Chart(ctx, {
 
                 // },
                 // Fills tooltip with metadata
-                label: function(tooltipItems, data) {
+                label: function(tooltipItems, data) { 
                     var output = "";
                     var index = tooltipItems.index;
                     var datasetIndex = tooltipItems.datasetIndex;
