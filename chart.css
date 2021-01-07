@@ -238,6 +238,12 @@ input[type=number] {
 
 .universityName {
     font-size: 14px;
+    width: 100%;
+}
+
+.universityName:hover {
+	text-decoration: underline;
+    color: #3b9df3;
 }
 
 .inputlabel {
@@ -265,6 +271,8 @@ input[type=number] {
     height: 100%;
     background: white;
 }
+
+
 
 @media only screen and (max-width: 1000px) {
     .mainContainer {

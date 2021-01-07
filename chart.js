@@ -9,6 +9,7 @@ const REGION_STATES = [{ "Region": "New England", "States": ["Connecticut", "Mai
 // CSS classes that don't cancel menu clicks
 const SAFE_CLASSES = ['.enabled_check', '.filter_item', '.filter_list', '.filter_item_container', '.usnewsrank_cont', '.usnewsrank_input_c', '.inputlabel', '.input_m']
 
+const ED_URL = "https://nces.ed.gov/collegenavigator/?id="
 /* Element creation section */
 
 const populateTable = (list) => {
@@ -33,6 +34,7 @@ const populateTable = (list) => {
             input.checked = false
         }
         tr.className = "tRC"
+        tdchild.onclick = function() { window.open(ED_URL + list[i].UNITID) }
         let c_i = giveDataIndex(list[i])
         tr.onmouseover = function() { hBig(c_i, list[i]["UNITID"]) }
         tdchild.className = "universityName"
@@ -256,7 +258,6 @@ const addItem = (id) => {
     let item = university_data.find(o => o.UNITID == id)
     item.y = item["VA Retention"]
     item.x = item["VA Graduation"]
-    item.url = "<a href=https://nces.ed.gov/collegenavigator/?id=" + item.ipedsid + ">" + item.Name + "</a>"
     let itemObj = {
         data: [item],
         backgroundColor: 'rgb(102, 115, 163)',
@@ -458,7 +459,7 @@ var scatterChart = new Chart(ctx, {
         datasets: [],
     },
     options: {
-    	maintainAspectRatio: false,
+        maintainAspectRatio: false,
         title: {
             display: true,
             text: "Value Added Matrix"
@@ -471,6 +472,9 @@ var scatterChart = new Chart(ctx, {
                         return !item.text.includes('hide');
                     }
                 }
+            },
+            options: {
+            	onClick: (e) => e.stopPropagation()
             }
         },
         showLines: false,
@@ -506,12 +510,12 @@ var scatterChart = new Chart(ctx, {
             }]
         },
         tooltips: {
-        	mode: 'point',
-        	borderColor: 'white',
-        	borderWidth: 2,
+            mode: 'point',
+            borderColor: 'white',
+            borderWidth: 2,
             callbacks: {
                 // Fills tooltip with metadata
-                label: function(tooltipItems, data) { 
+                label: function(tooltipItems, data) {
                     var output = "";
                     var index = tooltipItems.index;
                     var datasetIndex = tooltipItems.datasetIndex;
