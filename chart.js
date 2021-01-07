@@ -434,14 +434,17 @@ const formatData = (dataset) => {
 const formatChartJsObject = (label, color) => {
     const backgroundOutline = 'black'
     const pointRadius = 3
-    const pointHoverRadius = 8
+    const pointHoverRadius = 15
     return {
         label: label,
         data: [],
         backgroundColor: color,
         backgroundOutline: backgroundOutline,
         pointRadius: pointRadius,
-        pointHoverRadius
+        pointHoverRadius: pointHoverRadius,
+        hitRadius: 1,
+        hoverBorderWidth: 5,
+        borderWidth: 0
     }
 }
 
