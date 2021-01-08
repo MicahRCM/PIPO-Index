@@ -408,7 +408,6 @@ const formatData = (dataset) => {
     for (let i = 0; i < dataset.length; i++) {
         dataset[i].y = dataset[i]["VA Retention"]
         dataset[i].x = dataset[i]["VA Graduation"]
-        dataset[i].url = "<a href=https://nces.ed.gov/collegenavigator/?id=" + dataset[i].ipedsid + ">" + dataset[i].Name + "</a>"
         dataset[i].selected = true
         if (dataset[i]["nationalu"] == 1 && dataset[i]["pubpriv"] == 1) {
             National_Public["data"].push(dataset[i])
@@ -473,9 +472,7 @@ var scatterChart = new Chart(ctx, {
                     }
                 }
             },
-            options: {
-            	onClick: (e) => e.stopPropagation()
-            }
+            	onClick: (e) => e.stopPropagation() 
         },
         showLines: false,
         scales: {
