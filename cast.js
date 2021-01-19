@@ -11,36 +11,13 @@ let active_arrow = {
 }
 
 for (let i = 0; i < data_1.length; i++) {
+    data_1[i].N = data_1[i].Name
     data_1[i].Name = "<a href=https://nces.ed.gov/collegenavigator/?id=" + data_1[i].UNITID + ">" + data_1[i].Name + "</a>"
 }
 
 for (let i = 0; i < data_2.length; i++) {
     data_2[i].Name = "<a href=https://nces.ed.gov/collegenavigator/?id=" + data_2[i].UNITID + ">" + data_2[i].Name + "</a>"
 
-}
-
-$(function() {
-    $table.bootstrapTable({ data: data_1 })
-})
-
-function loadData(option) {
-    if (option === `national`) {
-        document.getElementById("national").className = "btn btn-primary"
-        document.getElementById("non_national").className = "btn btn-outline-primary"
-        $table.bootstrapTable("load", data_1)
-        $table.bootstrapTable('updateColumnTitle', {
-            field: 'US News Rank',
-            title: 'US News Rank'
-        })
-    } else if (option === `non-national`) {
-        document.getElementById("non_national").className = "btn btn-primary"
-        document.getElementById("national").className = "btn btn-outline-primary"
-        $table.bootstrapTable("load", data_2)
-        $table.bootstrapTable('updateColumnTitle', {
-            field: 'US News Rank',
-            title: 'USN Rank In Category'
-        })
-    }
 }
 
 function filterUni() {
@@ -72,7 +49,7 @@ const loadValues = (data) => {
         td0.innerHTML = data[i]["Name"]
         td0.className = "tdItem"
         tr.appendChild(td0)
-        for (let j = 2; j < Object.keys(data[i]).length; j++) {
+        for (let j = 2; j < Object.keys(data[i]).length - 1; j++) {
             let keys = Object.keys(data[i])
             let td = document.createElement("td")
             td.className = "tdI2"
@@ -87,16 +64,25 @@ const sortValues = (key, id) => {
     let lowToHigh = arrowClass(id)
     let data = data_1
     let arr
-    if (lowToHigh) {
-        arr = data.sort((a, b) => parseInt(a[key]) - parseInt(b[key]));
+    if (key !== 'N') {
+        if (lowToHigh) {
+            arr = data.sort((a, b) => parseInt(a[key]) - parseInt(b[key]));
+        } else {
+            arr = data.sort((a, b) => parseInt(b[key]) - parseInt(a[key]));
+        }
     } else {
-        arr = data.sort((a, b) => parseInt(b[key]) - parseInt(a[key]));
+        if (lowToHigh) {
+            arr = data.sort((a, b) => b[key].localeCompare(a[key]));
+        } else {
+        	arr = data.sort((a, b) => a[key].localeCompare(b[key]));
+        }
     }
+    console.log(arr)
     loadValues(arr)
 }
 
 const arrowClass = (id) => {
-    for (let i = 2; i < 8; i++) {
+    for (let i = 1; i < 8; i++) {
         let itemsUp = document.getElementById(i + "_" + "item_up")
         let itemsDown = document.getElementById(i + "_" + "item_down")
         itemsUp.className = "fas fa-long-arrow-alt-up"
@@ -120,4 +106,4 @@ const arrowClass = (id) => {
     }
 }
 
-loadValues(data_1)
+sortValues("N", 1)
