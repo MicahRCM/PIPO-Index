@@ -1,7 +1,118 @@
+table,
+tbody,
+th {
+    table-layout: auto;
+}
+
 .fixed-table-container {
-	font-weight: bold !important;
+    font-weight: bold !important;
 }
 
 .head-button-container {
-	margin-top: 15px;
+    margin-top: 15px;
+}
+
+
+/* Table styling */
+#myInput {
+    background-image: url('https://www.w3schools.com/css/searchicon.png');
+    /* Add a search icon to input */
+    background-position: 10px 12px;
+    /* Position the search icon */
+    background-repeat: no-repeat;
+    /* Do not repeat the icon image */
+    width: 100%;
+    /* Full-width */
+    font-size: 16px;
+    /* Increase font-size */
+    padding: 12px 20px 12px 40px;
+    /* Add some padding */
+    border: 1px solid #ddd;
+    /* Add a grey border */
+    margin-bottom: 12px;
+    /* Add some space below the input */
+}
+
+#uniTable {
+    border-collapse: collapse;
+    /* Collapse borders */
+    width: 100%;
+    /* Full-width */
+    font-size: 18px;
+    /* Increase font-size */
+}
+
+#uniTable th,
+#uniTable td {
+    text-align: left;
+    /* Left-align text */
+}
+
+#uniTable tr {
+    /* Add a bottom border to all table rows */
+    border-bottom: 2px solid #1f2739;
+}
+
+.uniTable {
+    height: 700px;
+    overflow-y: scroll;
+}
+
+.tritem {
+    width: 200px;
+    font-size: 14px;
+    background-color: #1f2739;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    padding-left: 2%;
+    text-align: left;
+    color: #185785;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.tritem:hover {
+	cursor: pointer;
+	background-color: #202c46;
+}
+
+.tdItem {
+    padding: 2%;
+    font-size: 14px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.uniTableHeader {}
+
+.iconContainer {
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+}
+
+a {
+    color: #FB667a;
+}
+
+.uniTable tr:nth-child(odd) {
+    background-color: #323C50;
+}
+
+.uniTable tr:nth-child(even) {
+    background-color: #2c3446;
+}
+
+.tdI2 {
+    color: #bd9be4;
+    border-left: 2px solid #1f2739;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    padding-left: 2%;
+    text-align: left;
+    font-size: .9em;
+}
+
+.activeArrow {
+	color: #a0a05d;
 }
