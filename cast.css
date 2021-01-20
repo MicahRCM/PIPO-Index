@@ -45,6 +45,10 @@ th {
 #uniTable th,
 #uniTable td {
     text-align: left;
+    vertical-align: middle;
+    overflow: hidden;
+    height: 75px;
+    padding: 0% 2%;
     /* Left-align text */
 }
 
@@ -58,8 +62,12 @@ th {
     overflow-y: scroll;
 }
 
+#uniTableAll {
+	width: 1200px;
+}
+
 .tritem {
-    width: 200px;
+    width: 150px;
     font-size: 14px;
     background-color: #1f2739;
     padding-bottom: 2%;
@@ -74,6 +82,14 @@ th {
 .tritem:hover {
 	cursor: pointer;
 	background-color: #202c46;
+}
+
+#tritem1 {
+	width: 220px;
+}
+
+.sm_tritem {
+	width: 120px;
 }
 
 .tdItem {
@@ -115,4 +131,38 @@ a {
 
 .activeArrow {
 	color: #a0a05d;
+}
+
+
+.paginationContainer {
+	text-align: center;
+	margin: 15px;
+	user-select: none;
+}
+
+.pageNumberContainer {
+	padding: 15px 0px;
+	display: inline-block;
+	border: 1px solid grey;
+	border-radius: 2px;
+	margin-right: 5px;
+	width: 40px;
+}
+
+.pageNumberContainer:hover {
+	cursor: pointer;
+	background: #534e6d;
+}
+
+.pageNumber {
+	color: white;
+	margin: 0 auto;
+}
+
+.activePage {
+	background: #60b7b7;
+}
+
+.activePage:hover {
+	background: #60b7b7;	
 }

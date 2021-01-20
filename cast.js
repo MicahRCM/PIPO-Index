@@ -10,6 +10,11 @@ let active_arrow = {
     up: true
 }
 
+let pagination = {
+    current: 2,
+    perPage: 25
+}
+
 for (let i = 0; i < data_1.length; i++) {
     data_1[i].N = data_1[i].Name
     data_1[i].Name = "<a href=https://nces.ed.gov/collegenavigator/?id=" + data_1[i].UNITID + ">" + data_1[i].Name + "</a>"
@@ -20,7 +25,7 @@ for (let i = 0; i < data_2.length; i++) {
 
 }
 
-function filterUni() {
+const filterUni = () => {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
@@ -37,6 +42,26 @@ function filterUni() {
             }
         }
     }
+}
+
+const paginateUni = (page, n = pagination.perPage) => {
+    pagination.current = page
+    let input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("uniTable");
+    tr = table.getElementsByTagName("tr");
+    for (let i = 0; i < tr.length; i++) {
+        if (i < (page - 1) * 25 || i >= page * n) {
+            td = tr[i].getElementsByClassName("tdItem")[0];
+            if (td) {
+                tr[i].style.display = "none";
+            }
+        } else {
+            tr[i].style.display = ""
+        }
+    }
+    genPageElements()
 }
 
 const loadValues = (data) => {
@@ -74,10 +99,9 @@ const sortValues = (key, id) => {
         if (lowToHigh) {
             arr = data.sort((a, b) => b[key].localeCompare(a[key]));
         } else {
-        	arr = data.sort((a, b) => a[key].localeCompare(b[key]));
+            arr = data.sort((a, b) => a[key].localeCompare(b[key]));
         }
     }
-    console.log(arr)
     loadValues(arr)
 }
 
@@ -89,7 +113,6 @@ const arrowClass = (id) => {
         itemsDown.className = "fas fa-long-arrow-alt-down"
     }
     let up = false
-    console.log(id, active_arrow)
     if (id != active_arrow.id || (id == active_arrow.id && active_arrow.up == false)) {
         up = true
     }
@@ -106,4 +129,73 @@ const arrowClass = (id) => {
     }
 }
 
+// Element Generation
+
+// Pagination Container
+
+const genPageElements = () => {
+    console.log("hit")
+    let items = document.getElementById("uniTable").getElementsByTagName("tr").length
+    let lastPage = Math.ceil(items / pagination.perPage)
+    let c = document.getElementById("paginationContainer")
+    c.innerHTML = ""
+    // Lowest id passed is 1 to prevent paginating to zero
+    gimmeArrows("❮❮", c, 1)
+    gimmeArrows("❮", c, pagination.current - 1 > 1 ? pagination.current - 1 : 1)
+    if (lastPage < 4) {
+        for (let i = 0; i < lastPage; i++) {
+            genPageBoxes(i)
+        }
+    } else {
+        console.log(pagination.current)
+        if (pagination.current > 1 && pagination.current < lastPage) {
+            console.log(pagination.current)
+            for (let i = -1; i < 2; i++) {
+                genPageBoxes(pagination.current + i)
+            }
+        }
+        if (pagination.current == 1 && pagination.current !== lastPage) {
+        	for (let i = 1; i < 4; i++) {
+        		genPageBoxes(i)	
+        	}
+        }
+        if (pagination.current == lastPage) {
+        	for (let i = lastPage - 2; i < lastPage + 1; i++) {
+        		genPageBoxes(i)
+        	}
+        }
+    }
+    gimmeArrows("❯", c, pagination.current + 1 < lastPage ? pagination.current + 1 : lastPage)
+    gimmeArrows("❯❯", c, lastPage)
+}
+
+const genPageBoxes = (n) => {
+    console.log(n)
+    let c = document.getElementById("paginationContainer")
+    c.appendChild(gimmeBoxes(n))
+}
+
+const gimmeArrows = (content, element, id) => {
+    let div = gimmeBoxes(id, content)
+    element.appendChild(div)
+}
+
+const gimmeBoxes = (n, text) => {
+    let div = document.createElement("div")
+    div.className = "pageNumberContainer"
+    div.id = text ? n + "_page_arrow" : n + "_page"
+    div.onclick = function() { paginateUni(parseInt(this.id)) }
+    let span = document.createElement("span")
+    span.className = "pageNumber"
+    // Custom text added if specified
+    span.innerHTML = text ? text : n
+    div.appendChild(span)
+    if (pagination.current == n && !text) {
+    	div.classList.add("activePage")
+    }
+    return div
+}
+
+
 sortValues("N", 1)
+paginateUni(1)

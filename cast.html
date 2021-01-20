@@ -31,21 +31,26 @@
                         <tr class="uniTableHeader" id="uniTableHeader">
                             <th class="tritem" id="tritem1" onclick="sortValues(`N`, 1)"> University <div class="iconContainer"> <i id="1_item_up" class="fas fa-long-arrow-alt-up"></i> <i id="1_item_down" class="fas fa-long-arrow-alt-down"></i> </div> </th>
                             <th class="tritem" id="tritem2" onclick="sortValues(`Cost Average`, 2)"> Cost Average <div class="iconContainer"> <i id="2_item_up" class="fas fa-long-arrow-alt-up"></i> <i id="2_item_down" class="fas fa-long-arrow-alt-down"></i> </div> </th>
-                            <th class="tritem" id="tritem3" onclick="sortValues(`Cost Band1`, 3)"> Cost Band1 <div class="iconContainer"> <i id="3_item_up" class="fas fa-long-arrow-alt-up"></i> <i id="3_item_down" class="fas fa-long-arrow-alt-down"></i> </div>
+                            <th class="tritem sm_tritem" id="tritem3" onclick="sortValues(`Cost Band1`, 3)"> $0-30K <div class="iconContainer"> <i id="3_item_up" class="fas fa-long-arrow-alt-up"></i> <i id="3_item_down" class="fas fa-long-arrow-alt-down"></i> </div>
                             </th>
-                            <th class="tritem" id="tritem4" onclick="sortValues(`Cost Band2`, 4)"> Cost Band2 <div class="iconContainer"> <i id="4_item_up" class="fas fa-long-arrow-alt-up"></i> <i id="4_item_down" class="fas fa-long-arrow-alt-down"></i> </div>
+                            <th class="tritem sm_tritem" id="tritem4" onclick="sortValues(`Cost Band2`, 4)"> $30K-48K <div class="iconContainer"> <i id="4_item_up" class="fas fa-long-arrow-alt-up"></i> <i id="4_item_down" class="fas fa-long-arrow-alt-down"></i> </div>
                             </th>
-                            <th class="tritem" id="tritem5" onclick="sortValues(`Cost Band3`, 5)"> Cost Band3 <div class="iconContainer"> <i id="5_item_up" class="fas fa-long-arrow-alt-up"></i> <i id="5_item_down" class="fas fa-long-arrow-alt-down"></i> </div>
+                            <th class="tritem sm_tritem" id="tritem5" onclick="sortValues(`Cost Band3`, 5)"> $48K-75K <div class="iconContainer"> <i id="5_item_up" class="fas fa-long-arrow-alt-up"></i> <i id="5_item_down" class="fas fa-long-arrow-alt-down"></i> </div>
                             </th>
-                            <th class="tritem" id="tritem6" onclick="sortValues(`Cost Band4`, 6)"> Cost Band4 <div class="iconContainer"> <i id="6_item_up" class="fas fa-long-arrow-alt-up"></i> <i id="6_item_down" class="fas fa-long-arrow-alt-down"></i> </div>
+                            <th class="tritem sm_tritem" id="tritem6" onclick="sortValues(`Cost Band4`, 6)"> $75K-100K <div class="iconContainer"> <i id="6_item_up" class="fas fa-long-arrow-alt-up"></i> <i id="6_item_down" class="fas fa-long-arrow-alt-down"></i> </div>
                             </th>
-                            <th class="tritem" id="tritem7" onclick="sortValues(`Cost Band5`, 7)"> Cost Band5 <div class="iconContainer"> <i id="7_item_up" class="fas fa-long-arrow-alt-up"></i> <i id="7_item_down" class="fas fa-long-arrow-alt-down"></i> </div>
+                            <th class="tritem sm_tritem" id="tritem7" onclick="sortValues(`Cost Band5`, 7)"> $110K+ <div class="iconContainer"> <i id="7_item_up" class="fas fa-long-arrow-alt-up"></i> <i id="7_item_down" class="fas fa-long-arrow-alt-down"></i> </div>
                             </th>
                         </tr>
                     </thead>
                     <tbody id="uniTable" class="uniTable">
                     </tbody>
                 </table>
+                <div class="paginationContainer" id="paginationContainer">
+                    <div class="pageNumberContainer" onclick="paginateUni(1,25)">
+                        <span class="pageNumber"> 1 </span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
