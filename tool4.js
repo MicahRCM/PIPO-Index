@@ -49,7 +49,6 @@ const populateTable = (list) => {
             }
         } else {
             if (list[i].Name) {
-            	console.log(list[i].Name + " (No data)")
                 tdchild.innerHTML = list[i].Name + " (No data)"
                 tr.className = ("noData")
             }
@@ -563,12 +562,12 @@ var scatterChart = new Chart(ctx, {
                     rangeMin: {
                         // Format of min zoom range depends on scale type
                         x: -2000,
-                        y: 20
+                        y: -40
                     },
                     rangeMax: {
                         // Format of max zoom range depends on scale type
                         x: 60000,
-                        y: 90
+                        y: 40
                     },
                     // On category scale, factor of pan velocity
                     speed: 20,
@@ -583,12 +582,12 @@ var scatterChart = new Chart(ctx, {
                     rangeMin: {
                         // Format of min zoom range depends on scale type
                         x: -2000,
-                        y: 20
+                        y: -40
                     },
                     rangeMax: {
                         // Format of max zoom range depends on scale type
                         x: 60000,
-                        y: 90
+                        y: 40
                     },
 
                     // Speed of zoom via mouse wheel
