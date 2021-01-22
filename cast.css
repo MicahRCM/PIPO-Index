@@ -74,8 +74,8 @@ th {
     padding-top: 2%;
     padding-left: 2%;
     text-align: left;
-    color: #185785;
-    font-size: 1em;
+    color: #5a91b9;
+    font-size: 1.1em;
     font-weight: bold;
 }
 
@@ -108,7 +108,7 @@ th {
 }
 
 a {
-    color: #FB667a;
+    color: #81b9bf;
 }
 
 .uniTable tr:nth-child(odd) {
@@ -120,7 +120,7 @@ a {
 }
 
 .tdI2 {
-    color: #bd9be4;
+    color: #f8f9f0;
     border-left: 2px solid #1f2739;
     padding-bottom: 2%;
     padding-top: 2%;
