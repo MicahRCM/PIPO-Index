@@ -34,7 +34,7 @@ const populateTable = (list) => {
             input.checked = false
         }
         tr.className = "tRC"
-        tdchild.onclick = function() { window.open(ED_URL + list[i].UNITID) }
+        tdchild.onclick = function() { newTab(list[i].UNITID) }
         let c_i = giveDataIndex(list[i])
         tr.onmouseover = function() { hBig(c_i, list[i]["UNITID"]) }
         tdchild.className = "universityName"
@@ -603,6 +603,12 @@ window.addEventListener('mousedown', e => {
     }
 
 });
+
+// Opens target in new tab
+const newTab = (id) => {
+	window.open(ED_URL + id, "_blank")
+}
+
 
 
 function filterUni() {

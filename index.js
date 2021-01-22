@@ -7,11 +7,11 @@
  data_2 = JSON.parse(data_2)
 
  for (let i = 0; i < data_1.length; i++) {
- 	data_1[i].Name = "<a href=https://nces.ed.gov/collegenavigator/?id=" + data_1[i].UNITID + ">" + data_1[i].Name + "</a>"
+ 	data_1[i].Name = "<a href=https://nces.ed.gov/collegenavigator/?id=" + data_1[i].UNITID + ` target="_blank" rel="noopener noreferrer">` + data_1[i].Name + "</a>"
  }
 
  for (let i = 0; i < data_2.length; i++) {
- 	data_2[i].Name = "<a href=https://nces.ed.gov/collegenavigator/?id=" + data_2[i].UNITID + ">" + data_2[i].Name + "</a>"
+ 	data_2[i].Name = "<a href=https://nces.ed.gov/collegenavigator/?id=" + data_2[i].UNITID + ` target="_blank" rel="noopener noreferrer">` + data_2[i].Name + "</a>"
 
  }
 

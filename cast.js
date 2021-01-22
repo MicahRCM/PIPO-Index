@@ -14,7 +14,7 @@ let pagination = {
 
 for (let i = 0; i < data_1.length; i++) {
     data_1[i].N = data_1[i].Name
-    data_1[i].Name = "<a href=https://nces.ed.gov/collegenavigator/?id=" + data_1[i].UNITID + ">" + data_1[i].Name + "</a>"
+    data_1[i].Name = "<a href=https://nces.ed.gov/collegenavigator/?id=" + data_1[i].UNITID + ` target="_blank" rel="noopener noreferrer">` + data_1[i].Name + "</a>"
 }
 
 const filterUni = () => {
