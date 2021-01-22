@@ -17,6 +17,8 @@ let axes = {
     y: "VA Distance"
 }
 
+let incomeRange = "Average Cost Overall"
+
 const populateTable = (list) => {
     let marked = tableData(list)
     list = marked[0]
@@ -401,6 +403,9 @@ const filterRank = (data) => {
 
 const incomeFilter = (id, check) => {
     let checkids = ["69_101", "69_102", "69_103", "69_104", "69_105", "69_106"]
+    console.log(check)
+    incomeRange = document.getElementById(check + `_t`).innerHTML;
+    scatterChart.options.scales.xAxes[0].scaleLabel.labelString = 'Average Cost for Family Incomes of ' + incomeRange
     axes.x = id
     updateGraph()
     checkids.forEach((c) => {
@@ -510,7 +515,8 @@ var scatterChart = new Chart(ctx, {
                     fontSize: 16
                 },
                 ticks: {
-                    beginAtZero: false,
+                    suggestedMin: -40,
+                    suggestedMax: 40,
                     fontSize: 14
                 }
             }],
@@ -520,14 +526,15 @@ var scatterChart = new Chart(ctx, {
                 display: true,
                 scaleLabel: {
                     display: true,
-                    labelString: 'Average Cost',
+                    labelString: 'Average Cost for Family Incomes of ' + incomeRange,
                     fontSize: 16
                 },
                 gridLines: {
                     display: true
                 },
                 ticks: {
-                    beginAtZero: true,
+                    suggestedMin: 0,
+                    suggestedMax: 50000,
                     fontSize: 14,
                 }
             }]
@@ -544,10 +551,10 @@ var scatterChart = new Chart(ctx, {
                     var datasetIndex = tooltipItems.datasetIndex;
                     var dataset = data.datasets[datasetIndex];
                     var school = dataset.data[index];
-
                     // output += "Name: " + school.Name + "\n | \n";
                     output += school["Name"] + "\n | \n"
-                    output += school.state
+                    output += school.state + "\n | \n"
+                    output += `Income Band Cost: $` + school[axes["x"]]
                     return output;
                 }
             }
