@@ -401,13 +401,16 @@ const filterRank = (data) => {
     }
 }
 
+// Filters income range data based on element id passed in
 const incomeFilter = (id, check) => {
     let checkids = ["69_101", "69_102", "69_103", "69_104", "69_105", "69_106"]
-    console.log(check)
+    // Getting current income range to display as text on x-axis
     incomeRange = document.getElementById(check + `_t`).innerHTML;
+    // Assigning text to label string on x-axis
     scatterChart.options.scales.xAxes[0].scaleLabel.labelString = 'Average Cost for Family Incomes of ' + incomeRange
     axes.x = id
     updateGraph()
+    // Unchecks everything that isn't selected and selects relevant income check mark
     checkids.forEach((c) => {
     	if (c !== check) {
     		checkTheCheck(c, false, true)
