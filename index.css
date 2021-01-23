@@ -71,7 +71,8 @@ a {
 	width: 100%;
 	padding: 20px;
 	left: 0px;
-}
+	z-index: 10;
+	background: white;
 
 .dropContent {
 	margin: 0 auto;
