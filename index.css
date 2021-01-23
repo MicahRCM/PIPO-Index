@@ -1,7 +1,122 @@
-.fixed-table-container {
-	font-weight: bold !important;
+#header {
+	font: 700 18px/35px 'Source Sans Pro',sans-serif;
+	position: fixed;
+	border-bottom: 1px solid #ececed;
+	background: #fff;
+	height: 100px;
+	width: 100%;
+	top: 0;
+	left: 0;
 }
 
-.head-button-container {
-	margin-top: 15px;
+a {
+	text-decoration: none;
+}
+
+.globalContainer {
+	width: calc(100% - 50px);
+	max-width: 1300px;
+	margin: 0 auto;
+	padding: 0px 25px;
+	position: relative;
+	height: 100%;
+}
+
+
+.logoImg {
+	height: 100px;
+}
+
+.logoContainer {
+	display: inline-block;
+}
+
+.navbar {
+	display: inline-block;
+	position: absolute;
+	top: 32px;
+	right: 80px;
+}
+
+.navbarItem {
+	padding: 6px 30px;
+	color: black;
+}
+
+.navbarItemContainer {
+	color: black;
+	display: table-cell;
+	border-right: 2px solid #1a8dc7
+}
+
+.navbarItemContainer:hover {
+	background: #1a8dc7;
+}
+
+.navbarItemContainer:hover > .navbarItem {
+	color: white;
+}
+
+.navSelected {
+	background: #1a8dc7;
+}
+
+.navSelected > .navbarItem {
+	color: white;
+}
+
+.headerDrop {
+	position: fixed;
+	top: 100px;
+	width: 100%;
+	padding: 20px;
+	left: 0px;
+}
+
+.dropContent {
+	margin: 0 auto;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #ececed;
+	z-index: 2;
+	display: none;
+}
+
+.showDrop {
+	display: block;
+}
+
+.dropCol {
+	display: inline-block;
+	margin-left: Calc(25% - 50px);
+}
+
+.dropItem {
+	margin-top: 20px;
+	font: 700 18px/35px 'Source Sans Pro',sans-serif;
+	padding-right: 50px;
+	border-bottom: 1px solid #1a8dc7;
+}
+
+.dropText {
+}
+
+.dropDesc_C {
+	width: 250px;
+	margin-top: 10px;
+	position: absolute;
+	top: 35px;
+}
+
+.dropContainer {
+	height: 100px;
+	position: relative;
+}
+
+.dropContainer:hover {
+	color: #1a8dc7;
+	cursor: pointer;
+}
+
+.dropContainer:hover > .dropItem {
+	border-bottom: 2px solid #1a8dc7;
 }

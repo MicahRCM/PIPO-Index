@@ -5,43 +5,90 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>PIPO Index</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i|Source+Code+Pro:200,400,700|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <title>Higher Ed Labs</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 
 <body>
-    <div style="position: fixed; width: 100%; height: 100%; background: white; overflow: scroll;">
-        <div style="margin: 0 auto; width: 60%; min-width: 800px; max-width: 1200px;">
-            <div id="toolbar">
-                <button id="national" class="btn btn-primary" enabled onclick="loadData(`national`)">
-                    National
-                </button>
-                <button id="non_national" class="btn btn-outline-primary" enabled onclick="loadData(`non-national`)">
-                    Non-National
-                </button>
+    <div id="header">
+        <div class="globalContainer">
+            <div class="logoContainer">
+                <img src="./assets/logo.png" class="logoImg">
             </div>
-            <table id="table" data-toggle="table" data-search="true" data-pagination="true" data-toolbar="#toolbar" data-page-list="[10, 25, 50, 100, 200, All]">
-                <thead>
-                    <tr>
-                        <th data-sortable="true" data-field="Rank">Rank</th>
-                        <th data-sortable="true" data-field="Name">Name</th>
-                        <th data-sortable="true" data-field="VA Retention">Value Added Retention</th>
-                        <th data-sortable="true" data-field="VA Graduation">VA Graduation</th>
-                        <th data-sortable="true" data-field="Graduation Rate">Graduation Rate</th>
-                        <th data-sortable="true" data-field="US News Rank"> US News Rank</th>
-                    </tr>
-                </thead>
-            </table>
+            <div class="navbar">
+                <div class="navbarItemContainer" onclick="showDrop(`dataDrop`)" id="dataDrop_1">
+                    <a class="navbarItem" href="#">
+                        <span class="navbarItemText"> DATA </span>
+                    </a>
+                </div>
+                <div class="navbarItemContainer" onclick="showDrop(`toolDrop`)" id="toolDrop_1">
+                    <a class="navbarItem" href="#">
+                        <span class="navbarItemText"> TOOLS </span>
+                    </a>
+                </div>
+                <div class="navbarItemContainer" onclick="showDrop(`researchDrop`)" id="researchDrop_1">
+                    <a class="navbarItem" href="#">
+                        <span class="navbarItemText"> RESEARCH </span>
+                    </a>
+                </div>
+                <div class="navbarItemContainer" onclick="showDrop(`aboutDrop`)" id="aboutDrop_1">
+                    <a class="navbarItem" href="#">
+                        <span class="navbarItemText"> ABOUT </span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
+    <div class="headerDrop">
+        <div class="dropContent" id="dataDrop">
+        </div>
+        <div class="dropContent" id="toolDrop">
+            <div class="dropCol">
+                <div class="dropContainer" onclick="window.open(`./tool1.html`)">
+                    <div class="dropItem">
+                        <span class="dropText"> Value-Added Index (VAI) </span>
+                    </div>
+                    <div class="dropDesc_C">
+                        <span class="dropDesc"> Index of performance for value-added retention and graduation </span>
+                    </div>
+                </div>
+                <div class="dropContainer" onclick="window.open(`./chart.html`)">
+                    <div class="dropItem">
+                        <span href="#" class="dropText"> Value-Added Matrix (VAM) </span>
+                    </div>
+                    <div class="dropDesc_C">
+                        <span class="dropDesc"> Plotting performance of all the schools for value-added retention and graduation </span>
+                    </div>
+                </div>
+            </div>
+            <div class="dropCol">
+                <div class="dropContainer" onclick="window.open(`./tool4.html`)">
+                    <div class="dropItem">
+                        <span href="#" class="dropText"> Value-Added and Cost (VAC) </span>
+                    </div>
+                    <div class="dropDesc_C">
+                        <span class="dropDesc"> Comparison of Value-Added score and cost of schools </span>
+                    </div>
+                </div>
+                <div class="dropContainer" onclick="window.open(`./cast.html`)">
+                    <div class="dropItem">
+                        <span href="#" class="dropText"> Cost After Scholarship (CAS) </span>
+                    </div>
+                    <div class="dropDesc_C">
+                        <span class="dropDesc"> Average cost of schools after accounting for need and merit-based scholarships </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dropContent" id="researchDrop">
+        </div>
+        <div class="dropContent" id="aboutDrop">
+        </div>
+    </div>
+    </div>
     <script type="text/javascript" src="index.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script>
 </body>
 
 </html>
