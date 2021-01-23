@@ -69,10 +69,10 @@ a {
 	position: fixed;
 	top: 100px;
 	width: 100%;
-	padding: 20px;
 	left: 0px;
 	z-index: 10;
 	background: white;
+	display: none;
 }
 
 .dropContent {
@@ -121,4 +121,12 @@ a {
 
 .dropContainer:hover > .dropItem {
 	border-bottom: 2px solid #1a8dc7;
+}
+
+.makeOpaque {
+	background: rgba(26, 141, 199, .25);
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
 }
