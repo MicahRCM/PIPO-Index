@@ -124,7 +124,7 @@ a {
 }
 
 .makeOpaque {
-	background: rgba(26, 141, 199, .25);
+	background: rgba(156, 215, 245, .82);
 	position: fixed;
 	height: 100%;
 	width: 100%;

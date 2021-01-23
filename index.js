@@ -1,3 +1,5 @@
+let lastid = ""
+
 const showDrop = (id) => {
     let ids = [`dataDrop`, `toolDrop`, `researchDrop`, `aboutDrop`]
     ids.forEach((n) => {
@@ -13,5 +15,12 @@ const showDrop = (id) => {
     	document.getElementById(id + "_1").className = "navbarItemContainer"	
     	document.getElementById(`headerDrop`).className = "headerDrop"
     }
+    lastid = id
     element.selected = !element.selected
 }
+
+window.addEventListener('mousedown', e => {
+    if (event.target.matches('.makeOpaque')) {
+    	showDrop(lastid)
+    }
+});
