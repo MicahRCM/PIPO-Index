@@ -4,7 +4,7 @@ let regions = ["Far West", "Great Lakes", "Mid East", "New England", "Plains", "
 let states = ["Armed Forces America", "Armed Forces", "Alaska", "Alabama", "Armed Forces Pacific", "Arkansas", "Arizona", "California", "Colorado", "Connecticut", "Washington DC", "Delaware", "Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands", "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming"]
 
 $(function(){
-  $("#nav-placeholder").load("index.html");
+  $("#nav-placeholder").load("toolbar.html");
 });
 
 const STATIC_SLOPES = []

@@ -1,5 +1,5 @@
 $(function(){
-  $("#nav-placeholder").load("index.html");
+  $("#nav-placeholder").load("toolbar.html");
 });
 
 var $table = $('#table')

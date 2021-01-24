@@ -3,7 +3,7 @@ var data_1 = `[{"Name":"Abilene Christian University","US News Rank":12,"UNITID"
 data_1 = JSON.parse(data_1)
 
 $(function(){
-  $("#nav-placeholder").load("index.html");
+  $("#nav-placeholder").load("toolbar.html");
 });
 
 let active_arrow = {

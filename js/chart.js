@@ -3,7 +3,7 @@ let regions = ["Far West", "Great Lakes", "Mid East", "New England", "Plains", "
 let states = ["Armed Forces America", "Armed Forces", "Alaska", "Alabama", "Armed Forces Pacific", "Arkansas", "Arizona", "California", "Colorado", "Connecticut", "Washington DC", "Delaware", "Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands", "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming"]
 
 $(function(){
-  $("#nav-placeholder").load("index.html");
+  $("#nav-placeholder").load("toolbar.html");
 });
 
 const STATIC_SLOPES = [{ data: [{ x: 0, y: -25 }, { x: 0, y: 20 }], borderColor: 'rgb(0,0,0)', borderWidth: 2, pointBackgroundColor: ['#000', '#00bcd6', '#d300d6'], pointBorderColor: ['#000', '#00bcd6', '#d300d6'], pointRadius: 0, pointHoverRadius: 0, fill: true, tension: 0, showLine: true, label: "hide" }, { data: [{ x: -50, y: 0 }, { x: 40, y: 0 }], borderColor: 'rgb(0,0,0)', borderWidth: 2, pointBackgroundColor: ['#000', '#00bcd6', '#d300d6'], pointBorderColor: ['#000', '#00bcd6', '#d300d6'], pointRadius: 0, pointHoverRadius: 0, fill: false, tension: 0, showLine: true, label: "hide" }, { data: [{ x: -50, y: -22.7 }, { x: 40, y: 18.16 }], borderColor: 'grey', borderWidth: 4, pointRadius: 0, pointHoverRadius: 0, fill: false, tension: 0, showLine: true, label: "Value-Add Consistency" }]
