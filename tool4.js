@@ -3,6 +3,10 @@ let university_data = [{"Name":"Abilene Christian University","US News Rank":12,
 let regions = ["Far West", "Great Lakes", "Mid East", "New England", "Plains", "Rocky Mountains", "Service School", "Southeast", "Southwest"]
 let states = ["Armed Forces America", "Armed Forces", "Alaska", "Alabama", "Armed Forces Pacific", "Arkansas", "Arizona", "California", "Colorado", "Connecticut", "Washington DC", "Delaware", "Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands", "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming"]
 
+$(function(){
+  $("#nav-placeholder").load("index.html");
+});
+
 const STATIC_SLOPES = []
 
 const REGION_STATES = [{ "Region": "New England", "States": ["Connecticut", "Maine", "Massachusetts", "New Hampshire", "Rhode Island", "Vermont"] }, { "Region": "Mid East", "States": ["Delaware", "Washington DC", "Maryland", "New Jersey", "New York", "Pennsylvania"] }, { "Region": "Great Lakes", "States": ["Illinois", "Indiana", "Michigan", "Ohio", "Wisconsin"] }, { "Region": "Plains", "States": ["Iowa", "Kansas", "Minnesota", "Missouri", "Nebraska", "North Dakota", "South Dakota"] }, { "Region": "Southeast", "States": ["Alabama", "Arkansas", "Florida", "Georgia", "Kentucky", "Louisiana", "Mississippi", "North Carolina", "South Carolina", "Tennessee", "Virginia", "West Virginia"] }, { "Region": "Southwest", "States": ["Arizona", "New Mexico", "Oklahoma", "Texas"] }, { "Region": "Rocky Mountains", "States": ["Colorado", "Idaho", "Montana", "Utah", "Wyoming"] }, { "Region": "Far West", "States": ["Alaska", "California", "Hawaii", "Nevada", "Oregon", "Washington"] }]
