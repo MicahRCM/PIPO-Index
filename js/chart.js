@@ -198,7 +198,7 @@ const titleGen = () => {
     if (a.I.length == 2) {
         title += "Public and Private "
     } else if (a.I.length == 1) {
-    	a.I[0] == 1 ? title += "Public" : title += "Private"
+    	a.I[0] == 1 ? title += "Public " : title += "Private "
     } else {
     	scatterChart.options.title.text = "Please make a selection for Public or Private."
     	return
