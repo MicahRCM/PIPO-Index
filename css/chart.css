@@ -207,7 +207,7 @@ input[type=number] {
     padding: 12px;
 }
 
-.tRC {
+.tRC > td > input {
     cursor: pointer;
 }
 
@@ -244,6 +244,7 @@ input[type=number] {
 .universityName:hover {
 	text-decoration: underline;
     color: #3b9df3;
+    cursor: pointer;
 }
 
 .inputlabel {
