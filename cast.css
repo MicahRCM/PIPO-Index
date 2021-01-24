@@ -54,7 +54,7 @@ th {
 
 #uniTable tr {
     /* Add a bottom border to all table rows */
-    border-bottom: 2px solid #1f2739;
+    border-bottom: 2px solid #fff;
 }
 
 .uniTable {
@@ -69,19 +69,19 @@ th {
 .tritem {
     width: 150px;
     font-size: 14px;
-    background-color: #1f2739;
+    background-color: #c0e0ff;
     padding-bottom: 2%;
     padding-top: 2%;
     padding-left: 2%;
     text-align: left;
-    color: #5a91b9;
+    color: #305669;
     font-size: 1em;
     font-weight: bold;
 }
 
 .tritem:hover {
 	cursor: pointer;
-	background-color: #202c46;
+	background-color: #a0cbf5;
 }
 
 #tritem1 {
@@ -105,23 +105,24 @@ th {
     display: inline-block;
     float: right;
     margin-right: 10px;
+    color: white;
 }
 
 a {
-    color: #81b9bf;
+    color: #002168;
 }
 
 .uniTable tr:nth-child(odd) {
-    background-color: #323C50;
+    background-color: #e3ecff;
 }
 
 .uniTable tr:nth-child(even) {
-    background-color: #2c3446;
+    background-color: #ffe5fa;
 }
 
 .tdI2 {
-    color: #f8f9f0;
-    border-left: 2px solid #1f2739;
+    color: #121456;
+    border-left: 2px solid #fff;
     padding-bottom: 2%;
     padding-top: 2%;
     padding-left: 2%;
@@ -130,7 +131,7 @@ a {
 }
 
 .activeArrow {
-	color: #a0a05d;
+	color: #565608;
 }
 
 
@@ -143,24 +144,26 @@ a {
 .pageNumberContainer {
 	padding: 15px 0px;
 	display: inline-block;
-	border: 1px solid grey;
+	border: 1px solid #dadada;
 	border-radius: 2px;
 	margin-right: 5px;
 	width: 40px;
+    background: aliceblue;
+    color: #0b1435;
 }
 
 .pageNumberContainer:hover {
 	cursor: pointer;
-	background: #534e6d;
+	background: #d8e4ef;
 }
 
 .pageNumber {
-	color: white;
 	margin: 0 auto;
 }
 
 .activePage {
 	background: #60b7b7;
+    color: white;
 }
 
 .activePage:hover {
