@@ -130,3 +130,94 @@ a {
 	width: 100%;
 	z-index: 1;
 }
+
+.frame {
+	width: 100%;
+	height: 100%;
+	margin-top: 5px;
+}
+
+.frameImage {
+	width: 100%;
+	height: 100%;
+}
+
+.frameImageContainer {
+	display: inline-block;
+	border-right: 2px solid white;
+	position: relative;
+	height: 60%;
+	float: left;
+	overflow: hidden;
+	width: Calc(65% - 4px);
+}
+
+.miniFrameImageContainer {
+	display: inline-block;
+	float: left;
+	width: Calc(35% - 4px);
+	height: 60%;
+}
+
+.frameImageMini {
+	width: 100%;
+	height: 50%;
+	display: inline-block;
+	/*height: ;*/
+}
+
+.opaqueOverlay {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0,0,0,0.8);
+	top: 0;
+}
+
+.title1 {
+	color: white;
+	border-bottom: 2px solid #1a8dc7;
+	position: absolute;
+	top: 10%;
+	left: 10%;
+	font: 700 18px/35px 'Source Sans Pro',sans-serif;
+}
+
+.title2 {
+	color: white;
+	position: absolute;
+	top: 20%;
+	left: 15%;
+	font: 700 18px/35px 'Source Sans Pro',sans-serif;
+	font-size: 24px;
+	margin-right: 50px;
+}
+
+.title3 {
+	position: absolute;
+	border: 2px solid white;
+	padding: 10px 20px;
+	width: 140px;
+	color: white;
+	font: 700 18px/35px 'Source Sans Pro',sans-serif;
+	bottom: 15%;
+	left: 15%;
+	text-align: center;
+}
+
+.title3:hover {
+	cursor: pointer;
+	background: #1a8dc7;
+	border-color: #1a8dc7;
+}
+
+@media only screen and (max-width: 1135px) {
+    .frame {
+        width: 1135px;
+    }
+    body {
+    	overflow-x: scroll;
+    	width: 100%;
+    }
+}
+
