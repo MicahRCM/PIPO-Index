@@ -144,7 +144,7 @@ a {
 
 .frameImageContainer {
 	display: inline-block;
-	border-right: 2px solid white;
+	border-right: 4px solid white;
 	position: relative;
 	height: 60%;
 	float: left;
@@ -161,9 +161,24 @@ a {
 
 .frameImageMini {
 	width: 100%;
+	height: 100%;
+	display: inline-block;
+}
+
+.imageWrapper {
+	width: 100%;
 	height: 50%;
 	display: inline-block;
-	/*height: ;*/
+	position: relative;
+	font: 700 30px 'Source Sans Pro',sans-serif;;
+}
+
+.imageWrapperText {
+	position: absolute;
+	top: 18%;
+	left: 10%;
+	font-weight: bold;
+	color: darkslategrey;
 }
 
 .opaqueOverlay {

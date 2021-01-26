@@ -48,8 +48,8 @@
                     </div>
                 </div>
                 <div class="chartFilterContainer">
-                    <div class="chartFilter filter4" id="regiontest" onclick="populateMenu(`region_test`)"> Region/State <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
-                    <div class="pubpriv_list filter_list" id="region_test">
+                    <div class="chartFilter filter3" id="regiontest" onclick="populateMenu(`region_test`)"> Region/State <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
+                    <div class="region_list filter_list" id="region_test">
                         <div class="OkButton"> OK </div>
                         <div class="filter_item_container" onclick="checkAllStates()">
                             <span class="filter_item head_filter_item"> All </span>
@@ -58,8 +58,8 @@
                     </div>
                 </div>
                 <div class="chartFilterContainer">
-                    <div class="chartFilter filter5" id="usnewsrank" onclick="populateMenu(`usnewsrank_list`)"> US News Rank <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
-                    <div class="usnewsrank_list filter_list" id="usnewsrank_list" style="width: 200px;">
+                    <div class="chartFilter filter4" id="usnewsrank" onclick="populateMenu(`usnewsrank_list`)"> US News Rank <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
+                    <div class="usnewsrank_list filter_list" id="usnewsrank_list" style="width: 199px;">
                         <div class="OkButton"> OK </div>
                         <div class="usnewsrank_cont">
                             <div class="usnewsrank_input_c">
@@ -83,12 +83,6 @@
         <div class="chartSearchContainer">
             <input type="text" style="box-sizing: border-box; border-radius: 5px" id="myInput" onkeyup="filterUni()" placeholder="Search..">
             <table id="uniTableAll">
-                <thead style="margin-right: -2px;">
-                    <tr class="uniTableHeader" id="uniTableHeader">
-                        <th class="trFirst" style="padding: 20px;"> </th>
-                        <th class="trSecond"> University </th>
-                    </tr>
-                </thead>
                 <tbody id="uniTable" class="uniTable">
                 </tbody>
             </table>
