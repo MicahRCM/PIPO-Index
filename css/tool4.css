@@ -308,8 +308,36 @@ input[type=number] {
     .mainContainer {
         width: 1000px;
     }
+
     body {
-    	overflow-x: scroll;
-    	width: 100%;
+        overflow-x: scroll;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1344px) {
+    .navbar {
+        right: 20px !important;
+    }
+}
+
+@media only screen and (min-width: 1345px) {
+    .mainContainer {
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .globalContainer {
+        margin: 0 auto !important;
+        width: 90% !important;
+        max-width: none !important;
+        padding: 0px !important;
+        width: Calc(90% - 45px) !important;
+        display: block;
+        overflow: hidden;
+    }
+
+    .navbar {
+        right: 1% !important;
     }
 }
