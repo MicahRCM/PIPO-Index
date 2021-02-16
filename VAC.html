@@ -5,13 +5,15 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>PIPO Chart</title>
+    <title>Value-Added and Cost Tool</title>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css"> -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3"></script>
     <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.7"></script>
-    <link rel="stylesheet" type="text/css" href="./css/chart.css">
+    <link rel="stylesheet" type="text/css" href="./css/VAC.css">
 </head>
 
 <body>
@@ -20,16 +22,16 @@
         <div class="chartContainer">
             <div class="chartFilters" id="chartFilters">
                 <div class="chartFilterContainer">
-                    <div class="chartFilter filter1" id="bagranting" onclick="populateMenu(`bagranting_list`)"> National/Non-National <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
+                    <div class="chartFilter filter1" id="bagranting" onclick="populateMenu(`bagranting_list`)"> National/Other 4-Year <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
                     <div class="bagranting_list filter_list" id="bagranting_list">
                         <div class="OkButton"> OK </div>
-                        <div class="filter_item_container" onclick="updateParameters(`G`, [1], [`75_101`])">
+                        <div class="filter_item_container" onclick="updateParameters(`F`, [1], [`75_101`])">
                             <span class="enabled_check" id="75_101"> ✓ </span>
                             <span class="filter_item"> National </span>
                         </div>
-                        <div class="filter_item_container" onclick="updateParameters(`G`, [0], [`75_100`])">
+                        <div class="filter_item_container" onclick="updateParameters(`F`, [0], [`75_100`])">
                             <span class="enabled_check" id="75_100"> ✓ </span>
-                            <span class="filter_item"> Non-National </span>
+                            <span class="filter_item"> Other 4-Year </span>
                         </div>
                     </div>
                 </div>
@@ -37,11 +39,11 @@
                     <div class="chartFilter filter4" id="pubpriv" onclick="populateMenu(`pubpriv_list`)"> Public/Private <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
                     <div class="pubpriv_list filter_list" id="pubpriv_list">
                         <div class="OkButton"> OK </div>
-                        <div class="filter_item_container" onclick="updateParameters(`I`, [1], [`50_101`])">
+                        <div class="filter_item_container" onclick="updateParameters(`H`, [1], [`50_101`])">
                             <span class="enabled_check" id="50_101"> ✓ </span>
                             <span class="filter_item"> Public </span>
                         </div>
-                        <div class="filter_item_container" onclick="updateParameters(`I`, [2], [`50_102`])">
+                        <div class="filter_item_container" onclick="updateParameters(`H`, [2], [`50_102`])">
                             <span class="enabled_check" id="50_102"> ✓ </span>
                             <span class="filter_item"> Private </span>
                         </div>
@@ -68,12 +70,40 @@
                             </div>
                             <div class="usnewsrank_input_c">
                                 <label class="inputlabel" for="rankmax"> Max </label>
-                                <input class="input_m" type="number" id="rankmax" value=500 name="rankmax" max=2000>
+                                <input class="input_m" type="number" id="rankmax" value=381 name="rankmax" max=500>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="chartFilterContainer">
+                    <div class="chartFilter filter5" id="income" onclick="populateMenu(`income_list`)"> Average Cost by Income <span class="filterCaret" style="font-size: 10px"> &#x25bc; </span> </div>
+                    <div class="income_list filter_list" id="income_list">
+                        <div class="OkButton"> OK </div>
+                        <div class="filter_item_container" onclick="incomeFilter(`Z`, `69_101`)">
+                            <span class="enabled_check showCheck" id="69_101"> ✓ </span>
+                            <span class="filter_item" id="69_101_t"> Average Cost Overall </span>
+                        </div>
+                        <div class="filter_item_container" onclick="incomeFilter(`U`, `69_102`)">
+                            <span class="enabled_check" id="69_102"> ✓ </span>
+                            <span class="filter_item" id="69_102_t"> $0 - $30,000 </span>
+                        </div>
+                        <div class="filter_item_container" onclick="incomeFilter(`V`, `69_103`)">
+                            <span class="enabled_check" id="69_103"> ✓ </span>
+                            <span class="filter_item" id="69_103_t"> $30,001 - $48,000 </span>
+                        </div>
+                        <div class="filter_item_container" onclick="incomeFilter(`W`, `69_104`)">
+                            <span class="enabled_check" id="69_104"> ✓ </span>
+                            <span class="filter_item" id="69_104_t"> $48,001 - $75,000 </span>
+                        </div>
+                        <div class="filter_item_container" onclick="incomeFilter(`X`, `69_105`)">
+                            <span class="enabled_check" id="69_105"> ✓ </span>
+                            <span class="filter_item" id="69_105_t"> $75,001 - $110,000 </span>
+                        </div>
+                        <div class="filter_item_container" onclick="incomeFilter(`Y`, `69_106`)">
+                            <span class="enabled_check" id="69_106"> ✓ </span>
+                            <span class="filter_item" id="69_106_t"> $110,001+ </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div style="height: 700px">
@@ -81,15 +111,17 @@
             </div>
         </div>
         <div class="chartSearchContainer">
-            <input type="text" style="box-sizing: border-box; border-radius: 5px" id="myInput" onkeyup="filterUni()" placeholder="Search..">
+            <input type="text" style="box-sizing: border-box; border-radius: 5px" id="myInput" onkeyup="filterUni()" placeholder="Search for university...">
             <table id="uniTableAll">
                 <tbody id="uniTable" class="uniTable">
                 </tbody>
             </table>
         </div>
     </div>
-    <script type="text/javascript" src="./js/chart.js"></script>
+    <script type="text/javascript" src="./js/VAC.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script> -->
 </body>
 
 </html>

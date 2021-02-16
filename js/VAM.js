@@ -205,11 +205,11 @@ const titleGen = () => {
     }
     title += "Universities that are "
     if (a.G.length == 2) {
-    	title += "National and Non-National in "
+    	title += "National and Other 4-Year in "
     } else if (a.G.length == 1) {
-    	a.G[0] == 1 ? title += "National in " : title += "Non-National in "
+    	a.G[0] == 1 ? title += "National in " : title += "Other 4-Year in "
     } else {
-    	scatterChart.options.title.text = "Please make a selection for National or Non-National"
+    	scatterChart.options.title.text = "Please make a selection for National or Other 4-Year"
     	return
     }
     console.log(a.J.length)
@@ -452,8 +452,8 @@ const filterData = (dataset, key, value) => {
 const formatData = (dataset) => {
     let National_Public = formatChartJsObject(`National Public`, `rgb(2, 15, 163)`)
     let National_Private = formatChartJsObject(`National Private`, `rgb(189, 85, 6)`)
-    let Non_National_Public = formatChartJsObject(`Non-National Public`, `rgb(73, 183, 230)`)
-    let Non_National_Private = formatChartJsObject(`Non-National Private`, `rgb(255, 193, 99)`)
+    let Non_National_Public = formatChartJsObject(`Other 4-Year Public`, `rgb(73, 183, 230)`)
+    let Non_National_Private = formatChartJsObject(`Other 4-Year Private`, `rgb(255, 193, 99)`)
     for (let i = 0; i < dataset.length; i++) {
         dataset[i].y = dataset[i]["B"]
         dataset[i].x = dataset[i]["C"]
