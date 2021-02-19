@@ -13,7 +13,7 @@ let active_arrow = {
 
 let pagination = {
     current: 2,
-    perPage: 25
+    perPage: 50
 }
 
 for (let i = 0; i < data_1.length; i++) {
@@ -56,7 +56,7 @@ const paginateUni = (page = pagination.current, n = pagination.perPage) => {
     table = document.getElementById("uniTable");
     tr = table.getElementsByTagName("tr");
     for (let i = 0; i < tr.length; i++) {
-        if (i < (page - 1) * 25 || i >= page * n) {
+        if (i < (page - 1) * pagination.perPage || i >= page * n) {
             td = tr[i].getElementsByClassName("tdItem")[0];
             if (td) {
                 tr[i].style.display = "none";
@@ -203,6 +203,13 @@ const gimmeBoxes = (n, text) => {
         div.classList.add("activePage")
     }
     return div
+}
+
+const updatePagination = (n) => {
+	// Updates global variable to desired pagination amount
+	pagination.perPage = n
+	paginateUni(1)
+	document.getElementById("dropbtn").innerHTML = n
 }
 
 

@@ -63,7 +63,7 @@ th {
 }
 
 #uniTableAll {
-	width: 1200px;
+    width: 1200px;
 }
 
 .tritem {
@@ -80,16 +80,16 @@ th {
 }
 
 .tritem:hover {
-	cursor: pointer;
-	background-color: #a0cbf5;
+    cursor: pointer;
+    background-color: #a0cbf5;
 }
 
 #tritem1 {
-	width: 220px;
+    width: 220px;
 }
 
 .sm_tritem {
-	width: 120px;
+    width: 120px;
 }
 
 .tdItem {
@@ -131,41 +131,94 @@ a {
 }
 
 .activeArrow {
-	color: #565608;
+    color: #565608;
 }
 
 
 .paginationContainer {
-	text-align: center;
-	margin: 15px;
-	user-select: none;
+    text-align: center;
+    margin: 15px;
+    user-select: none;
+    display: inline-block;
+    position: absolute;
+    left: Calc(50% - 167px);
 }
 
 .pageNumberContainer {
-	padding: 15px 0px;
-	display: inline-block;
-	border: 1px solid #dadada;
-	border-radius: 2px;
-	margin-right: 5px;
-	width: 40px;
+    padding: 15px 0px;
+    display: inline-block;
+    border: 1px solid #dadada;
+    border-radius: 2px;
+    margin-right: 5px;
+    width: 40px;
     background: aliceblue;
     color: #0b1435;
 }
 
 .pageNumberContainer:hover {
-	cursor: pointer;
-	background: #d8e4ef;
+    cursor: pointer;
+    background: #d8e4ef;
 }
 
 .pageNumber {
-	margin: 0 auto;
+    margin: 0 auto;
 }
 
 .activePage {
-	background: #60b7b7;
+    background: #60b7b7;
     color: white;
 }
 
 .activePage:hover {
-	background: #60b7b7;	
+    background: #60b7b7;
+}
+
+.dropbtn {
+    background-color: #6ad0d0;
+    color: white;
+    height: 56px;
+    width: 50px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    bottom: 56px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #5fbdbd;
+}
+
+.basicText {
+    display: inline-block;
 }

@@ -15,7 +15,7 @@
 
 <body>
     <div id="nav-placeholder" style="height: 100px;"> </div>
-    <div style="position: fixed; width: 100%; height: Calc(100% - 100px); background: white; overflow: scroll; background: #fff;">
+    <div style="position: fixed; width: 100%; height: Calc(100% - 100px); background: white; overflow: auto; background: #fff; padding-bottom: 40px;">
         <div style="margin: 0 auto; min-width: 800px; max-width: 1200px;">
             <div class="chartSearchContainer">
                 <input type="text" style="margin-top: 20px; box-sizing: border-box; border-radius: 5px; background: #fff; border: 1px solid #7a88a7; color: black;" id="myInput" onkeyup="filterUni()" placeholder="Search..">
@@ -45,6 +45,21 @@
                     <div class="pageNumberContainer" onclick="paginateUni(1,25)">
                         <span class="pageNumber"> 1 </span>
                     </div>
+                </div>
+                <div class="basicText">
+                    <span> Showing </span>
+                </div>
+                <div class="rowsDisplayContainer dropdown" id="rowsDisplayContainer">
+                    <button class="dropbtn" id="dropbtn">50</button>
+                    <div class="dropdown-content">
+                        <a onclick="updatePagination(10)">10</a>
+                        <a onclick="updatePagination(25)">25</a>
+                        <a onclick="updatePagination(50)">50</a>
+                        <a onclick="updatePagination(100)">100</a>
+                    </div>
+                </div>
+                <div class="basicText">
+                    <span> results per page </span>
                 </div>
             </div>
         </div>
