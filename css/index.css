@@ -135,6 +135,7 @@ a {
 	width: 100%;
 	height: 100%;
 	margin-top: 5px;
+	margin-bottom: 20px;
 }
 
 .frameImage {
@@ -149,7 +150,7 @@ a {
 	height: 60%;
 	float: left;
 	overflow: hidden;
-	width: Calc(65% - 4px);
+	width: Calc(50% - 4px);
 }
 
 .miniFrameImageContainer {
@@ -209,7 +210,7 @@ a {
 	top: 20%;
 	left: 15%;
 	font: 700 18px/35px 'Source Sans Pro',sans-serif;
-	font-size: 24px;
+	font-size: .9em;
 	margin-right: 50px;
 }
 
@@ -220,8 +221,8 @@ a {
 	width: 140px;
 	color: white;
 	font: 700 18px/35px 'Source Sans Pro',sans-serif;
-	bottom: 15%;
-	left: 15%;
+	bottom: 5%;
+	right: 15%;
 	text-align: center;
 }
 
