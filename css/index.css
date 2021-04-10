@@ -147,10 +147,11 @@ a {
 	display: inline-block;
 	border-right: 4px solid white;
 	position: relative;
-	height: 60%;
 	float: left;
+	padding-left: 4px;
+	padding-top: 2px;
 	overflow: hidden;
-	width: Calc(50% - 4px);
+	width: Calc(50% - 10px);
 }
 
 .miniFrameImageContainer {
