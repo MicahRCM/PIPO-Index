@@ -1,0 +1,29 @@
+.centerContainer {
+	margin: 0 auto;
+	width: 90%;
+	margin-top: 40px;
+}
+
+.containerEntry {
+	width: 70%;
+	margin: 0 auto;
+}
+
+.containerEntryImgHeader {
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.blogImgHeader {
+	width: 90%;
+	height: 350px;
+}
+
+.containerBody {
+	text-align: center;
+}
+
+.containerBodyTitle {
+	text-align: center;
+}
