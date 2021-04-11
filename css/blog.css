@@ -1,3 +1,12 @@
+.blogLink {
+	color: black !important;
+}
+
+.blogLink:hover {
+	color: #1a8dc7 !important;
+}
+
+
 .centerContainer {
 	margin: 0 auto;
 	width: 90%;
@@ -26,4 +35,8 @@
 
 .containerBodyTitle {
 	text-align: center;
+}
+
+.containerBodyText {
+	padding-bottom: 30px;
 }
