@@ -369,7 +369,7 @@ input[name="toggle"] {
 }
 
 .ui-component-list--item-check {
-    background-image: url(https://res.cloudinary.com/uisual/image/upload/assets/icons/check.svg);
+    background-image: url(../assets/bullet_logo.png);
 }
 
 .ui-component-list--item-cross {
@@ -481,7 +481,7 @@ input[name="toggle"] {
 --------------------------------------------------------------*/
 
 .ui-section-hero {
-    padding-bottom: 5rem;
+    padding-bottom: 1rem;
     padding-top: 5rem;
     text-align: center;
 }
