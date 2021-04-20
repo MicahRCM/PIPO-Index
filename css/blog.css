@@ -9,8 +9,7 @@
 
 .centerContainer {
 	margin: 0 auto;
-	height: 100%;
-	margin-top: 40px;
+	height: Calc(100% - 100px);
 }
 
 .containerEntry {
