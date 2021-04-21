@@ -225,7 +225,7 @@ svg {
 
 .ui-layout-flex,
 .ui-layout-grid {
-  align-items: center;
+  /*align-items: center;*/
   justify-content: center;
 }
 
