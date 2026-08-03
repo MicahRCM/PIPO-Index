@@ -1,0 +1,225 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.mainContainer {
+    position: relative;
+    width: 100%;
+    height: Calc(100% - 100px);
+    background: white;
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+
+.pageTitle {
+    text-align: center;
+    font-size: 28px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.pageSubtitle {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.chartContainer {
+    width: 72%;
+    float: left;
+    border: 1px solid #dfe1e5;
+    border-radius: 8px;
+    margin-top: 5px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.chartHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.chartLegendNote {
+    font-size: 14px;
+    color: #555;
+}
+
+.chartActions {
+    display: inline-flex;
+    gap: 8px;
+}
+
+.actionBtn {
+    border: 1px solid #d2e3fc;
+    background: white;
+    padding: 6px 14px;
+    font-size: 13px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.actionBtn:hover {
+    background: #f7f9fd;
+}
+
+.chartWrapper {
+    position: relative;
+    height: 560px;
+}
+
+.chartSearchContainer {
+    width: 26%;
+    float: right;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+#uniSearch {
+    background-image: url('https://www.w3schools.com/css/searchicon.png');
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.uniList {
+    height: 560px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.uniRow {
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.uniRow:hover {
+    background: #f1f9ff;
+}
+
+.uniRow.selected {
+    background: #e4f4ff;
+    font-weight: 600;
+}
+
+.uniSwatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: transparent;
+    border: 1px solid #ccc;
+}
+
+.uniRow.selected .uniSwatch {
+    border: none;
+}
+
+.uniRowName {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.loadingMsg {
+    padding: 20px;
+    text-align: center;
+    color: #888;
+}
+
+.noDataNote {
+    font-size: 11px;
+    color: #999;
+    margin-left: 4px;
+}
+
+.listDivider {
+    height: 1px;
+    background: #d2e3fc;
+    margin: 0;
+}
+
+/* Match the toolbar styling that other pages use */
+@media only screen and (max-width: 1344px) {
+    .navbar {
+        right: 20px !important;
+    }
+}
+
+@media only screen and (min-width: 1345px) {
+    .mainContainer {
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .globalContainer {
+        margin: 0 auto !important;
+        width: 90% !important;
+        max-width: none !important;
+        padding: 0px !important;
+        width: Calc(90% - 45px) !important;
+        display: block;
+        overflow: hidden;
+    }
+
+    .navbar {
+        right: 1% !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .mainContainer {
+        padding: 0 10px;
+        height: auto;
+    }
+
+    .pageTitle {
+        font-size: 22px;
+    }
+
+    .pageSubtitle {
+        font-size: 14px;
+    }
+
+    .chartContainer,
+    .chartSearchContainer {
+        width: 100%;
+        float: none;
+        margin: 10px 0;
+    }
+
+    .chartWrapper {
+        height: 360px;
+    }
+
+    .uniList {
+        height: 320px;
+    }
+}

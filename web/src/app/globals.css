@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   THE PRIVILEGE ATLAS — design tokens
+   Warm almanac paper · deep ink · teal↔ochre duotone (data↔privilege)
+   ───────────────────────────────────────────────────────────── */
+@theme {
+  --color-paper: #f4eee1;
+  --color-paper-2: #ece2cf;
+  --color-panel: #fbf7ee;
+  --color-ink: #1b2430;
+  --color-ink-soft: #5a6472;
+  --color-rule: #d8cbb1;
+
+  --color-teal: #0c6b61;
+  --color-teal-bright: #15897b;
+  --color-ochre: #b87d18;
+  --color-ochre-bright: #e0a53b;
+  --color-oxblood: #9b3a2e;
+
+  /* categorical data series (editorial, muted) */
+  --color-series-1: #0c6b61;
+  --color-series-2: #d99016;
+  --color-series-3: #9b3a2e;
+  --color-series-4: #3b5b78;
+  --color-series-5: #6b6233;
+  --color-series-6: #7a4a6b;
+
+  --font-display: var(--font-display), Georgia, serif;
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
+}
+
+/* ── Base ───────────────────────────────────────────────────── */
+html,
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-teal);
+  color: var(--color-paper);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  letter-spacing: -0.018em;
+}
+
+/* tabular figures everywhere numbers matter */
+.tnum,
+.font-mono {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Form controls ──────────────────────────────────────────────
+   Strip native chrome that steals width on the right (number spinners,
+   the search "clear" affordance) so values like "395" aren't clipped. */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* ── Recharts focus outlines ────────────────────────────────────
+   Recharts marks its <svg.recharts-surface> (tabindex=0) and internal
+   z-index layer <g> groups focusable, so clicking the plot draws the
+   browser's default black/blue focus box. We drive all interaction by
+   pointer (hover, click-to-pin), so suppress those outlines. */
+.recharts-wrapper:focus,
+.recharts-wrapper :focus,
+.recharts-surface:focus,
+.recharts-surface :focus {
+  outline: none;
+}
+
+/* ── Paper grain overlay ────────────────────────────────────── */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+}
+.grain > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Brand mark: two dots, privilege in / privilege out ─────── */
+.dot-in,
+.dot-out {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 9999px;
+  display: inline-block;
+}
+.dot-in {
+  background: var(--color-teal);
+}
+.dot-out {
+  background: var(--color-ochre-bright);
+  margin-left: -0.18rem;
+}
+
+/* ── Hairline ledger rule with a tick ───────────────────────── */
+.rule {
+  border-top: 1px solid var(--color-rule);
+}
+
+/* ── Editorial link underline draw ──────────────────────────── */
+.link-underline {
+  background-image: linear-gradient(var(--color-teal), var(--color-teal));
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.link-underline:hover {
+  background-size: 100% 2px;
+}
+
+/* ── Motion: staggered reveal ───────────────────────────────── */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.reveal {
+  opacity: 0;
+  animation: rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.reveal-fade {
+  opacity: 0;
+  animation: fade 1.2s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-fade {
+    animation: none;
+    opacity: 1;
+  }
+}

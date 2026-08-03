@@ -308,7 +308,7 @@ input[type=number] {
 }
 
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 769px) and (max-width: 1000px) {
     .mainContainer {
         width: 1000px;
     }
@@ -316,6 +316,98 @@ input[type=number] {
     body {
         overflow-x: scroll;
         width: 100%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    .mainContainer {
+        width: 100%;
+        height: auto;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    h1 {
+        font-size: 22px !important;
+    }
+
+    .helpLink {
+        font-size: 16px;
+    }
+
+    .chartContainer,
+    .chartSearchContainer {
+        width: 100%;
+        float: none;
+        margin: 15px 0;
+        box-sizing: border-box;
+    }
+
+    .chartFilters {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 15px;
+    }
+
+    .chartFilter {
+        margin-left: 5px;
+        margin-top: 10px;
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+    .filter1,
+    .filter3 {
+        width: auto;
+        min-width: 140px;
+    }
+
+    .filter4 {
+        width: auto;
+        min-width: 130px;
+    }
+
+    .filterCaret {
+        position: static;
+        padding-left: 8px;
+    }
+
+    .filter_list {
+        left: 5px;
+        right: 5px;
+        max-width: calc(100vw - 20px);
+        box-sizing: border-box;
+    }
+
+    .filter_item_container {
+        width: auto;
+    }
+
+    .chartWrapper {
+        height: 400px !important;
+    }
+
+    .myChart {
+        padding-right: 5px;
+        padding-bottom: 5px;
+    }
+
+    .uniTable {
+        height: 350px;
+    }
+
+    #uniTable {
+        font-size: 15px;
+    }
+
+    #myInput {
+        font-size: 15px;
+        padding: 10px 15px 10px 36px;
     }
 }
 

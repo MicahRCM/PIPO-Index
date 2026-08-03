@@ -134,24 +134,36 @@ a {
 .frame {
 	width: 100%;
 	height: 100%;
-	margin-top: 5px;
-	margin-bottom: 20px;
+	margin: 0;
+	padding: 24px;
+	box-sizing: border-box;
 }
 
 .frameImage {
 	width: 100%;
 	height: 100%;
+	display: block;
 }
 
 .frameImageContainer {
 	display: inline-block;
-	border-right: 4px solid white;
 	position: relative;
 	float: left;
-	padding-left: 4px;
-	padding-top: 2px;
+	margin: 10px;
 	overflow: hidden;
-	width: Calc(50% - 10px);
+	width: Calc(50% - 20px);
+	border-radius: 10px;
+	box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.frameImageContainer:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+
+.frameImageContainer.wideTile {
+	width: Calc(100% - 20px);
 }
 
 .miniFrameImageContainer {
@@ -234,9 +246,9 @@ a {
 	border-color: #1a8dc7;
 }
 
-@media only screen and (max-width: 1135px) {
+@media only screen and (max-width: 1180px) {
     .frame {
-        width: 1135px;
+        width: 1180px;
     }
     body {
     	overflow-x: scroll;

@@ -1,0 +1,26 @@
+/.playwright-mcp
+# Secrets — never commit
+.env
+*.key
+data_pipeline/.scorecard_key
+node_modules/
+web/node_modules/
+web/.next/
+data/compass_raw/compass_b*.json
+
+# ── Data lake: 1GB+ of regenerable pipeline inputs/intermediates/caches.
+# The app reads web/data/institutions.json (committed), never data/ at runtime.
+/data/*
+!/data/navigator_avg_net_price.csv
+# Build + debug artifacts
+web/tsconfig.tsbuildinfo
+/*.png
+gpa_probe.json
+gpa_na_audit.json
+gpa_batch1_result.json
+compass_sections.json
+compass_test25_result.json
+ralph-progress.json
+.DS_Store
+__pycache__/
+*.pyc
