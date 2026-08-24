@@ -51,8 +51,12 @@ export default function ChartCard({
   return (
     <section className="flex h-full flex-col rounded-lg border border-rule bg-panel">
       {(title || actions) && (
-        <div className="flex items-start justify-between gap-4 border-b border-rule px-6 py-4">
-          <div>
+        // `flex-wrap` so a wide actions row (e.g. VAC's income-band selector)
+        // drops below the title at medium widths instead of squeezing the title
+        // into a vertical sliver. `min-w-0` lets the title/subtitle column wrap
+        // its text normally rather than forcing overflow.
+        <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-3 border-b border-rule px-6 py-4">
+          <div className="min-w-0">
             {title && (
               <h2 className="font-display text-lg font-semibold tracking-tight text-ink">
                 {title}
@@ -64,7 +68,7 @@ export default function ChartCard({
               </p>
             )}
           </div>
-          {actions && <div className="flex shrink-0 items-center gap-2">{actions}</div>}
+          {actions && <div className="flex shrink-0 flex-wrap items-center gap-2">{actions}</div>}
         </div>
       )}
       {legend && (
