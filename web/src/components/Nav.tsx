@@ -28,7 +28,8 @@ export default function Nav() {
           </span>
         </Link>
 
-        <ul className="flex flex-wrap items-center gap-x-1 gap-y-1 font-mono text-[12px] uppercase tracking-[0.12em]">
+        <div className="flex flex-wrap items-center gap-x-1 gap-y-1 font-mono text-[12px] uppercase tracking-[0.12em]">
+        <ul className="flex flex-wrap items-center gap-x-1 gap-y-1">
           {TOOLS.map((tool) => {
             const live = tool.status === "live";
             const active = pathname === tool.href;
@@ -89,6 +90,21 @@ export default function Nav() {
             );
           })}
         </ul>
+
+          <span className="mx-1 hidden h-3.5 w-px bg-rule sm:inline-block" aria-hidden />
+
+          <Link
+            href="/about"
+            className={[
+              "block rounded-sm px-2.5 py-1.5 transition-colors",
+              pathname === "/about"
+                ? "text-teal"
+                : "text-ink-soft hover:text-ink",
+            ].join(" ")}
+          >
+            About
+          </Link>
+        </div>
       </nav>
     </header>
   );

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Fraunces, Public_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
@@ -58,9 +59,17 @@ export default function RootLayout({
                 privilege out.
               </p>
             </div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-soft">
-              Sources · IPEDS · College&nbsp;Scorecard · US&nbsp;News
-            </p>
+            <div className="flex flex-col gap-3 sm:items-end">
+              <Link
+                href="/about"
+                className="link-underline font-mono text-[11px] uppercase tracking-[0.18em] text-ink-soft hover:text-ink"
+              >
+                About
+              </Link>
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-soft">
+                Sources · IPEDS · College&nbsp;Scorecard · US&nbsp;News
+              </p>
+            </div>
           </div>
         </footer>
       </body>
