@@ -51,6 +51,27 @@ interface RawRetention {
   universities: Record<string, { name: string; rates: (number | null)[] }>;
 }
 
+/**
+ * Manual net-price-by-income corrections, keyed by UNITID. IPEDS / College
+ * Navigator ships erroneous net-price band figures for a school until the
+ * government's next collection cycle; we override them with the correct,
+ * institution-supplied values so the tools (CAS + VAC) don't misrepresent cost.
+ * The overall average (`avg_net_price_nav`) is left as-is where already correct.
+ */
+const NET_PRICE_OVERRIDES: Record<number, Record<string, number>> = {
+  // Misericordia University (PA, 214069): IPEDS reports a flat ~$37k for every
+  // income band — higher than the correct average net price — making it look
+  // absurdly expensive vs. peers. Corrected per the institution (2026); the
+  // reported average (26,747) was already right and is left untouched.
+  214069: {
+    net_price_0_30k: 20785,
+    net_price_30_48k: 21068,
+    net_price_48_75k: 22372,
+    net_price_75_110k: 27801,
+    net_price_110k_plus: 30142,
+  },
+};
+
 function normalizeInstitution(r: RawInstitution): Institution {
   return {
     unitid: r.unitid,
@@ -62,6 +83,7 @@ function normalizeInstitution(r: RawInstitution): Institution {
     longitude: r.longitude ?? null,
     metrics: {
       ...r.metrics,
+      ...(NET_PRICE_OVERRIDES[r.unitid] ?? {}),
       nationalUniversity: r.national === 1,
       // pubpriv: 1 = public, 2 = private in the legacy data.
       publicPrivate: r.pubpriv === 1 ? "Public" : r.pubpriv === 2 ? "Private" : null,
