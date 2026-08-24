@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import VamTool from "@/components/vam/VamTool";
+import { HowTo, HowToPill, Step } from "@/components/HowTo";
 
 export const metadata: Metadata = {
   title: "Value-Added Matrix · PIPO Index",
@@ -22,10 +23,39 @@ export default function VamPage() {
           retention (y), colored by classification and control. Filter the
           field, then search the list to highlight a school&apos;s point.
         </p>
+        <HowToPill />
       </header>
       <div className="mt-8">
         <VamTool />
       </div>
+
+      <HowTo title="Reading the Value-Added Matrix">
+        <Step n={1} title="Read the axes as value added, not raw rates">
+          The horizontal axis is value-added graduation and the vertical axis is
+          value-added retention — how much better (positive) or worse (negative) a
+          school does than its incoming students&apos; privilege would predict.
+          The origin lines mark &ldquo;exactly as predicted.&rdquo;
+        </Step>
+        <Step n={2} title="Use the Value-Added Consistency line">
+          The dashed diagonal is the typical balance between the two scores. A
+          school above the line adds more value on retention than its graduation
+          would predict; below it, the reverse.
+        </Step>
+        <Step n={3} title="Filter the field">
+          Narrow by classification, public/private, region, state, or US News
+          rank on the left. Choosing a region limits the state list to that
+          region.
+        </Step>
+        <Step n={4} title="Highlight and pin schools">
+          Search or hover a name in the right-hand list to flag its dot. Click a
+          dot to pin it (it stays put); click the pinned name to open its College
+          Navigator page. Hover another dot to compare two at once.
+        </Step>
+        <Step n={5} title="Zoom in on a cluster">
+          Scroll or use +/− to zoom and drag to pan; Reset returns to the full
+          field.
+        </Step>
+      </HowTo>
     </div>
   );
 }

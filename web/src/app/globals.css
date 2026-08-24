@@ -40,6 +40,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Smooth "jump to instructions" scroll (recipe-site style). */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 ::selection {
   background: var(--color-teal);
   color: var(--color-paper);
