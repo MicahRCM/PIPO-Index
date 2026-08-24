@@ -48,8 +48,10 @@ export default function RootLayout({
           <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-6 py-10 sm:flex-row sm:items-end sm:justify-between">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <span className="dot-in" aria-hidden />
-                <span className="dot-out" aria-hidden />
+                <span className="flex items-center" aria-hidden>
+                  <span className="dot-in" />
+                  <span className="dot-out" />
+                </span>
                 <span className="font-display text-lg font-semibold tracking-tight">
                   PIPO&nbsp;Index
                 </span>
