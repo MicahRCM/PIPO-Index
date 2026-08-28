@@ -182,3 +182,35 @@ input[type="search"]::-webkit-search-results-decoration {
     opacity: 1;
   }
 }
+
+/* ── CAPTURE MODE (TEMP: book figures — see src/lib/capture.ts) ──────
+   Site-wide greyscale for chart cards + a hover PNG-export button. The filter
+   lives on the card ([data-capture]) so it previews on screen AND carries into
+   the html-to-image export. Remove this whole block to retire the feature. */
+[data-capture] {
+  transition: filter 0.2s ease;
+}
+html[data-grey="mono"] [data-capture] {
+  filter: grayscale(1);
+}
+html[data-grey="soft"] [data-capture] {
+  filter: grayscale(1) contrast(0.92) brightness(1.06);
+}
+html[data-grey="ink"] [data-capture] {
+  filter: grayscale(1) contrast(1.3) brightness(0.98);
+}
+html[data-grey="noir"] [data-capture] {
+  filter: grayscale(1) contrast(1.6) brightness(0.9);
+}
+
+/* Export button: hidden until capture is armed and the card is hovered. */
+[data-capture-btn] {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+html[data-capture-on] [data-capture]:hover [data-capture-btn],
+html[data-capture-on] [data-capture-btn]:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+}

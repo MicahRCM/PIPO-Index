@@ -1,7 +1,8 @@
 "use client";
 
-import type { HTMLAttributes, ReactElement, ReactNode, Ref } from "react";
+import { useRef, type HTMLAttributes, type ReactElement, type ReactNode, type Ref } from "react";
 import { ResponsiveContainer } from "recharts";
+import CaptureButton from "@/components/CaptureButton"; // TEMP: book-figure capture
 
 /**
  * Reusable chart chrome + sizing wrapper, shared by all tools.
@@ -48,8 +49,14 @@ export default function ChartCard({
   children,
 }: ChartCardProps) {
   const { className: plotClassName, ...plotRest } = plotProps ?? {};
+  const cardRef = useRef<HTMLElement>(null); // TEMP: book-figure capture
   return (
-    <section className="flex h-full flex-col rounded-lg border border-rule bg-panel">
+    <section
+      ref={cardRef}
+      data-capture
+      className="group relative flex h-full flex-col rounded-lg border border-rule bg-panel"
+    >
+      <CaptureButton targetRef={cardRef} name={title ?? "chart"} />{/* TEMP */}
       {(title || actions) && (
         // `flex-wrap` so a wide actions row (e.g. VAC's income-band selector)
         // drops below the title at medium widths instead of squeezing the title

@@ -7,6 +7,7 @@ import type { GeometryCollection, Topology } from "topojson-specification";
 import usAtlas from "us-atlas/states-10m.json";
 import Select from "@/components/Select";
 import CollegeNavLink from "@/components/CollegeNavLink";
+import CaptureButton from "@/components/CaptureButton"; // TEMP: book-figure capture
 import FilterPanel from "@/components/FilterPanel";
 import { applyFilters, type FilterDef, type FilterState } from "@/lib/filters";
 import { VARIABLES, type VariableId } from "@/lib/variables";
@@ -200,6 +201,7 @@ export default function MapTool() {
   // and reset give trackpad users a mouse-free path.
   const [t, setT] = useState({ k: 1, tx: 0, ty: 0 });
   const svgRef = useRef<SVGSVGElement | null>(null);
+  const cardRef = useRef<HTMLElement>(null); // TEMP: book-figure capture
   const drag = useRef<{ x: number; y: number; tx: number; ty: number; moved: boolean } | null>(null);
 
   const clampT = (k: number, tx: number, ty: number) => {
@@ -329,7 +331,12 @@ export default function MapTool() {
     <div className="grid gap-4 lg:grid-cols-[200px_minmax(0,1fr)]">
       <FilterPanel defs={defs} state={filters} onChange={(next) => setFilters(pruneStatesToRegion(next, regionIdx))} onReset={() => setFilters({})} />
 
-      <section className="flex h-full flex-col rounded-lg border border-rule bg-panel">
+      <section
+        ref={cardRef}
+        data-capture
+        className="group relative flex h-full flex-col rounded-lg border border-rule bg-panel"
+      >
+        <CaptureButton targetRef={cardRef} name={`map-${variable.label}`} />{/* TEMP */}
         <div className="flex flex-wrap items-start justify-between gap-4 border-b border-rule px-6 py-4">
           <div>
             <h2 className="font-display text-lg font-semibold tracking-tight text-ink">

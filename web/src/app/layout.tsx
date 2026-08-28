@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Fraunces, Public_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
+import CaptureMenu from "@/components/CaptureMenu"; // TEMP: book-figure capture
 
 // "Privilege Atlas" type system:
 // Fraunces — high-contrast editorial serif for display.
@@ -44,6 +45,7 @@ export default function RootLayout({
       <body className="grain flex min-h-full flex-col bg-paper text-ink">
         <Nav />
         <main className="flex-1">{children}</main>
+        <CaptureMenu />{/* TEMP: book-figure capture */}
         <footer className="border-t border-rule">
           <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-6 py-10 sm:flex-row sm:items-end sm:justify-between">
             <div className="space-y-1">
