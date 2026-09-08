@@ -47,7 +47,8 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <CaptureMenu />{/* TEMP: book-figure capture */}
         <footer className="border-t border-rule">
-          <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-6 py-10 sm:flex-row sm:items-end sm:justify-between">
+          <div className="mx-auto w-full max-w-7xl px-6 py-10">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
                 <span className="flex items-center" aria-hidden>
@@ -74,6 +75,10 @@ export default function RootLayout({
                 Sources · IPEDS · College&nbsp;Scorecard · US&nbsp;News
               </p>
             </div>
+            </div>
+            <p className="mt-8 border-t border-rule pt-6 text-[12px] leading-relaxed text-ink-soft">
+              © 2026 Micah Corning-Myers and Daniel&nbsp;J.&nbsp;Myers (Higher&nbsp;Ed&nbsp;Labs). All rights reserved.
+            </p>
           </div>
         </footer>
       </body>
